@@ -1,10 +1,28 @@
 import * as React from "react";
-import { Col, Divider } from "antd";
-import { ToggleButton } from "../shared/ToggleButton";
+import { Divider } from "antd";
 import { MyRow, InputTitle } from "../shared/Styled";
 import { NumberInput } from "../shared/NumberInput";
+import {
+  MultipleChoiceButton,
+  IchoiceItem,
+} from "../shared/MultipleChoiceButton";
 
 interface Props {}
+
+const choiceItems: IchoiceItem[] = [
+  {
+    title: "INDIVIDUEL",
+    keyStore: "individualPlug",
+  },
+  {
+    title: "COLLECTIF",
+    keyStore: "collectivePlug",
+  },
+  {
+    title: "IMPRODUCTIF",
+    keyStore: "improductivePlug",
+  },
+];
 
 export class PlugSystem extends React.Component<Props> {
   public render() {
@@ -14,13 +32,7 @@ export class PlugSystem extends React.Component<Props> {
           <InputTitle>Branchements</InputTitle>
         </Divider>
         <MyRow>
-          <ToggleButton keyStore="isIndividualPlug" name="INDIVIDUEL" />
-          <ToggleButton
-            keyStore="isIndividualPlug"
-            name="COLLECTIF"
-            invert={true}
-          />
-          <ToggleButton keyStore="improductivePlug" name="IMPRODUCTIF" />
+          <MultipleChoiceButton choiceItems={choiceItems} />
         </MyRow>
         <MyRow>
           <NumberInput keyStore="nbOfYears" label="Nombre d'annèes" />

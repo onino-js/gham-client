@@ -4,11 +4,33 @@ import { ContactStore } from "../../stores/contact.store";
 import { StringInput } from "../shared/StringInput";
 import { ToggleButton } from "../shared/ToggleButton";
 import { MyRow, InputCol, InputTitle } from "../shared/Styled";
+import { MultipleChoiceButton } from "../shared/MultipleChoiceButton";
 
 interface Props {
   uiStore?: any;
   contactStore?: ContactStore;
 }
+
+const choiceItems = [
+  {
+    title: "Mme",
+    keyStore: "isWoman" as keyof (ContactStore),
+  },
+  {
+    title: "M.",
+    keyStore: "isMan" as keyof (ContactStore),
+  },
+];
+const choiceItems2 = [
+  {
+    title: "PROPRIETAIRE",
+    keyStore: "isOwner" as keyof (ContactStore),
+  },
+  {
+    title: "LOCATAIRE",
+    keyStore: "isRenter" as keyof (ContactStore),
+  },
+];
 
 export class MainContact extends React.Component<Props> {
   public render() {
@@ -18,8 +40,7 @@ export class MainContact extends React.Component<Props> {
           <InputTitle>Contact principal</InputTitle>
         </Divider>
         <MyRow>
-          <ToggleButton name="Mme" keyStore="title" />
-          <ToggleButton name="Mr" keyStore="title" invert={true} />
+          <MultipleChoiceButton choiceItems={choiceItems} />
         </MyRow>
         <StringInput keyStore="lastName" label="Nom de famille" />
         <StringInput keyStore="firstName" label="Prénom(s)" />
@@ -27,8 +48,7 @@ export class MainContact extends React.Component<Props> {
         <StringInput keyStore="address" label="Adresse" />
         <StringInput keyStore="phone" label="phone" />
         <MyRow>
-          <ToggleButton name="PROPRIETAIRE" keyStore="isOwner" />
-          <ToggleButton name="LOCATAIRE" keyStore="isOwner" invert={true} />
+          <MultipleChoiceButton choiceItems={choiceItems2} />
         </MyRow>
       </React.Fragment>
     );

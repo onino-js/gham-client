@@ -12,6 +12,7 @@ import {
   faPlus,
   faTrash,
   faPenAlt,
+  faPen,
   faFilePdf,
   faFileWord,
   faCode,
@@ -24,6 +25,13 @@ import {
   faCircle,
   faTimes,
   faFont,
+  faHandPaper,
+  faUndo,
+  faRedo,
+  faLock,
+  faLockOpen,
+  faSlash,
+  faImage,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBars);
@@ -31,6 +39,7 @@ library.add(faSyncAlt);
 library.add(faPlus);
 library.add(faTrash);
 library.add(faPenAlt);
+library.add(faPen);
 library.add(faFilePdf);
 library.add(faFileWord);
 library.add(faCode);
@@ -43,6 +52,13 @@ library.add(faCamera);
 library.add(faCircle);
 library.add(faTimes);
 library.add(faFont);
+library.add(faHandPaper);
+library.add(faUndo);
+library.add(faRedo);
+library.add(faLock);
+library.add(faLockOpen);
+library.add(faSlash);
+library.add(faImage);
 
 import registerServiceWorker from "./registerServiceWorker";
 

@@ -12,7 +12,7 @@ export const htmlReport = () => {
 ${reportHead()}
 <body lang="fr-FR" text="#00000a" dir="ltr">
 <center>
-<table style="width: 718px;" border="1" width="718" cellspacing="0" cellpadding="4"><colgroup><col width="51" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="51" /> </colgroup>
+<table style="width: 718px;" width="718" cellspacing="0" cellpadding="4"><colgroup><col width="51" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="52" /> <col width="51" /> </colgroup>
 <tbody  style="font-family: Cabin, serif;">
 ${reportHeader()}
 ${reportAffaire()}

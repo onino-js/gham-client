@@ -3,9 +3,64 @@ import { Divider } from "antd";
 import { ToggleButton } from "../shared/ToggleButton";
 import { MyRow, InputTitle } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
+import { ContactStore } from "../../stores/contact.store";
+import {
+  MultipleChoiceButton,
+  IchoiceItem,
+} from "../shared/MultipleChoiceButton";
+import { inject, observer } from "mobx-react";
+import { AllStores } from "../../models/all.stores.model";
 
-interface Props {}
+interface Props {
+  contactStore?: ContactStore;
+}
 
+const choiceItems: IchoiceItem[] = [
+  {
+    title: "SUPPR?",
+    keyStore: "_suppr",
+  },
+  {
+    title: "REEQUIP?",
+    keyStore: "_reequip",
+  },
+  {
+    title: "POSE?",
+    keyStore: "_pose",
+  },
+];
+
+const choiceItems2: IchoiceItem[] = [
+  {
+    title: "ENCASTRE",
+    keyStore: "_isEncastred",
+  },
+  {
+    title: "ENTERRE",
+    keyStore: "_isBurried",
+  },
+  {
+    title: "GRILLAGE",
+    keyStore: "_hasMesh",
+  },
+  {
+    title: "HORS LIMITE",
+    keyStore: "_isOutOfBound",
+  },
+  {
+    title: "SUR SOCLE",
+    keyStore: "_hasBase",
+  },
+  {
+    title: "EN SAILLIE",
+    keyStore: "_projection",
+  },
+];
+
+@inject((allStores: AllStores) => ({
+  contactStore: allStores.contactStore,
+}))
+@observer
 export class CoffretProjected extends React.Component<Props> {
   public render() {
     return (
@@ -14,24 +69,19 @@ export class CoffretProjected extends React.Component<Props> {
           <InputTitle>Coffret projet</InputTitle>
         </Divider>
         <MyRow>
-          <ToggleButton keyStore="_suppr" name="SUPPR ?" />
-          <ToggleButton keyStore="_reequip" name="REEQUIP ?" />
-          <ToggleButton keyStore="_pose" name="POSE" />
+          <MultipleChoiceButton choiceItems={choiceItems} />
         </MyRow>
-        <StringInput keyStore="_coffretType" label="type" />
-        <MyRow>
-          <ToggleButton keyStore="_isEncastred" name="ENCASTRE" />
-          <ToggleButton keyStore="_isBurried" name="ENTERRE" />
-          <ToggleButton keyStore="_hasMesh" name="GRILLAGE" />
-        </MyRow>
-        <MyRow>
-          <ToggleButton keyStore="_isOutOfBound" name="HORS LIMITE" />
-          <ToggleButton keyStore="_hasBase" name="SUR SOCLE" />
-          <ToggleButton keyStore="_projection" name="EN SAILLIE" />
-        </MyRow>
-        <MyRow>
-          <ToggleButton keyStore="_poseBp" name="POSE DETENTE BP" />
-        </MyRow>
+        {this.props.contactStore!._pose && (
+          <React.Fragment>
+            <StringInput keyStore="_coffretType" label="type" />
+            <MyRow>
+              <MultipleChoiceButton choiceItems={choiceItems2} />
+            </MyRow>
+            <MyRow>
+              <ToggleButton keyStore="_poseBp" name="POSE DETENTE BP" />
+            </MyRow>
+          </React.Fragment>
+        )}
       </React.Fragment>
     );
   }

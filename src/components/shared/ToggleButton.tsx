@@ -15,8 +15,6 @@ interface Props {
 
 const MyButton = styled(Button as any)`
   margin-right: 10px;
-  /* background-color: ${(props: any) =>
-    props.type === "primary" ? "#008fa5" : "#CCC"}; */
 `;
 
 @inject((allStores: AllStores) => ({
@@ -25,8 +23,6 @@ const MyButton = styled(Button as any)`
 @observer
 export class ToggleButton extends React.Component<Props> {
   public render() {
-    const primaryType = this.props.invert ? "ghost" : "primary";
-    const secondaryType = this.props.invert ? "primary" : "ghost";
     return (
       <React.Fragment>
         <MyButton
@@ -37,9 +33,7 @@ export class ToggleButton extends React.Component<Props> {
             })
           }
           type={
-            this.props.contactStore![this.props.keyStore]
-              ? primaryType
-              : secondaryType
+            this.props.contactStore![this.props.keyStore] ? "primary" : "ghost"
           }
           size="large"
         >

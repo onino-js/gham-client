@@ -19,7 +19,7 @@ export class ProjectStore {
   }
   @action.bound
   public setReference(payload: string): void {
-    this.description = payload;
+    this.reference = payload.toUpperCase();
   }
   @action.bound
   public setDescription(payload: string): void {

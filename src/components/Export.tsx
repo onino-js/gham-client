@@ -57,6 +57,12 @@ class Exports extends React.Component<Props> {
     });
     saveAs(blob, "example.docx");
   };
+  private exportPdf = () => {
+    const htmlString = htmlReport();
+    const wnd = window.open("about:blank", "", "_blank");
+    wnd!.document.write(htmlString);
+    wnd!.print();
+  };
   private preview = () => {
     const htmlString = htmlReport();
     const wnd = window.open("about:blank", "", "_blank");
@@ -71,7 +77,7 @@ class Exports extends React.Component<Props> {
           <BigButton
             type="primary"
             title="Enregistrer au format pdf"
-            onClick={this.exportWord}
+            onClick={this.exportPdf}
           >
             <FontAwesomeIcon icon="file-pdf" style={{ fontSize: "3em" }} />
           </BigButton>

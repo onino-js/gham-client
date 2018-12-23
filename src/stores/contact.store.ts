@@ -6,21 +6,26 @@ interface Ipayload {
 }
 
 export class ContactStore {
-  @observable public title: boolean = true;
+  @observable public isMan: boolean = true;
+  @observable public isWoman: boolean = false;
   @observable public lastName: string = "";
   @observable public firstName: string = "";
   @observable public address: string = "";
   @observable public city: string = "";
   @observable public phone: string = "";
-  @observable public isOwner: boolean = false;
-  @observable public co_title: boolean = true;
+  @observable public isOwner: boolean = true;
+  @observable public isRenter: boolean = false;
+  @observable public co_isMan: boolean = true;
+  @observable public co_isWoman: boolean = false;
   @observable public co_lastName: string = "";
   @observable public co_firstName: string = "";
   @observable public co_address: string = "";
   @observable public co_city: string = "";
   @observable public co_phone: string = "";
   @observable public co_isOwner: boolean = false;
-  @observable public isIndividualPlug: boolean = false;
+
+  // BRANCHEMENTS
+  @observable public individualPlug: boolean = false;
   @observable public collectivePlug: boolean = false;
   @observable public improductivePlug: boolean = false;
   @observable public nbOfYears: number = 0;
@@ -96,12 +101,12 @@ export class ContactStore {
   }
   @action.bound
   public getCompletName(): string {
-    const prefix = !this.title ? "M." : "Mme";
+    const prefix = this.isMan ? "M." : "Mme";
     return `${prefix} ${this.firstName} ${this.lastName.toUpperCase()}`;
   }
   @action.bound
   public co_getCompletName(): string {
-    const prefix = !this.co_title ? "M." : "Mme";
+    const prefix = this.co_isMan ? "M." : "Mme";
     return `${prefix} ${this.co_firstName} ${this.co_lastName.toUpperCase()}`;
   }
 }

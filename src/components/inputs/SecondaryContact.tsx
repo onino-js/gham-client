@@ -1,14 +1,25 @@
 import * as React from "react";
-import { Col, Divider } from "antd";
+import { Divider } from "antd";
 import { ContactStore } from "../../stores/contact.store";
 import { StringInput } from "../shared/StringInput";
-import { ToggleButton } from "../shared/ToggleButton";
-import { MyRow, InputCol, InputTitle } from "../shared/Styled";
+import { MyRow, InputTitle } from "../shared/Styled";
+import { MultipleChoiceButton } from "../shared/MultipleChoiceButton";
 
 interface Props {
   uiStore?: any;
   contactStore?: ContactStore;
 }
+
+const choiceItems = [
+  {
+    title: "Mme",
+    keyStore: "co_isWoman" as keyof (ContactStore),
+  },
+  {
+    title: "M.",
+    keyStore: "co_isMan" as keyof (ContactStore),
+  },
+];
 
 export class SecondaryContact extends React.Component<Props> {
   public render() {
@@ -18,8 +29,7 @@ export class SecondaryContact extends React.Component<Props> {
           <InputTitle>Copropriétaire</InputTitle>
         </Divider>
         <MyRow>
-          <ToggleButton name="Mme" keyStore="co_title" />
-          <ToggleButton name="Mr" keyStore="co_title" invert={true} />
+          <MultipleChoiceButton choiceItems={choiceItems} />
         </MyRow>
         <StringInput keyStore="co_lastName" label="Nom de famille" />
         <StringInput keyStore="co_firstName" label="Prénom(s)" />
