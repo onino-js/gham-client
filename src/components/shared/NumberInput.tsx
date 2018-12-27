@@ -58,14 +58,18 @@ export class NumberInput extends React.Component<Props> {
       <React.Fragment>
         <MyRow>
           <LabelCol
-            haschanged={this.props.contactStore![this.props.keyStore] !== 0}
+            haschanged={
+              this.props.contactStore![this.props.keyStore] !== 0 ? 1 : 0
+            }
           >
             {this.props.label}
           </LabelCol>
           <InputCol>
             <MyInput
               type="number"
-              haschanged={this.props.contactStore![this.props.keyStore] !== 0}
+              haschanged={
+                this.props.contactStore![this.props.keyStore] !== 0 ? 1 : 0
+              }
               value={this.props.contactStore![this.props.keyStore]}
               onChange={(e: any) => this.setContactProp(e, this.props.keyStore)}
               size="large"

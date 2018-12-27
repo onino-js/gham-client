@@ -11,6 +11,9 @@ export class UiStore {
   @observable public isSidebarVisible: boolean = true;
   @observable public isSignatureVisible: boolean = false;
   @observable public isPreviewVisible: boolean = false;
+  @observable public isCanvasAddItemVisible: boolean = false;
+  @observable public isCanvasItemOptionsVisible: boolean = false;
+  @observable public isEditBgVisible: boolean = false;
 
   @action.bound
   public toggleIsSidebarVisible = (): void => {

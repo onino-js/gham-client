@@ -46,19 +46,22 @@ export class MultipleChoiceButton extends React.Component<Props> {
   public render() {
     return (
       <React.Fragment>
-        {this.props.choiceItems.map((choiceItem: IchoiceItem) => (
-          <MyButton
-            onClick={() => this.toggleValue(choiceItem.keyStore)}
-            type={
-              this.props.contactStore![choiceItem.keyStore]
-                ? "primary"
-                : "ghost"
-            }
-            size="large"
-          >
-            {choiceItem.title}
-          </MyButton>
-        ))}
+        {this.props.choiceItems.map(
+          (choiceItem: IchoiceItem, index: number) => (
+            <MyButton
+              key={"multiple-choices" + index}
+              onClick={() => this.toggleValue(choiceItem.keyStore)}
+              type={
+                this.props.contactStore![choiceItem.keyStore]
+                  ? "primary"
+                  : "ghost"
+              }
+              size="large"
+            >
+              {choiceItem.title}
+            </MyButton>
+          ),
+        )}
       </React.Fragment>
     );
   }

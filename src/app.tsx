@@ -9,6 +9,7 @@ import { AllStores } from "./models/all.stores.model";
 import projectStore from "./stores/project.store";
 import mapStore from "./stores/map.store";
 import contactStore from "./stores/contact.store";
+import canvasStore from "./stores/canvas.store";
 
 interface Props {
   uiStore?: UiStore;
@@ -45,6 +46,7 @@ const App = (
     projectStore={projectStore}
     authStore={authStore}
     contactStore={contactStore}
+    canvasStore={canvasStore}
   >
     <AppTemplate />
   </Provider>

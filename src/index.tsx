@@ -32,6 +32,10 @@ import {
   faLockOpen,
   faSlash,
   faImage,
+  faExpand,
+  faCompress,
+  faCompressArrowsAlt,
+  faExpandArrowsAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBars);
@@ -59,6 +63,10 @@ library.add(faLock);
 library.add(faLockOpen);
 library.add(faSlash);
 library.add(faImage);
+library.add(faExpand);
+library.add(faCompress);
+library.add(faCompressArrowsAlt);
+library.add(faExpandArrowsAlt);
 
 import registerServiceWorker from "./registerServiceWorker";
 

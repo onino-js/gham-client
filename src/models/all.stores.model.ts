@@ -3,6 +3,7 @@ import { MapStore } from "./../stores/map.store";
 import { AuthStore } from "./../stores/auth.store";
 import { UiStore } from "../stores/ui.store";
 import { ProjectStore } from "../stores/project.store";
+import { CanvasStore } from "../stores/canvas.store";
 
 export interface AllStores {
   uiStore: UiStore;
@@ -10,4 +11,5 @@ export interface AllStores {
   projectStore: ProjectStore;
   mapStore: MapStore;
   contactStore: ContactStore;
+  canvasStore: CanvasStore;
 }

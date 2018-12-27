@@ -10,10 +10,12 @@ import General from "./General";
 import Header from "./shared/Header";
 import Footer from "./shared/Footer";
 import Exports from "./Export";
-import Photo from "./Photo";
+import Photo from "./photo/Photo";
 import { MapView } from "./Map";
 import Inputs from "./inputs/Inputs";
 import Signature from "./Signature";
+import WorkoutBefore from "./photo/WorkoutBefore";
+import WorkoutAfter from "./photo/WorkoutAfter";
 
 interface Props {
   uiStore?: any;
@@ -61,6 +63,8 @@ class Home extends React.Component<Props> {
               <Route path="/equipements/" component={Inputs} />
               <Route path="/export/" component={Exports} />
               <Route path="/photo/" component={Photo} />
+              <Route path="/workout-before/" component={WorkoutBefore} />
+              <Route path="/workout-after/" component={WorkoutAfter} />
               <Route path="/map/" component={MapView} />
               <Route path="/signature/" component={Signature} />
             </Content>

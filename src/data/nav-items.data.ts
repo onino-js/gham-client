@@ -23,7 +23,19 @@ export const navItems = [
     page: "photo",
     iconType: "camera",
     status: "valid",
-    title: "Photos",
+    title: "Photo",
+  },
+  {
+    page: "workout-before",
+    iconType: "camera",
+    status: "valid",
+    title: "Avant travaux",
+  },
+  {
+    page: "workout-after",
+    iconType: "camera",
+    status: "valid",
+    title: "Après travaux",
   },
   {
     page: "signature",

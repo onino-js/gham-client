@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Col, Divider } from "antd";
+import { Divider } from "antd";
 import { ContactStore } from "../../stores/contact.store";
 import { StringInput } from "../shared/StringInput";
-import { ToggleButton } from "../shared/ToggleButton";
-import { MyRow, InputCol, InputTitle } from "../shared/Styled";
+import { MyRow, InputTitle } from "../shared/Styled";
 import { MultipleChoiceButton } from "../shared/MultipleChoiceButton";
 
 interface Props {
