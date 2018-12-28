@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 50px;
+  height: 70px;
   background-color: #fff;
 `;
 
@@ -32,7 +32,7 @@ class Header extends React.Component<Props> {
     return (
       <Container>
         <ArrowContainer onClick={toggleIsSidebarVisible}>
-          <FontAwesomeIcon icon="bars" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="bars" style={{ fontSize: "3em" }} />
         </ArrowContainer>
       </Container>
     );

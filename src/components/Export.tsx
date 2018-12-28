@@ -57,6 +57,17 @@ class Exports extends React.Component<Props> {
     });
     saveAs(blob, "example.docx");
   };
+  private exportHtml = () => {
+    const htmlString = htmlReport();
+    const byteNumbers = new Uint8Array(htmlString.length);
+    for (let i = 0; i < htmlString.length; i++) {
+      byteNumbers[i] = htmlString.charCodeAt(i);
+    }
+    const blob = new Blob([htmlString], {
+      type: "text/plain;charset=UTF-8",
+    });
+    saveAs(blob, "example.html");
+  };
   private exportPdf = () => {
     const htmlString = htmlReport();
     const wnd = window.open("about:blank", "", "_blank");
@@ -91,7 +102,7 @@ class Exports extends React.Component<Props> {
           <BigButton
             type="primary"
             title="Enregistrer au format html"
-            onClick={this.exportWord}
+            onClick={this.exportHtml}
           >
             <FontAwesomeIcon icon="code" style={{ fontSize: "3em" }} />
           </BigButton>

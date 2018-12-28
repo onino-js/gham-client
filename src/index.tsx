@@ -36,6 +36,11 @@ import {
   faCompress,
   faCompressArrowsAlt,
   faExpandArrowsAlt,
+  faChevronLeft,
+  faChevronRight,
+  faCaretLeft,
+  faCaretRight,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faBars);
@@ -67,6 +72,11 @@ library.add(faExpand);
 library.add(faCompress);
 library.add(faCompressArrowsAlt);
 library.add(faExpandArrowsAlt);
+library.add(faChevronLeft);
+library.add(faChevronRight);
+library.add(faCaretLeft);
+library.add(faCaretRight);
+library.add(faCheck);
 
 import registerServiceWorker from "./registerServiceWorker";
 

@@ -8,7 +8,7 @@ interface IpayloadBool {
 const event = new Event("bar-slide");
 
 export class UiStore {
-  @observable public isSidebarVisible: boolean = true;
+  @observable public isSidebarVisible: boolean = false;
   @observable public isSignatureVisible: boolean = false;
   @observable public isPreviewVisible: boolean = false;
   @observable public isCanvasAddItemVisible: boolean = false;

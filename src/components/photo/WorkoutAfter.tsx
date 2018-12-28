@@ -52,6 +52,7 @@ class WorkoutAfter extends React.Component<Props, State> {
 
   public componentWillUnmount() {
     this.props.canvasStore!.saveObjects("after");
+    this.props.canvasStore!.savePhoto("photoAfterWork");
     this.props.canvasStore!.unmount();
   }
 

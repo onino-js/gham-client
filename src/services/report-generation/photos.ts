@@ -1,4 +1,14 @@
+import { createImage } from "./../app.service";
+import contactStore from "../../stores/contact.store";
+import { resCaseC } from "./styles";
+
 export const reportPhoto = () => {
+  // const opt = {
+  //   path: contactStore.signature,
+  //   width: 363,
+  //   height: 154,
+  // };
+  // const imgBuffer = createImage(opt);
   return `<tr>
 <td colspan="12" valign="top" bgcolor="#ffff99" width="708" height="23">
 <p class="western" align="center"><span style="color: #000099;"><span style="font-family: Cabin, serif;"><span style="font-size: large;"><strong>PROJET DE POSE</strong></span></span></span></p>
@@ -14,10 +24,18 @@ export const reportPhoto = () => {
 </tr>
 <tr valign="top">
 <td colspan="6" bgcolor="#ffffff" width="350" height="272">
-<p class="western">&nbsp;</p>
+<p class="western">
+         <img src="${
+           contactStore.photoBeforeWork
+         }" width="350" height="270" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
+</p>
 </td>
 <td colspan="6" bgcolor="#ffffff" width="350">
-<p class="western">&nbsp;</p>
+<p class="western">
+         <img src="${
+           contactStore.photoAfterWork
+         }" width="350" height="270" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
+</p>
 </td>
 </tr>`;
 };

@@ -96,12 +96,14 @@ export class General extends React.Component<Props> {
         <Title>Informations générales</Title>
         <ColLayout>
           <MyRow>
-            <LabelCol haschanged={this.props.projectStore!.title !== ""}>
+            <LabelCol
+              haschanged={this.props.projectStore!.title !== "" ? 1 : 0}
+            >
               Titre du projet
             </LabelCol>
             <InputCol>
               <MyInput
-                haschanged={this.props.projectStore!.title !== ""}
+                haschanged={this.props.projectStore!.title !== "" ? 1 : 0}
                 value={this.props.projectStore!.title}
                 onChange={this.setTitle}
                 placeholder="Entrer le titre du projet"
@@ -112,12 +114,14 @@ export class General extends React.Component<Props> {
           </MyRow>
 
           <MyRow>
-            <LabelCol haschanged={this.props.projectStore!.reference !== ""}>
+            <LabelCol
+              haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+            >
               Ref Grdf
             </LabelCol>
             <InputCol>
               <MyInput
-                haschanged={this.props.projectStore!.reference !== ""}
+                haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
                 value={this.props.projectStore!.reference}
                 onChange={this.setReference}
                 placeholder="Entrer le titre du projet"
@@ -127,7 +131,9 @@ export class General extends React.Component<Props> {
             </InputCol>
           </MyRow>
           <MyRow>
-            <LabelCol haschanged={this.props.projectStore!.description !== ""}>
+            <LabelCol
+              haschanged={this.props.projectStore!.description !== "" ? 1 : 0}
+            >
               Description
             </LabelCol>
             <InputCol>

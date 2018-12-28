@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Drawer, Checkbox, Input, Slider } from "antd";
+import { Drawer, Checkbox, Input, Slider, Divider, Button } from "antd";
 import { UiStore } from "./../../stores/ui.store";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../models/all.stores.model";
@@ -24,7 +24,7 @@ class ItemOptions extends React.Component<Props, State> {
     });
   };
   public render(): React.ReactNode {
-    const photo = this.props.canvasStore!;
+    const canvasStore = this.props.canvasStore!;
     const uiStore = this.props.uiStore!;
     return (
       <Drawer
@@ -34,22 +34,38 @@ class ItemOptions extends React.Component<Props, State> {
         onClose={this.close}
         visible={uiStore.isCanvasItemOptionsVisible}
       >
-        <Checkbox defaultChecked={true} onChange={photo.toggleObjFond}>
-          Fond
-        </Checkbox>
+        <Button onClick={canvasStore.toggleObjFond}>Retirer fond</Button>
+        <Divider />
         <p>couleur de fond</p>
         <Input
           type="color"
-          defaultValue={photo.activeObj.fill}
-          onChange={photo.changeObjColor}
+          value={canvasStore.activeObjOptions.fill}
+          onChange={canvasStore.changeObjColor}
         />
+        <Divider />
+        <p>couleur de bordure</p>
+        <Input
+          type="color"
+          value={canvasStore.activeObjOptions.stroke}
+          onChange={canvasStore.changeObjStrokeColor}
+        />
+        <Divider />
         <p>opacité</p>
         <Slider
-          defaultValue={30}
-          onChange={photo.changeObjOpacity}
+          value={canvasStore.activeObjOptions.opacity}
+          onChange={canvasStore.changeObjOpacity}
           min={0}
           max={1}
           step={0.1}
+        />
+        <Divider />
+        <p>Epaisseur bordure</p>
+        <Slider
+          value={canvasStore.activeObjOptions.strokeWidth}
+          onChange={canvasStore.changeObjStrokeWidth}
+          min={0}
+          max={10}
+          step={1}
         />
       </Drawer>
     );

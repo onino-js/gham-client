@@ -52,6 +52,7 @@ class WorkoutBefore extends React.Component<Props, State> {
 
   public componentWillUnmount() {
     this.props.canvasStore!.saveObjects("before");
+    this.props.canvasStore!.savePhoto("photoBeforeWork");
     this.props.canvasStore!.unmount();
   }
 

@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Layout } from "antd";
 import styled from "../styled-components";
 import { AllStores } from "../models/all.stores.model";
-import Sidebar from "./Sidebar";
 import General from "./General";
 import Header from "./shared/Header";
 import Footer from "./shared/Footer";
@@ -16,6 +15,7 @@ import Inputs from "./inputs/Inputs";
 import Signature from "./Signature";
 import WorkoutBefore from "./photo/WorkoutBefore";
 import WorkoutAfter from "./photo/WorkoutAfter";
+import SideMenu from "./shared/SideMenu";
 
 interface Props {
   uiStore?: any;
@@ -54,11 +54,11 @@ class Home extends React.Component<Props> {
     return (
       <Router>
         <AppLayout>
-          <Sidebar />
           <ColLayout>
             <Header />
             <Content>
-              <Route path="/" exact component={General} />
+              <SideMenu />
+              {/* <Route path="/" exact component={General} /> */}
               <Route path="/general/" exact component={General} />
               <Route path="/equipements/" component={Inputs} />
               <Route path="/export/" component={Exports} />

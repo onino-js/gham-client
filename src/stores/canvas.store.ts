@@ -1,6 +1,7 @@
 import { observable, action, toJS } from "mobx";
 import { fabric } from "fabric";
 import uiStore from "./ui.store";
+import contactStore, { ContactStore } from "./contact.store";
 
 interface Ipayload {
   key: keyof CanvasStore;
@@ -29,9 +30,15 @@ export class CanvasStore {
   @observable public bgRotation: number = 90;
   @observable public activeColor: string = "#ef0707";
   @observable public activeStrokeColor: string = "#ef0707";
+  @observable public activeStrokeWidth: number = 2;
+  @observable public activeObjOptions: any = {
+    fill: "#ef0707",
+    stroke: "#ef0707",
+    strokeWidth: 2,
+    opacity: 1,
+  };
   @observable public activeObj: any = false;
   @observable public canvasMode: string = "hand";
-  @observable public isBgLocked: boolean = false;
 
   @action.bound
   public setProp(payload: Ipayload): void {
@@ -58,6 +65,7 @@ export class CanvasStore {
     this.addObjects(this.objects[canvasType]);
     canvasType !== "bg" && this.setBackground();
     this.canvas.on("mouse:dblclick", this.requestOpenItemOptions);
+    this.canvas.on("selection:updated", this.setActiveObj);
     this.resizeCanvas();
     this.startResizeLoop();
   }
@@ -118,6 +126,16 @@ export class CanvasStore {
   }
 
   @action.bound
+  public savePhoto(photoType: keyof ContactStore) {
+    const dataURL = this.canvas.toDataURL("image/png");
+    contactStore[photoType] = dataURL;
+    contactStore.setProp({
+      key: photoType,
+      value: dataURL,
+    });
+  }
+
+  @action.bound
   public hasBg() {
     if (this.objects.bg[0] === undefined) {
       return false;
@@ -128,6 +146,7 @@ export class CanvasStore {
 
   @action.bound
   public requestOpenItemOptions(e: any) {
+    this.activeObj = this.canvas.getActiveObject();
     if (e.target !== null) {
       const test =
         e.target.type === "rect" ||
@@ -343,7 +362,7 @@ export class CanvasStore {
       left: 100,
       top: 150,
       fill: "#ef0707",
-      strokeWidth: 2,
+      strokeWidth: 0,
       stroke: "#ef0707",
     });
     this.canvas.add(this.styleControl(text));
@@ -356,34 +375,47 @@ export class CanvasStore {
   // ******************************************************************************************
 
   @action.bound
-  public toggleObjFond(e: any) {
-    const active = this.canvas.getActiveObject();
-    const value =
-      active.fill === "transparent" ? this.activeColor : "transparent";
-    active.set("fill", value);
+  public setActiveObj() {
+    this.activeObj = this.canvas.getActiveObject();
+    for (let key in this.activeObjOptions) {
+      if (this.activeObj[key] && this.activeObj[key] !== undefined) {
+        this.activeObjOptions[key] = this.activeObj[key];
+      }
+    }
+    return this.activeObj;
+  }
+
+  @action.bound
+  public toggleObjFond() {
+    this.activeObj.set("fill", "transparent");
     this.canvas.renderAll();
   }
 
   @action.bound
   public changeObjColor(e: any) {
-    const active = this.canvas.getActiveObject();
-    active.fill !== "transparent" && active.set("fill", e.target.value);
-    this.activeColor = e.target.value;
+    this.activeObj.set("fill", e.target.value);
+    this.activeObjOptions.fill = e.target.value;
     this.canvas.renderAll();
   }
 
   @action.bound
   public changeObjStrokeColor(e: any) {
-    const active = this.canvas.getActiveObject();
-    active.set("stroke", e.target.value);
-    this.activeStrokeColor = e.target.value;
+    this.activeObj.set("stroke", e.target.value);
+    this.activeObjOptions.stroke = e.target.value;
     this.canvas.renderAll();
   }
 
   @action.bound
   public changeObjOpacity(value: any) {
-    const active = this.canvas.getActiveObject();
-    active.set("opacity", value);
+    this.activeObj.set("opacity", value);
+    this.activeObjOptions.opacity = value;
+    this.canvas.renderAll();
+  }
+
+  @action.bound
+  public changeObjStrokeWidth(value: any) {
+    this.activeObj.set("strokeWidth", value);
+    this.activeObjOptions.strokeWidth = value;
     this.canvas.renderAll();
   }
 }

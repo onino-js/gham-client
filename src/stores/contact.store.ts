@@ -85,6 +85,10 @@ export class ContactStore {
   @observable public obsPerc: string = "";
   @observable public obsRemarks: string = "";
 
+  // PHOTOS
+  @observable public photoBeforeWork: string = "";
+  @observable public photoAfterWork: string = "";
+
   // SIGNATURE
   @observable public signature: string = "";
 

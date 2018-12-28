@@ -78,7 +78,9 @@ export const reportSignature = () => {
    </td>
    <td colspan="4" valign="top" bgcolor="#ffffff" width="231">
       <p class="western">
-         <img src="${imgBuffer}" width="107" height="45" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
+         <img src="${
+           contactStore.signature
+         }" width="107" height="45" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
       </p>
    </td>
 </tr>
