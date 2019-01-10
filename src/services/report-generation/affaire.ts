@@ -1,3 +1,6 @@
+import projectStore from "../../stores/project.store";
+import { formatDate } from "../app.service";
+
 export const reportAffaire = () => {
   return `<tr>
 <td colspan="9" bgcolor="#ffff99" width="530" height="15">
@@ -9,13 +12,17 @@ export const reportAffaire = () => {
 </tr>
 <tr>
 <td colspan="9" rowspan="2" bgcolor="#ffffff" width="530" height="11">
-<p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: large;"><strong>Affaire R31 - 188930287</strong></span></span></p>
+<p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: large;"><strong>
+  ${projectStore.reference}
+</strong></span></span></p>
 </td>
 <td bgcolor="#ffffff" width="52">
 <p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Date:</span></span></p>
 </td>
 <td colspan="2" bgcolor="#ffffff" width="111">
-<p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">31/11/2018</span></span></p>
+<p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">
+  ${formatDate(projectStore.reportDate)}
+</span></span></p>
 </td>
 </tr>
 <tr>

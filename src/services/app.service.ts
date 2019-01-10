@@ -16,3 +16,18 @@ export const createImage = (opt: IcreateImageParams): string => {
   // const data = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   return dataURL;
 };
+
+export const formatDate = (date: Date) => {
+  const month = date.getMonth();
+  const day = date.getDate();
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+};
+
+export const formatHour = (date: Date) => {
+  const month = date.getMonth();
+  const day = date.getDate();
+  const hour = date.getHours();
+  const min = date.getMinutes();
+  return `${day}/${month} ${hour}:${min}`;
+};

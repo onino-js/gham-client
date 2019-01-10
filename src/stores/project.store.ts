@@ -7,6 +7,9 @@ export class ProjectStore {
   @observable public address: string = "";
   @observable public zipCode: number = 0;
   @observable public city: string = "";
+  @observable public reporterName: string = "Benjamin Hameury";
+  @observable public reportDate: Date = new Date();
+
   constructor() {
     this.title = "";
     this.description = "";
