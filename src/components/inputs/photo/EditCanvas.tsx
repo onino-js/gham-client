@@ -2,11 +2,11 @@ import * as React from "react";
 import { fabric } from "fabric";
 import { Button, message, Col, Drawer, Checkbox, Input, Slider } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../stores/ui.store";
+import { UiStore } from "./../../../stores/ui.store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
-import { AllStores } from "./../../models/all.stores.model";
-import { CanvasStore } from "../../stores/canvas.store";
+import { AllStores } from "./../../../models/all.stores.model";
+import { CanvasStore } from "../../../stores/canvas.store";
 
 interface Props {
   uiStore?: UiStore;

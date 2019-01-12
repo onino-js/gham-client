@@ -1,14 +1,16 @@
 import * as React from "react";
 import saveAs from "file-saver";
-import { Button, Col } from "antd";
-import { ProjectStore } from "../stores/project.store";
-import { UiStore } from "../stores/ui.store";
 import { inject, observer } from "mobx-react";
-import { AllStores } from "../models/all.stores.model";
-import styled from "../styled-components";
-import { htmlReport } from "../services/report-generation/report-gerneration.service";
-import { ContactStore } from "../stores/contact.store";
+import { Button, Col } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { ProjectStore } from "../../stores/project.store";
+import { UiStore } from "../../stores/ui.store";
+import { AllStores } from "../../models/all.stores.model";
+import styled from "../../styled-components";
+import { htmlReport } from "../../services/report-generation/report-gerneration.service";
+import { ContactStore } from "../../stores/contact.store";
+import { _secondary } from "../../css/_colors";
 
 interface Props {
   projectStore?: ProjectStore;
@@ -36,7 +38,7 @@ const Title = styled.div`
   font-weight: 900;
   padding-top: 10px;
   padding-bottom: 10px;
-  color: #ccc;
+  color: ${_secondary};
 `;
 
 @inject((allStores: AllStores) => ({

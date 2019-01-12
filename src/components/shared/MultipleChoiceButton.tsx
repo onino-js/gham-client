@@ -17,10 +17,7 @@ interface Props {
 }
 
 const MyButton = styled(Button as any)`
-  /* margin-right: 10px; */
   border-radius : 0;
-  /* background-color: ${(props: any) =>
-    props.type === "primary" ? "#008fa5" : "#CCC"}; */
 `;
 
 @inject((allStores: AllStores) => ({

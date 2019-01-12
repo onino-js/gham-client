@@ -4,6 +4,7 @@ import { observer, inject } from "mobx-react";
 import styled from "../../styled-components";
 import { AllStores } from "../../models/all.stores.model";
 import { ContactStore } from "../../stores/contact.store";
+import { _secondary } from "../../css/_colors";
 
 interface Props {
   uiStore?: any;
@@ -14,7 +15,7 @@ interface Props {
 const MyButton = styled(Button as any)`
   margin-right: 10px;
   background-color: ${(props: any) =>
-    props.type === "primary" ? "#008fa5" : "#CCC"};
+  props.type === "primary" ? "#008fa5" : _secondary};
 `;
 
 @inject((allStores: AllStores) => ({

@@ -1,9 +1,10 @@
-import { observable, action } from "mobx";
+import { observable, action, computed } from "mobx";
 
 export class ProjectStore {
   @observable public title: string = "";
-  @observable public description: string = "";
+  // @observable public description: string = "";
   @observable public reference: string = "";
+  @observable public refPrefix: string = "R31";
   @observable public address: string = "";
   @observable public zipCode: number = 0;
   @observable public city: string = "";
@@ -12,7 +13,6 @@ export class ProjectStore {
 
   constructor() {
     this.title = "";
-    this.description = "";
     this.reference = "";
   }
 
@@ -25,8 +25,8 @@ export class ProjectStore {
     this.reference = payload.toUpperCase();
   }
   @action.bound
-  public setDescription(payload: string): void {
-    this.description = payload;
+  public setRefPrefix(payload: string): void {
+    this.refPrefix = payload;
   }
   @action.bound
   public setZip(newZip: number): void {
@@ -39,6 +39,16 @@ export class ProjectStore {
   @action.bound
   public setAddress(newAdress: string): void {
     this.address = newAdress;
+  }
+  @computed get isReferenceValid() {
+    if (this.reference === "") return false;
+    else {
+      if (this.reference.match(/^-{0,1}\d+$/) && this.reference.length !== 7) {
+        return false;
+      } else {
+        return true;
+      }
+    }
   }
 }
 

@@ -1,12 +1,13 @@
 import * as React from "react";
 import { Col, Button } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../stores/ui.store";
+import { UiStore } from "./../../../stores/ui.store";
 import { inject, observer } from "mobx-react";
-import { AllStores } from "./../../models/all.stores.model";
+import { AllStores } from "./../../../models/all.stores.model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CanvasStore } from "../../stores/canvas.store";
+import { CanvasStore } from "../../../stores/canvas.store";
 import EditBg from "./EditBg";
+import { _secondary } from "../../../css/_colors";
 
 interface Props {
   uiStore?: UiStore;
@@ -39,7 +40,7 @@ const CanvasBox: any = styled(Col as any).attrs({
   xl: 14,
 })`
   flex: 1;
-  border: 1px solid #ccc;
+  border: 1px solid ${_secondary};
   border-style: dashed;
 `;
 

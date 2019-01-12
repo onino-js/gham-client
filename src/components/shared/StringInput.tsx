@@ -4,6 +4,7 @@ import { observer, inject } from "mobx-react";
 import styled from "../../styled-components";
 import { AllStores } from "../../models/all.stores.model";
 import { ContactStore } from "../../stores/contact.store";
+import { _secondary } from "../../css/_colors";
 
 interface Props {
   uiStore?: any;
@@ -15,7 +16,7 @@ interface Props {
 const MyInput: any = styled(Input as any)`
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-color: ${(props: any) => (props.haschanged ? "#1890ff" : "#CCC")};
+  border-color: ${(props: any) => (props.haschanged ? "#1890ff" : _secondary)};
 `;
 
 const InputCol: any = styled(Col as any).attrs({
@@ -37,9 +38,12 @@ const LabelCol: any = styled(Col as any).attrs({
   align-items: center;
   justify-content: center;
   height: 40px;
-  background-color: ${(props: any) => (props.haschanged ? "#1890ff" : "#CCC")};
+  background-color: ${(props: any) =>
+    props.haschanged ? "#1890ff" : _secondary};
   font-weight: 900;
   color: #fff;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
 `;
 
 const MyRow = styled(Row as any)`

@@ -1,0 +1,31 @@
+.bullet-point {
+  width: 50px;
+  height: 50px; }
+  .bullet-point.todo circle.back {
+    stroke: white;
+    fill: white;
+    stroke-width: 3px; }
+  .bullet-point.todo line {
+    stroke: white;
+    stroke-width: 4px; }
+  .bullet-point.done circle.back {
+    stroke: #7ed321;
+    fill: white;
+    stroke-width: 3px; }
+  .bullet-point.done line {
+    stroke: white;
+    stroke-width: 4px; }
+  .bullet-point.done path {
+    stroke: #7ed321;
+    fill: none;
+    stroke-width: 3px; }
+  .bullet-point.pending circle.back {
+    stroke: #008FA7;
+    fill: white;
+    stroke-width: 3px; }
+  .bullet-point.pending circle.center {
+    stroke: #008FA7;
+    fill: #008FA7; }
+  .bullet-point.pending line {
+    stroke: white;
+    stroke-width: 4px; }

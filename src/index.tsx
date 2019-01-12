@@ -41,7 +41,11 @@ import {
   faCaretLeft,
   faCaretRight,
   faCheck,
+  faExclamationTriangle,
+  faExclamation,
 } from "@fortawesome/free-solid-svg-icons";
+
+import registerServiceWorker from "./registerServiceWorker";
 
 library.add(faBars);
 library.add(faSyncAlt);
@@ -77,8 +81,8 @@ library.add(faChevronRight);
 library.add(faCaretLeft);
 library.add(faCaretRight);
 library.add(faCheck);
-
-import registerServiceWorker from "./registerServiceWorker";
+library.add(faExclamationTriangle);
+library.add(faExclamation);
 
 ReactDOM.render(App, document.getElementById("root") as HTMLElement);
 registerServiceWorker();

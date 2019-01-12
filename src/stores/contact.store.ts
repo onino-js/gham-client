@@ -1,4 +1,5 @@
 import { observable, action } from "mobx";
+import { navItems } from "../data/nav-items.data";
 
 interface Ipayload {
   key: keyof ContactStore;
@@ -91,6 +92,23 @@ export class ContactStore {
 
   // SIGNATURE
   @observable public signature: string = "";
+
+  // COMPLETION
+  @observable public completion: any[] = navItems.slice().map((item: any) => {
+    item.errors = [];
+    return item;
+  });
+  @observable public activePageIndex: number = 0;
+
+  @action.bound
+  public setCompletion(payload: any): void {
+    this.completion[payload.index][payload.key] = payload.value;
+  }
+
+  @action.bound
+  public validateStep(): void {
+    this.completion[this.activePageIndex]["status"] = "done";
+  }
 
   @action.bound
   public setProp(payload: Ipayload): void {

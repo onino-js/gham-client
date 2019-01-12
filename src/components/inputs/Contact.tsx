@@ -2,7 +2,7 @@ import * as React from "react";
 import { Divider } from "antd";
 import { ContactStore } from "../../stores/contact.store";
 import { StringInput } from "../shared/StringInput";
-import { MyRow, InputTitle } from "../shared/Styled";
+import { MyRow, InputTitle, StepWrapper } from "../shared/Styled";
 import { MultipleChoiceButton } from "../shared/MultipleChoiceButton";
 
 interface Props {
@@ -31,10 +31,21 @@ const choiceItems2 = [
   },
 ];
 
-export class MainContact extends React.Component<Props> {
+const choiceItems3 = [
+  {
+    title: "Mme",
+    keyStore: "co_isWoman" as keyof (ContactStore),
+  },
+  {
+    title: "M.",
+    keyStore: "co_isMan" as keyof (ContactStore),
+  },
+];
+
+export class Contact extends React.Component<Props> {
   public render() {
     return (
-      <React.Fragment>
+      <StepWrapper>
         <Divider>
           <InputTitle>Contact principal</InputTitle>
         </Divider>
@@ -49,9 +60,20 @@ export class MainContact extends React.Component<Props> {
         <MyRow>
           <MultipleChoiceButton choiceItems={choiceItems2} />
         </MyRow>
-      </React.Fragment>
+        <Divider>
+          <InputTitle>Copropriétaire</InputTitle>
+        </Divider>
+        <MyRow>
+          <MultipleChoiceButton choiceItems={choiceItems3} />
+        </MyRow>
+        <StringInput keyStore="co_lastName" label="Nom de famille" />
+        <StringInput keyStore="co_firstName" label="Prénom(s)" />
+        <StringInput keyStore="co_city" label="Ville" />
+        <StringInput keyStore="co_address" label="Adresse" />
+        <StringInput keyStore="co_phone" label="phone" />
+      </StepWrapper>
     );
   }
 }
 
-export default MainContact;
+export default Contact;

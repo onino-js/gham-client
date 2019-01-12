@@ -3,7 +3,7 @@ import * as L from "leaflet";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 import leafletImage from "leaflet-image";
-import { MapStore } from "../stores/map.store";
+import { MapStore } from "../../stores/map.store";
 
 interface IPropsType {
   onPositionUpdate?: (latlng: { latitude: number; longitude: number }) => void;

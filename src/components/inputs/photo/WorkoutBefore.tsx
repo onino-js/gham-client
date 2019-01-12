@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Col } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../stores/ui.store";
+import { UiStore } from "./../../../stores/ui.store";
 import { inject, observer } from "mobx-react";
-import { AllStores } from "./../../models/all.stores.model";
+import { AllStores } from "./../../../models/all.stores.model";
 import EditCanvas from "./EditCanvas";
 import ObjOptions from "./ItemOptions";
 import AddItem from "./AddItem";
-import { CanvasStore } from "../../stores/canvas.store";
+import { CanvasStore } from "../../../stores/canvas.store";
+import { _secondary } from "../../../css/_colors";
 
 interface Props {
   uiStore?: UiStore;
@@ -34,7 +35,7 @@ const CanvasBox: any = styled(Col as any).attrs({
   xl: 14,
 })`
   flex: 1;
-  border: 1px solid #ccc;
+  border: 1px solid ${_secondary};
   border-style: dashed;
 `;
 
@@ -42,17 +43,17 @@ const CanvasBox: any = styled(Col as any).attrs({
   canvasStore: allStores.canvasStore,
 }))
 @observer
-class WorkoutAfter extends React.Component<Props, State> {
+class WorkoutBefore extends React.Component<Props, State> {
   public componentDidMount() {
     this.props.canvasStore!.initialize({
       canvasId: "canvas",
-      canvasType: "after",
+      canvasType: "before",
     });
   }
 
   public componentWillUnmount() {
-    this.props.canvasStore!.saveObjects("after");
-    this.props.canvasStore!.savePhoto("photoAfterWork");
+    this.props.canvasStore!.saveObjects("before");
+    this.props.canvasStore!.savePhoto("photoBeforeWork");
     this.props.canvasStore!.unmount();
   }
 
@@ -70,4 +71,4 @@ class WorkoutAfter extends React.Component<Props, State> {
   }
 }
 
-export default WorkoutAfter;
+export default WorkoutBefore;

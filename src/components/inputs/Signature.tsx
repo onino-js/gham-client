@@ -3,10 +3,12 @@ import { fabric } from "fabric";
 import { Button, message, Upload, Icon, Modal, Col } from "antd";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
-import { UiStore } from "../stores/ui.store";
+import { UiStore } from "../../stores/ui.store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ContactStore } from "../stores/contact.store";
-import { AllStores } from "../models/all.stores.model";
+import { ContactStore } from "../../stores/contact.store";
+import { AllStores } from "../../models/all.stores.model";
+import { _secondary } from "../../css/_colors";
+import { BigButton, PrimaryTitle, Flex, FlexC } from "../shared/Styled";
 
 interface Props {
   uiStore?: UiStore;
@@ -18,30 +20,8 @@ interface State {
   canDelete: boolean;
 }
 
-const ToolBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 10px;
-  padding-top: 10px;
-`;
-
-const BigButton = styled(Button as any)`
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-`;
-
-const Title = styled.div`
-  font-size: 2em;
-  font-weight: 900;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #ccc;
-`;
-
 const CanvasBox = styled.div`
-  border: 4px solid #ccc;
+  border: 4px solid ${_secondary};
   border-radius: 15px;
   flex: 1;
   min-height: 200px;
@@ -69,7 +49,7 @@ class Signature extends React.Component<Props, State> {
     this.signatureContainer = document.getElementById("signatureBox");
     if (this.props.contactStore!.signature !== "") {
       const img = new Image();
-      img.style.border = "1px solid #CCC";
+      img.style.border = `1px solid ${_secondary}`;
       img.style.borderStyle = "dashed";
       img.src = this.props.contactStore!.signature;
       this.signatureContainer!.appendChild(img);
@@ -84,7 +64,7 @@ class Signature extends React.Component<Props, State> {
 
   private handleOk = () => {
     const img = new Image();
-    img.style.border = "1px solid #CCC";
+    img.style.border = `1px solid ${_secondary}`;
     img.style.borderStyle = "dashed";
     const dataURL = this.canvas.toDataURL("image/png");
     img.src = dataURL;
@@ -133,20 +113,20 @@ class Signature extends React.Component<Props, State> {
 
   public render(): React.ReactNode {
     return (
-      <React.Fragment>
-        <Title>Signature client</Title>
+      <FlexC alignH="center">
+        <PrimaryTitle>Signature client</PrimaryTitle>
         <Col>
           <BigButton
             onClick={this.newSignature}
             disabled={this.state.canDelete}
           >
-            <FontAwesomeIcon icon="pen-alt" style={{ fontSize: "3em" }} />
+            <FontAwesomeIcon icon="pen-alt" />
           </BigButton>
           <BigButton
             onClick={this.deleteSignature}
             disabled={!this.state.canDelete}
           >
-            <FontAwesomeIcon icon="trash" style={{ fontSize: "3em" }} />
+            <FontAwesomeIcon icon="trash" />
           </BigButton>
         </Col>
         <SignatureBox id="signatureBox" />
@@ -160,16 +140,16 @@ class Signature extends React.Component<Props, State> {
             </Button>,
           ]}
         >
-          <ToolBox>
+          <Flex alignH="center">
             <BigButton onClick={this.clearCanvas}>
-              <FontAwesomeIcon icon="sync-alt" style={{ fontSize: "3em" }} />
+              <FontAwesomeIcon icon="sync-alt" />
             </BigButton>
-          </ToolBox>
+          </Flex>
           <CanvasBox id="canvasContainer">
             <canvas id="canvas" />
           </CanvasBox>
         </Modal>
-      </React.Fragment>
+      </FlexC>
     );
   }
 }

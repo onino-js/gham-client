@@ -1,7 +1,5 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react";
-// import styled from "../styled-components";
-import GeolocationInput from "./GeolocationInput";
 import { Input, Button, Modal, Col } from "antd";
 import {
   ClientResponse,
@@ -10,7 +8,9 @@ import {
   GeocodingResult,
   GoogleMapsClient,
 } from "@google/maps";
-import styled from "../styled-components";
+import GeolocationInput from "./../shared/GeolocationInput";
+import styled from "../../styled-components";
+import { _secondary } from "../../css/_colors";
 
 interface Props {
   uiStore: any;
@@ -56,7 +56,7 @@ const ListItem = styled.div`
   line-height: 50px;
   padding-left: 20px;
   font-size: 1.1em;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid ${_secondary};
 `;
 
 @inject((allStores: any) => ({

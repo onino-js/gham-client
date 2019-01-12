@@ -4,6 +4,7 @@ import styled from "../../styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from "react-router";
 import { navItems } from "./../../data/nav-items.data";
+import { _secondary } from "../../css/_colors";
 
 interface Props {
   uiStore?: any;
@@ -12,13 +13,24 @@ interface Props {
   location: any;
 }
 
-const FooterButton = styled(Button as any)`
+const FooterMobileButton = styled(Button as any)`
   height: 70px;
   flex: 1;
   margin: 0px;
 `;
 
-class Footer extends React.Component<Props> {
+const FooterMobileContainer = styled(Layout.Footer as any)`
+  background-color: ${_secondary};
+  display: flex;
+  height: 70px;
+  text-align: right;
+  padding: 0px;
+  @media (min-width: 600px) {
+    display: none;
+  }
+`;
+
+class FooterMobile extends React.Component<Props> {
   private goNextPage = () => {
     const page = this.props.location.pathname.replace("/", "");
     if (page === "export") return;
@@ -38,33 +50,25 @@ class Footer extends React.Component<Props> {
   };
   public render() {
     return (
-      <Layout.Footer
-        style={{
-          backgroundColor: "#FFFF",
-          display: "flex",
-          height: "70px",
-          textAlign: "right",
-          padding: "0px",
-        }}
-      >
-        <FooterButton>
+      <FooterMobileContainer>
+        <FooterMobileButton>
           <FontAwesomeIcon icon="caret-left" style={{ fontSize: "2em" }} />
-        </FooterButton>
-        <FooterButton onClick={this.goPreviousPage}>
+        </FooterMobileButton>
+        <FooterMobileButton onClick={this.goPreviousPage}>
           <FontAwesomeIcon icon="chevron-left" style={{ fontSize: "2em" }} />
-        </FooterButton>
-        <FooterButton onClick={this.validateStep}>
+        </FooterMobileButton>
+        <FooterMobileButton onClick={this.validateStep}>
           <FontAwesomeIcon icon="check" style={{ fontSize: "2em" }} />
-        </FooterButton>
-        <FooterButton onClick={this.goNextPage}>
+        </FooterMobileButton>
+        <FooterMobileButton onClick={this.goNextPage}>
           <FontAwesomeIcon icon="chevron-right" style={{ fontSize: "2em" }} />
-        </FooterButton>
-        <FooterButton>
+        </FooterMobileButton>
+        <FooterMobileButton>
           <FontAwesomeIcon icon="caret-right" style={{ fontSize: "2em" }} />
-        </FooterButton>
-      </Layout.Footer>
+        </FooterMobileButton>
+      </FooterMobileContainer>
     );
   }
 }
 
-export default withRouter(Footer);
+export default withRouter(FooterMobile);

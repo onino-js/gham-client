@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Divider } from "antd";
 import { ToggleButton } from "../shared/ToggleButton";
-import { MyRow, InputTitle } from "../shared/Styled";
+import { MyRow, InputTitle, StepWrapper } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
 import {
   MultipleChoiceButton,
@@ -57,14 +57,56 @@ const choiceItems2: IchoiceItem[] = [
   },
 ];
 
+const choiceItems3: IchoiceItem[] = [
+  {
+    title: "SUPPR?",
+    keyStore: "_suppr",
+  },
+  {
+    title: "REEQUIP?",
+    keyStore: "_reequip",
+  },
+  {
+    title: "POSE?",
+    keyStore: "_pose",
+  },
+];
+
+const choiceItems4: IchoiceItem[] = [
+  {
+    title: "ENCASTRE",
+    keyStore: "_isEncastred",
+  },
+  {
+    title: "ENTERRE",
+    keyStore: "_isBurried",
+  },
+  {
+    title: "GRILLAGE",
+    keyStore: "_hasMesh",
+  },
+  {
+    title: "HORS LIMITE",
+    keyStore: "_isOutOfBound",
+  },
+  {
+    title: "SUR SOCLE",
+    keyStore: "_hasBase",
+  },
+  {
+    title: "EN SAILLIE",
+    keyStore: "_projection",
+  },
+];
+
 @inject((allStores: AllStores) => ({
   contactStore: allStores.contactStore,
 }))
 @observer
-export class CoffretActual extends React.Component<Props> {
+export class Coffret extends React.Component<Props> {
   public render() {
     return (
-      <React.Fragment>
+      <StepWrapper>
         <Divider>
           <InputTitle>Coffret actuel</InputTitle>
         </Divider>
@@ -77,14 +119,31 @@ export class CoffretActual extends React.Component<Props> {
             <MyRow>
               <MultipleChoiceButton choiceItems={choiceItems2} />
             </MyRow>
-            <MyRow>
-              <ToggleButton keyStore="poseBp" name="POSE DETENTE BP" />
-            </MyRow>{" "}
           </React.Fragment>
         )}
-      </React.Fragment>
+        <MyRow>
+          <ToggleButton keyStore="poseBp" name="POSE DETENTE BP" />
+        </MyRow>
+        <Divider>
+          <InputTitle>Coffret projet</InputTitle>
+        </Divider>
+        <MyRow>
+          <MultipleChoiceButton choiceItems={choiceItems3} />
+        </MyRow>
+        {this.props.contactStore!._pose && (
+          <React.Fragment>
+            <StringInput keyStore="_coffretType" label="type" />
+            <MyRow>
+              <MultipleChoiceButton choiceItems={choiceItems4} />
+            </MyRow>
+          </React.Fragment>
+        )}
+        <MyRow>
+          <ToggleButton keyStore="_poseBp" name="POSE DETENTE BP" />
+        </MyRow>
+      </StepWrapper>
     );
   }
 }
 
-export default CoffretActual;
+export default Coffret;

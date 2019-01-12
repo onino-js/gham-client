@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import styled from "../../styled-components";
 import { UiStore } from "../../stores/ui.store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { _secondary } from "../../css/_colors";
 
 interface Props {
   uiStore?: any;
@@ -13,12 +14,16 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   height: 70px;
-  background-color: #fff;
+  width: 100%;
+  background-color: ${_secondary};
 `;
 
 const ArrowContainer: any = styled.div`
   cursor: pointer;
   padding-left: 20px;
+  @media (min-width: 600px) {
+    display: none;
+  }
 `;
 
 @inject(({ uiStore }: { uiStore: UiStore }) => ({
