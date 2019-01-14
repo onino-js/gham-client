@@ -76,7 +76,15 @@ class ReportMenu extends React.Component<Props> {
             active={index === this.props.contactStore!.activePageIndex}
             onClick={() => this.selectPage(navItem.page, index)}
           >
-            <Bullet status={navItem.status} />
+            <Bullet
+              status={
+                navItem.status === "done"
+                  ? "done"
+                  : index === this.props.contactStore!.activePageIndex
+                  ? "pending"
+                  : "todo"
+              }
+            />
             <TitleBox>{navItem.title}</TitleBox>
           </ItemBox>
         ))}

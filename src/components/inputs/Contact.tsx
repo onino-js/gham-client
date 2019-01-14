@@ -4,6 +4,7 @@ import { ContactStore } from "../../stores/contact.store";
 import { StringInput } from "../shared/StringInput";
 import { MyRow, InputTitle, StepWrapper } from "../shared/Styled";
 import { MultipleChoiceButton } from "../shared/MultipleChoiceButton";
+import { StringListInput } from "../shared/StringListInput";
 
 interface Props {
   uiStore?: any;
@@ -52,7 +53,7 @@ export class Contact extends React.Component<Props> {
         <MyRow>
           <MultipleChoiceButton choiceItems={choiceItems} />
         </MyRow>
-        <StringInput keyStore="lastName" label="Nom de famille" />
+        <StringListInput keyStore="lastName" label="Nom de famille" />
         <StringInput keyStore="firstName" label="Prénom(s)" />
         <StringInput keyStore="city" label="Ville" />
         <StringInput keyStore="address" label="Adresse" />
