@@ -8,7 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ContactStore } from "../../stores/contact.store";
 import { AllStores } from "../../models/all.stores.model";
 import { _secondary } from "../../css/_colors";
-import { BigButton, PrimaryTitle, Flex, FlexC } from "../shared/Styled";
+import { BigButton, PrimaryTitle } from "../shared/Styled";
+import { Flex } from "../layout/Flex";
 
 interface Props {
   uiStore?: UiStore;
@@ -113,7 +114,7 @@ class Signature extends React.Component<Props, State> {
 
   public render(): React.ReactNode {
     return (
-      <FlexC alignH="center">
+      <Flex dir="c" alignH="center">
         <PrimaryTitle>Signature client</PrimaryTitle>
         <Col>
           <BigButton
@@ -149,7 +150,7 @@ class Signature extends React.Component<Props, State> {
             <canvas id="canvas" />
           </CanvasBox>
         </Modal>
-      </FlexC>
+      </Flex>
     );
   }
 }

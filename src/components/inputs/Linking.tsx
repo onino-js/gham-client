@@ -1,46 +1,14 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { MyRow, InputTitle, StepWrapper } from "../shared/Styled";
+import { InputTitle, StepWrapper } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
-import { NumberInput } from "../shared/NumberInput";
-import {
-  MultipleChoiceButton,
-  IchoiceItem,
-} from "../shared/MultipleChoiceButton";
 import { observer, inject } from "mobx-react";
 import { AllStores } from "../../models/all.stores.model";
 import { ContactStore } from "../../stores/contact.store";
-import { ToggleButton } from "../shared/ToggleButton";
 
 interface Props {
   contactStore?: ContactStore;
 }
-
-const choiceItems: IchoiceItem[] = [
-  {
-    title: "INDIVIDUEL",
-    keyStore: "individualPlug",
-  },
-  {
-    title: "COLLECTIF",
-    keyStore: "collectivePlug",
-  },
-  {
-    title: "IMPRODUCTIF",
-    keyStore: "improductivePlug",
-  },
-];
-
-const choiceItems2: IchoiceItem[] = [
-  {
-    title: "EXISTANTE",
-    keyStore: "detenteExists",
-  },
-  {
-    title: "A POSER",
-    keyStore: "detentePose",
-  },
-];
 
 @inject((allStores: AllStores) => ({
   contactStore: allStores.contactStore,
@@ -53,39 +21,80 @@ export class Linking extends React.Component<Props> {
         <Divider>
           <InputTitle>Branchements</InputTitle>
         </Divider>
-        <MyRow>
-          <MultipleChoiceButton choiceItems={choiceItems} />
-        </MyRow>
-        <MyRow>
-          <NumberInput keyStore="nbOfYears" label="Nombre d'annèes" />
-        </MyRow>
+        <StringInput
+          keyStore="linking"
+          label="Type liaison"
+          mandatory={true}
+          list={["INDIVIDUEL", "COLLECTIF", "IMPRODUCTIF"]}
+        />
+        <StringInput
+          type="number"
+          keyStore="nbOfYears"
+          label="Nombre d'annèes"
+          mandatory={true}
+        />
+
         <Divider>
           <InputTitle>Arrivée</InputTitle>
         </Divider>
-        <StringInput keyStore="arrivalNature" label="Nature" />
-        <NumberInput keyStore="arrivalDiameter" label="Diamètre" />
+        <StringInput keyStore="arrivalNature" label="Nature" mandatory={true} />
+        <StringInput
+          type="number"
+          keyStore="arrivalDiameter"
+          label="Diamètre"
+          mandatory={true}
+        />
         <Divider>
           <InputTitle>Pénétration</InputTitle>
         </Divider>
-        <StringInput keyStore="penetrationNature" label="Nature" />
-        <NumberInput keyStore="penetrationDiameter" label="Diamètre" />
-        <MyRow>
-          <ToggleButton keyStore="penetrationConserved" name="CONSERVER" />
-        </MyRow>
-        {!this.props.contactStore!.penetrationConserved && (
+        <StringInput
+          keyStore="penetrationNature"
+          label="Nature"
+          mandatory={true}
+        />
+        <StringInput
+          type="number"
+          keyStore="penetrationDiameter"
+          label="Diamètre"
+          mandatory={true}
+        />
+        <StringInput
+          keyStore="penetrationConserved"
+          label="Conserver ?"
+          mandatory={true}
+          list={["OUI", "NON"]}
+        />
+        {this.props.contactStore!.penetrationConserved === "NON" && (
           <React.Fragment>
-            <StringInput keyStore="_penetrationNature" label="Nature" />
-            <NumberInput keyStore="_penetrationDiameter" label="Diamètre" />
-            <NumberInput keyStore="_penetrationLength" label="Diamètre" />
+            <StringInput
+              keyStore="_penetrationNature"
+              label="Nature"
+              mandatory={true}
+            />
+            <StringInput
+              type="number"
+              keyStore="_penetrationDiameter"
+              label="Diamètre"
+              mandatory={true}
+            />
+            <StringInput
+              type="number"
+              keyStore="_penetrationLength"
+              label="Longueur"
+              mandatory={true}
+            />
           </React.Fragment>
         )}
         <Divider>
           <InputTitle>Détente</InputTitle>
         </Divider>
-        <StringInput keyStore="detenteType" label="Type" />
-        <MyRow>
-          <MultipleChoiceButton choiceItems={choiceItems2} />
-        </MyRow>
+        <StringInput keyStore="detenteType" label="Type" mandatory={true} />
+        <StringInput
+          keyStore="detentePose"
+          label="Action"
+          mandatory={true}
+          list={["EXISTANTE", "A POSER"]}
+        />
       </StepWrapper>
     );
   }

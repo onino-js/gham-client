@@ -13,6 +13,7 @@ import { Coffret } from "./../inputs/Coffret";
 import { Compteur } from "./../inputs/Compteur";
 import { Linking } from "./../inputs/Linking";
 import { Observations } from "./../inputs/Observations";
+import Preview from "./Preview";
 
 interface Props {
   uiStore?: any;
@@ -34,6 +35,7 @@ class ReportRoutes extends React.Component<Props> {
         <Route path="/workout-after/" component={WorkoutAfter} />
         <Route path="/map/" component={MapView} />
         <Route path="/signature/" component={Signature} />
+        <Route path="/preview/" component={Preview} />
       </React.Fragment>
     );
   }

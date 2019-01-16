@@ -4,6 +4,7 @@ import { observer, inject } from "mobx-react";
 import styled from "../../styled-components";
 import { AllStores } from "../../models/all.stores.model";
 import { ContactStore } from "../../stores/contact.store";
+import { MyRow } from "./Styled";
 
 interface Props {
   uiStore?: any;
@@ -24,7 +25,7 @@ const MyButton = styled(Button as any)`
 export class ToggleButton extends React.Component<Props> {
   public render() {
     return (
-      <React.Fragment>
+      <MyRow>
         <MyButton
           onClick={() =>
             this.props.contactStore!.setProp({
@@ -39,7 +40,7 @@ export class ToggleButton extends React.Component<Props> {
         >
           {this.props.name}
         </MyButton>
-      </React.Fragment>
+      </MyRow>
     );
   }
 }

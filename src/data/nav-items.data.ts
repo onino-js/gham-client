@@ -1,17 +1,5 @@
 export const navItems = [
   {
-    page: "general",
-    iconType: "info-circle",
-    status: "todo",
-    title: "Info. affaire",
-  },
-  {
-    page: "map",
-    iconType: "environment",
-    status: "todo",
-    title: "Carte",
-  },
-  {
     page: "contact",
     iconType: "profile",
     status: "todo",
@@ -64,11 +52,5 @@ export const navItems = [
     iconType: "question-circle",
     status: "todo",
     title: "Signature",
-  },
-  {
-    page: "export",
-    iconType: "download",
-    status: "todo",
-    title: "Export",
   },
 ];

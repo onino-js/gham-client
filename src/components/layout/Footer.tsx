@@ -2,7 +2,12 @@ import * as React from "react";
 import { Layout, Button } from "antd";
 import styled from "../../styled-components";
 import { withRouter } from "react-router";
-import { _secondary } from "../../css/_colors";
+import {
+  _secondary,
+  _secondary_bg,
+  _primary_bg,
+  _tertiary_bg,
+} from "../../css/_colors";
 
 interface Props {
   uiStore?: any;
@@ -17,7 +22,7 @@ const FooterContainer = styled(Layout.Footer as any)`
   align-items: center;
   height: 70px;
   width: 100%;
-  background-color: ${_secondary};
+  background-color: ${_tertiary_bg};
   /* @media (min-width: 600px) {
     display: none;
   } */

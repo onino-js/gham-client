@@ -71,13 +71,13 @@ export const reportAddress = () => {
      ${titleCase("Propri&eacute;taire&nbsp;:")}
   </td>
   <td width="52">
-    ${crossCase(contactStore.isOwner ? "X" : "")}
+    ${crossCase(contactStore.occupation === "PROPRIETAIRE" ? "X" : "")}
   </td>
   <td colspan="2" width="112" height="11">
      ${titleCase("Locataire&nbsp;:")}
   </td>
   <td width="52" height="11">
-     ${crossCase(contactStore.isOwner ? "" : "X")}
+     ${crossCase(contactStore.occupation === "LOCATAIRE" ? "X" : "")}
   </td>
   <td colspan="6" width="112" height="11">
     <p style="font-size: xx-small;"></p>

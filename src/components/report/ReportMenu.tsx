@@ -73,6 +73,7 @@ class ReportMenu extends React.Component<Props> {
       <Container>
         {this.props.contactStore!.completion.map((navItem, index) => (
           <ItemBox
+            key={index}
             active={index === this.props.contactStore!.activePageIndex}
             onClick={() => this.selectPage(navItem.page, index)}
           >

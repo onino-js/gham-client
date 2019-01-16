@@ -1,6 +1,6 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react";
-import { Input, Button, Modal, Col } from "antd";
+import { Input, Button, Modal, Col, message } from "antd";
 import {
   ClientResponse,
   createClient,
@@ -24,6 +24,10 @@ interface State {
   lat?: number;
   lng?: number;
 }
+
+const error = () => {
+  message.error("Lieu non trouvé");
+};
 
 const Container: any = styled(Col as any).attrs({
   span: 24,
@@ -101,7 +105,7 @@ export class MapView extends React.Component<Props, State> {
           this.handleGeocodeResponse(response);
         } else {
           // TODO : handle bad response
-          console.log(err);
+          error();
         }
       },
     );

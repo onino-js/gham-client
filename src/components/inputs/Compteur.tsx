@@ -7,6 +7,8 @@ import { NumberInput } from "../shared/NumberInput";
 
 interface Props {}
 
+const compteurList = ["Grdf", "Thales", "Hypios"];
+
 export class Compteur extends React.Component<Props> {
   public render() {
     return (
@@ -14,14 +16,36 @@ export class Compteur extends React.Component<Props> {
         <Divider>
           <InputTitle>Compteur</InputTitle>
         </Divider>
-        <StringInput keyStore="compteurBrand" label="Marque" />
-        <StringInput keyStore="compteurType" label="Type" />
-        <NumberInput keyStore="compteurFlow" label="Débit" />
-        <NumberInput keyStore="compteurYear" label="Année" />
-        <StringInput keyStore="compteurNumber" label="Numéro" />
-        <MyRow>
-          <ToggleButton keyStore="compteurConserv" name="CONSERVER ?" />
-        </MyRow>
+        <StringInput
+          list={compteurList}
+          keyStore="compteurBrand"
+          label="Marque"
+          mandatory={true}
+        />
+        <StringInput keyStore="compteurType" label="Type" mandatory={true} />
+        <StringInput
+          type="number"
+          keyStore="compteurFlow"
+          label="Débit"
+          mandatory={true}
+        />
+        <StringInput
+          type="number"
+          keyStore="compteurYear"
+          label="Année"
+          mandatory={true}
+        />
+        <StringInput
+          keyStore="compteurNumber"
+          label="Numéro"
+          mandatory={true}
+        />
+        <StringInput
+          keyStore="compteurConserv"
+          label="Conserver compteur"
+          mandatory={true}
+          list={["OUI", "NON"]}
+        />
       </StepWrapper>
     );
   }

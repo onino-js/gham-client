@@ -7,6 +7,10 @@ interface Ipayload {
 }
 
 export class ContactStore {
+  @observable public genre: string = "";
+  @observable public _genre: string = "";
+  @observable public occupation: string = "";
+
   @observable public isMan: boolean = true;
   @observable public isWoman: boolean = false;
   @observable public lastName: string = "";
@@ -26,32 +30,22 @@ export class ContactStore {
   @observable public co_isOwner: boolean = false;
 
   // BRANCHEMENTS
+  @observable public linking: string = "";
+
   @observable public individualPlug: boolean = false;
   @observable public collectivePlug: boolean = false;
   @observable public improductivePlug: boolean = false;
   @observable public nbOfYears: number = 0;
+
   // COFFRET
-  @observable public isEncastred: boolean = false;
-  @observable public isBurried: boolean = false;
-  @observable public hasMesh: boolean = false;
-  @observable public hasBase: boolean = false;
-  @observable public projection: boolean = false;
-  @observable public isOutOfBound: boolean = false;
-  @observable public sCarter: boolean = false;
-  @observable public robFac: boolean = false;
-  @observable public isCoffret: boolean = false;
-  @observable public coffretType: string = "";
+  @observable public fixation: string = "";
+  @observable public boitierType: string = "";
   @observable public poseBp: string = "";
 
-  @observable public _isEncastred: boolean = false;
-  @observable public _isBurried: boolean = false;
-  @observable public _hasMesh: boolean = false;
-  @observable public _hasBase: boolean = false;
-  @observable public _projection: boolean = false;
-  @observable public _isOutOfBound: boolean = false;
-  @observable public _suppr: boolean = false;
-  @observable public _reequip: boolean = false;
-  @observable public _pose: boolean = false;
+  @observable public action: string = "";
+  @observable public _fixation: string = "";
+
+  @observable public coffretType: string = "";
   @observable public _coffretType: string = "";
   @observable public _poseBp: string = "";
 
@@ -61,7 +55,7 @@ export class ContactStore {
   @observable public compteurFlow: number = 0;
   @observable public compteurYear: number = 0;
   @observable public compteurNumber: string = "";
-  @observable public compteurConserv: boolean = false;
+  @observable public compteurConserv: string = "";
 
   // ARRIVAL
   @observable public arrivalNature: string = "";
@@ -70,15 +64,14 @@ export class ContactStore {
   // PENETRATION
   @observable public penetrationNature: string = "";
   @observable public penetrationDiameter: number = 0;
-  @observable public penetrationConserved: boolean = false;
+  @observable public penetrationConserved: string = "";
   @observable public _penetrationNature: string = "";
   @observable public _penetrationDiameter: number = 0;
   @observable public _penetrationLength: number = 0;
 
   // DETENTE
   @observable public detenteType: string = "";
-  @observable public detenteExists: boolean = false;
-  @observable public detentePose: boolean = false;
+  @observable public detentePose: string = "";
 
   // OBSERVATIONS
   @observable public obsTerass: string = "";
@@ -123,13 +116,13 @@ export class ContactStore {
   }
   @action.bound
   public getCompletName(): string {
-    const prefix = this.isMan ? "M." : "Mme";
-    return `${prefix} ${this.firstName} ${this.lastName.toUpperCase()}`;
+    return `${this.genre} ${this.firstName} ${this.lastName.toUpperCase()}`;
   }
   @action.bound
   public co_getCompletName(): string {
-    const prefix = this.co_isMan ? "M." : "Mme";
-    return `${prefix} ${this.co_firstName} ${this.co_lastName.toUpperCase()}`;
+    return `${this._genre} ${
+      this.co_firstName
+    } ${this.co_lastName.toUpperCase()}`;
   }
 }
 

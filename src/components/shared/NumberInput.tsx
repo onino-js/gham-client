@@ -41,7 +41,6 @@ const LabelCol: any = styled(Col as any).attrs({
 const MyRow = styled(Row as any)`
   margin-top: 15px;
   margin-bottom: 15px;
-  /* border: 1px solid blue; */
   width: 100%;
 `;
 

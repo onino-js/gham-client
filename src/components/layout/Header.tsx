@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import styled from "../../styled-components";
 import { UiStore } from "../../stores/ui.store";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { _secondary } from "../../css/_colors";
+import { _secondary, _tertiary_bg } from "../../css/_colors";
 
 interface Props {
   uiStore?: any;
@@ -15,7 +15,7 @@ const Container = styled.div`
   align-items: center;
   height: 70px;
   width: 100%;
-  background-color: ${_secondary};
+  background-color: ${_tertiary_bg};
 `;
 
 const ArrowContainer: any = styled.div`

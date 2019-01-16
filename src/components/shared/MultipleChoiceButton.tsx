@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Button } from "antd";
+import { Button, Col } from "antd";
 import { observer, inject } from "mobx-react";
 import styled from "../../styled-components";
 import { AllStores } from "../../models/all.stores.model";
 import { ContactStore } from "../../stores/contact.store";
+import { MyRow, LabelCol, SmallBullet } from "./Styled";
 
 export interface IchoiceItem {
   title: string;
@@ -14,10 +15,12 @@ interface Props {
   uiStore?: any;
   contactStore?: ContactStore;
   choiceItems: IchoiceItem[];
+  mandatory?: boolean;
+  label: string;
 }
 
 const MyButton = styled(Button as any)`
-  border-radius : 0;
+  border-radius: 0;
 `;
 
 @inject((allStores: AllStores) => ({
@@ -42,24 +45,30 @@ export class MultipleChoiceButton extends React.Component<Props> {
   };
   public render() {
     return (
-      <React.Fragment>
-        {this.props.choiceItems.map(
-          (choiceItem: IchoiceItem, index: number) => (
-            <MyButton
-              key={"multiple-choices" + index}
-              onClick={() => this.toggleValue(choiceItem.keyStore)}
-              type={
-                this.props.contactStore![choiceItem.keyStore]
-                  ? "primary"
-                  : "ghost"
-              }
-              size="large"
-            >
-              {choiceItem.title}
-            </MyButton>
-          ),
-        )}
-      </React.Fragment>
+      <MyRow>
+        <LabelCol>
+          <SmallBullet mandatory={this.props.mandatory} />
+          {this.props.label}
+        </LabelCol>
+        <Col>
+          {this.props.choiceItems.map(
+            (choiceItem: IchoiceItem, index: number) => (
+              <MyButton
+                key={"multiple-choices" + index}
+                onClick={() => this.toggleValue(choiceItem.keyStore)}
+                type={
+                  this.props.contactStore![choiceItem.keyStore]
+                    ? "primary"
+                    : "ghost"
+                }
+                size="large"
+              >
+                {choiceItem.title}
+              </MyButton>
+            ),
+          )}
+        </Col>
+      </MyRow>
     );
   }
 }

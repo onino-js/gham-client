@@ -2,7 +2,6 @@ import * as React from "react";
 import { inject, observer, Provider } from "mobx-react";
 import Login from "./components/Login";
 import authStore, { AuthStore } from "./stores/auth.store";
-import { FullScreen } from "./components/shared/Styled";
 import uiStore, { UiStore } from "./stores/ui.store";
 import { AllStores } from "./models/all.stores.model";
 import projectStore from "./stores/project.store";
@@ -11,6 +10,7 @@ import contactStore from "./stores/contact.store";
 import canvasStore from "./stores/canvas.store";
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./components/Home";
+import { FullScreen } from "./components/layout/FullScreen";
 
 interface Props {
   uiStore?: UiStore;

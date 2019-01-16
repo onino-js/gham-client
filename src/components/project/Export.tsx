@@ -76,16 +76,11 @@ class Exports extends React.Component<Props> {
     wnd!.document.write(htmlString);
     wnd!.print();
   };
-  private preview = () => {
-    const htmlString = htmlReport();
-    const wnd = window.open("about:blank", "", "_blank");
-    wnd!.document.write(htmlString);
-  };
 
   public render() {
     return (
       <MyContainer>
-        <Title>Télecharger: </Title>
+        <Title>Choisissez un format : </Title>
         <span>
           <BigButton
             type="primary"
@@ -109,14 +104,6 @@ class Exports extends React.Component<Props> {
             <FontAwesomeIcon icon="code" style={{ fontSize: "3em" }} />
           </BigButton>
         </span>
-        <Title>Prévisualiser: </Title>
-        <BigButton
-          type="primary"
-          title="Prévisualisez dans une nouvelle page"
-          onClick={this.preview}
-        >
-          <FontAwesomeIcon icon="search" style={{ fontSize: "3em" }} />
-        </BigButton>
       </MyContainer>
     );
   }
