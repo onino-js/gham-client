@@ -3,7 +3,7 @@ import { fabric } from "fabric";
 import { Button, message, Upload, Icon, Modal, Col } from "antd";
 import styled from "styled-components";
 import { inject, observer } from "mobx-react";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ContactStore } from "../../stores/contact.store";
 import { AllStores } from "../../models/all.stores.model";
@@ -114,7 +114,7 @@ class Signature extends React.Component<Props, State> {
 
   public render(): React.ReactNode {
     return (
-      <Flex dir="c" alignH="center">
+      <Flex dir="c" alignH="center" style={{ height: "100%" }}>
         <PrimaryTitle>Signature client</PrimaryTitle>
         <Col>
           <BigButton

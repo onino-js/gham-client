@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { IAuthStore } from "../models/auth.store.model";
+import { IAuthStore } from "../../models/auth.store.model";
 
 export class AuthStore implements IAuthStore {
   @observable public token: string = "";

@@ -1,8 +1,8 @@
 import * as React from "react";
 import { inject, observer, Provider } from "mobx-react";
 import Login from "./components/Login";
-import authStore, { AuthStore } from "./stores/auth.store";
-import uiStore, { UiStore } from "./stores/ui.store";
+import authStore, { AuthStore } from "./stores/auth/index";
+import uiStore, { UiStore } from "./stores/ui/index";
 import { AllStores } from "./models/all.stores.model";
 import projectStore from "./stores/project.store";
 import mapStore from "./stores/map.store";

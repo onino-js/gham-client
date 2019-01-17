@@ -35,7 +35,7 @@ export class ContactStore {
   @observable public individualPlug: boolean = false;
   @observable public collectivePlug: boolean = false;
   @observable public improductivePlug: boolean = false;
-  @observable public nbOfYears: number = 0;
+  @observable public nbOfYears: string = "";
 
   // COFFRET
   @observable public fixation: string = "";
@@ -52,22 +52,22 @@ export class ContactStore {
   // COMPTEUR
   @observable public compteurBrand: string = "";
   @observable public compteurType: string = "";
-  @observable public compteurFlow: number = 0;
-  @observable public compteurYear: number = 0;
+  @observable public compteurFlow: string = "";
+  @observable public compteurYear: string = "";
   @observable public compteurNumber: string = "";
   @observable public compteurConserv: string = "";
 
   // ARRIVAL
   @observable public arrivalNature: string = "";
-  @observable public arrivalDiameter: number = 0;
+  @observable public arrivalDiameter: string = "";
 
   // PENETRATION
   @observable public penetrationNature: string = "";
-  @observable public penetrationDiameter: number = 0;
+  @observable public penetrationDiameter: string = "";
   @observable public penetrationConserved: string = "";
   @observable public _penetrationNature: string = "";
-  @observable public _penetrationDiameter: number = 0;
-  @observable public _penetrationLength: number = 0;
+  @observable public _penetrationDiameter: string = "";
+  @observable public _penetrationLength: string = "";
 
   // DETENTE
   @observable public detenteType: string = "";
@@ -91,7 +91,6 @@ export class ContactStore {
     item.errors = [];
     return item;
   });
-  @observable public activePageIndex: number = 0;
 
   @action.bound
   public setCompletion(payload: any): void {
@@ -100,7 +99,8 @@ export class ContactStore {
 
   @action.bound
   public validateStep(): void {
-    this.completion[this.activePageIndex]["status"] = "done";
+    return;
+    // this.completion[this.activePageIndex]["status"] = "done";
   }
 
   @action.bound

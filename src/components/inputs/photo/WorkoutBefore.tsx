@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Col } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../../stores/ui.store";
+import { UiStore } from "../../../stores/ui/index";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import EditCanvas from "./EditCanvas";
@@ -9,6 +9,8 @@ import ObjOptions from "./ItemOptions";
 import AddItem from "./AddItem";
 import { CanvasStore } from "../../../stores/canvas.store";
 import { _secondary } from "../../../css/_colors";
+import { Flex } from "../../layout/Flex";
+import { CanvasBox } from "../../shared/Styled";
 
 interface Props {
   uiStore?: UiStore;
@@ -17,27 +19,6 @@ interface Props {
 interface State {
   fileList?: any;
 }
-
-const MyContainer: any = styled(Col as any).attrs({
-  span: 24,
-})`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const CanvasBox: any = styled(Col as any).attrs({
-  xs: 24,
-  sm: 24,
-  md: 24,
-  lg: 20,
-  xl: 14,
-})`
-  flex: 1;
-  border: 1px solid ${_secondary};
-  border-style: dashed;
-`;
 
 @inject((allStores: AllStores) => ({
   canvasStore: allStores.canvasStore,
@@ -59,14 +40,14 @@ class WorkoutBefore extends React.Component<Props, State> {
 
   public render(): React.ReactNode {
     return (
-      <MyContainer>
+      <Flex dir="c" alignH="center" style={{ height: "100%" }}>
         <EditCanvas />
         <CanvasBox id="canvasBox">
           <canvas id="canvas" />
         </CanvasBox>
         <ObjOptions />
         <AddItem />
-      </MyContainer>
+      </Flex>
     );
   }
 }

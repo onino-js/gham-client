@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Divider } from "antd";
 import { ToggleButton } from "../shared/ToggleButton";
-import { MyRow, InputTitle, StepWrapper } from "../shared/Styled";
+import { MyRow, InputTitle } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
 import { NumberInput } from "../shared/NumberInput";
 
@@ -12,7 +12,7 @@ const compteurList = ["Grdf", "Thales", "Hypios"];
 export class Compteur extends React.Component<Props> {
   public render() {
     return (
-      <StepWrapper>
+      <React.Fragment>
         <Divider>
           <InputTitle>Compteur</InputTitle>
         </Divider>
@@ -23,18 +23,8 @@ export class Compteur extends React.Component<Props> {
           mandatory={true}
         />
         <StringInput keyStore="compteurType" label="Type" mandatory={true} />
-        <StringInput
-          type="number"
-          keyStore="compteurFlow"
-          label="Débit"
-          mandatory={true}
-        />
-        <StringInput
-          type="number"
-          keyStore="compteurYear"
-          label="Année"
-          mandatory={true}
-        />
+        <StringInput keyStore="compteurFlow" label="Débit" mandatory={true} />
+        <StringInput keyStore="compteurYear" label="Année" mandatory={true} />
         <StringInput
           keyStore="compteurNumber"
           label="Numéro"
@@ -46,7 +36,7 @@ export class Compteur extends React.Component<Props> {
           mandatory={true}
           list={["OUI", "NON"]}
         />
-      </StepWrapper>
+      </React.Fragment>
     );
   }
 }

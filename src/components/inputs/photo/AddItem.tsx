@@ -1,23 +1,18 @@
 import * as React from "react";
 import { Button, Drawer } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../../stores/ui.store";
+import { UiStore } from "../../../stores/ui/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { CanvasStore } from "../../../stores/canvas.store";
+import { SquareButton } from "../../shared/Styled";
 
 interface Props {
   uiStore?: UiStore;
   canvasStore?: CanvasStore;
 }
 interface State {}
-
-const BigButton = styled(Button as any)`
-  height: 70px;
-  width: 70px;
-  margin: 10px;
-`;
 
 @inject((allStores: AllStores) => ({
   canvasStore: allStores.canvasStore,
@@ -43,21 +38,21 @@ class AddItem extends React.Component<Props, State> {
         onClose={this.closeAddItem}
         visible={uiStore.isCanvasAddItemVisible}
       >
-        <BigButton onClick={photo.addSquare}>
+        <SquareButton onClick={photo.addSquare} s={70}>
           <FontAwesomeIcon icon="square" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={photo.addLine}>
+        </SquareButton>
+        <SquareButton onClick={photo.addLine} s={70}>
           <FontAwesomeIcon icon="slash" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={photo.addCircle}>
+        </SquareButton>
+        <SquareButton onClick={photo.addCircle} s={70}>
           <FontAwesomeIcon icon="circle" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={photo.addText}>
+        </SquareButton>
+        <SquareButton onClick={photo.addText} s={70}>
           <FontAwesomeIcon icon="font" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={photo.drawingModeOn}>
+        </SquareButton>
+        <SquareButton onClick={photo.drawingModeOn} s={70}>
           <FontAwesomeIcon icon="pen" style={{ fontSize: "2em" }} />
-        </BigButton>
+        </SquareButton>
       </Drawer>
     );
   }

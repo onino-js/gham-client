@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { InputTitle, StepWrapper } from "../shared/Styled";
+import { InputTitle } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
 
 interface Props {}
@@ -8,7 +8,7 @@ interface Props {}
 export class Observations extends React.Component<Props> {
   public render() {
     return (
-      <StepWrapper>
+      <React.Fragment>
         <Divider>
           <InputTitle>Observations</InputTitle>
         </Divider>
@@ -16,7 +16,7 @@ export class Observations extends React.Component<Props> {
         <StringInput keyStore="obsSaignee" label="Saignées" />
         <StringInput keyStore="obsPerc" label="Perçages" />
         <StringInput keyStore="obsRemarks" label="Remarques" />
-      </StepWrapper>
+      </React.Fragment>
     );
   }
 }

@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Col, Button } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../../stores/ui.store";
+import { UiStore } from "../../../stores/ui/index";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CanvasStore } from "../../../stores/canvas.store";
 import EditBg from "./EditBg";
-import { _secondary } from "../../../css/_colors";
+import { Flex } from "../../layout/Flex";
+import { CanvasBox, SquareButton } from "../../shared/Styled";
 
 interface Props {
   uiStore?: UiStore;
@@ -17,37 +18,10 @@ interface State {
   fileList?: any;
 }
 
-const MyContainer: any = styled(Col as any).attrs({
-  span: 24,
-})`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
 const ToolBox = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-`;
-
-const CanvasBox: any = styled(Col as any).attrs({
-  xs: 24,
-  sm: 24,
-  md: 24,
-  lg: 20,
-  xl: 14,
-})`
-  flex: 1;
-  border: 1px solid ${_secondary};
-  border-style: dashed;
-`;
-
-const BigButton = styled(Button as any)`
-  height: 70px;
-  width: 70px;
-  margin: 10px;
 `;
 
 const BigInputFile = styled.input`
@@ -79,7 +53,7 @@ class Photo extends React.Component<Props, State> {
   public render(): React.ReactNode {
     const canvasStore = this.props.canvasStore!;
     return (
-      <MyContainer>
+      <Flex dir="c" alignH="center" style={{ height: "100%" }}>
         <ToolBox>
           <BigInputFile
             id="photoUpload"
@@ -87,27 +61,33 @@ class Photo extends React.Component<Props, State> {
             name="file"
             onChange={canvasStore.onPhotoUpload}
           />
-          <BigButton onClick={canvasStore.uploadRequest}>
+          <SquareButton onClick={canvasStore.uploadRequest} s={70}>
             <FontAwesomeIcon icon="camera" style={{ fontSize: "2em" }} />
-          </BigButton>
-          <BigButton onClick={() => canvasStore.rotateBackground("left")}>
+          </SquareButton>
+          <SquareButton
+            onClick={() => canvasStore.rotateBackground("left")}
+            s={70}
+          >
             <FontAwesomeIcon icon="undo" style={{ fontSize: "2em" }} />
-          </BigButton>
-          <BigButton onClick={() => canvasStore.rotateBackground("right")}>
+          </SquareButton>
+          <SquareButton
+            onClick={() => canvasStore.rotateBackground("right")}
+            s={70}
+          >
             <FontAwesomeIcon icon="redo" style={{ fontSize: "2em" }} />
-          </BigButton>
-          <BigButton onClick={canvasStore.clearSelection}>
+          </SquareButton>
+          <SquareButton onClick={canvasStore.clearSelection} s={70}>
             <FontAwesomeIcon icon="times" style={{ fontSize: "2em" }} />
-          </BigButton>
-          <BigButton onClick={canvasStore.clearCanvas}>
+          </SquareButton>
+          <SquareButton onClick={canvasStore.clearCanvas} s={70}>
             <FontAwesomeIcon icon="sync-alt" style={{ fontSize: "2em" }} />
-          </BigButton>
+          </SquareButton>
         </ToolBox>
         <CanvasBox id="canvasBox">
           <canvas id="canvas" />
         </CanvasBox>
         <EditBg />
-      </MyContainer>
+      </Flex>
     );
   }
 }

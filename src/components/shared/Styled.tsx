@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "../../styled-components";
-import { Row, Col, Layout, Button } from "antd";
+import { Row, Col, Layout, Button, Input } from "antd";
 import {
   _secondary,
   _primary_bg,
@@ -16,14 +16,6 @@ export const MyRow = styled(Row as any)`
   height: 40px;
 `;
 
-export const Container = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-`;
-
 export const Content = styled(Layout.Content)`
   /* height: 100%; */
   padding: 20px;
@@ -35,24 +27,6 @@ export const Content = styled(Layout.Content)`
   background-color: ${_primary_bg};
   /* border: 1px solid blue; */
 `;
-
-export const StepWrapper: any = styled(Col as any).attrs({
-  xs: 24,
-  sm: 24,
-  md: 24,
-  lg: 16,
-  xl: 14,
-})`
-  margin: 0 auto 0 auto;
-`;
-
-export const InputCol: any = styled(Col as any).attrs({
-  xs: 16,
-  sm: 16,
-  md: 16,
-  lg: 16,
-  xl: 16,
-})``;
 
 export const InputTitle: any = styled.span`
   font-size: 1.5em;
@@ -75,6 +49,11 @@ export const PrimaryTitle = styled.div`
   color: ${_secondary};
 `;
 
+export const MyInput: any = styled(Input as any)`
+  border-radius: 0;
+  border-color: ${(props: any) => (props.haschanged ? _primary : _secondary)};
+`;
+
 export const LabelCol: any = styled(Col as any).attrs({
   xs: 8,
   sm: 8,
@@ -95,6 +74,14 @@ export const LabelCol: any = styled(Col as any).attrs({
   cursor: ${(props: any) => (props.clickable ? "pointer" : "default")};
 `;
 
+export const InputCol: any = styled(Col as any).attrs({
+  xs: 14,
+  sm: 14,
+  md: 14,
+  lg: 14,
+  xl: 14,
+})``;
+
 export const InfoCol: any = styled(Col as any).attrs({
   xs: 2,
   sm: 2,
@@ -110,7 +97,7 @@ export const InfoCol: any = styled(Col as any).attrs({
   height: 40px;
   border: 1px solid ${_secondary};
   background-color: ${(props: any) =>
-    !props.haschanged ? _secondary : props.isValid ? _success : _error};
+    !props.haschanged ? _secondary : props.valid ? _success : _error};
   font-weight: 900;
   color: #fff;
   border-left: none;
@@ -123,4 +110,22 @@ export const SmallBullet: any = styled.div`
   margin-left: 20px;
   margin-right: 20px;
   background-color: ${(props: any) => (props.mandatory ? _error : _primary)};
+`;
+
+export const CanvasBox: any = styled(Col as any).attrs({
+  xs: 24,
+  sm: 24,
+  md: 24,
+  lg: 20,
+  xl: 14,
+})`
+  flex: 1;
+  border: 1px solid ${_secondary};
+  border-style: dashed;
+`;
+
+export const SquareButton = styled(Button as any)`
+  height: ${(props: any) => props.s}px;
+  width: ${(props: any) => props.s}px;
+  margin: 10px;
 `;

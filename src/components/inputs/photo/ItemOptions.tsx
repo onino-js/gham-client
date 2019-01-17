@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Drawer, Checkbox, Input, Slider, Divider, Button } from "antd";
-import { UiStore } from "./../../../stores/ui.store";
+import { UiStore } from "../../../stores/ui/index";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { CanvasStore } from "../../../stores/canvas.store";

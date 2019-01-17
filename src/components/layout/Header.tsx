@@ -1,7 +1,7 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "../../styled-components";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { _secondary, _tertiary_bg } from "../../css/_colors";
 

@@ -9,7 +9,7 @@ import FooterMobile from "./../layout/FooterMobile";
 import { Content } from "./../shared/Styled";
 import SideMenu from "./SideMenu";
 import { BrowserRouter as Router } from "react-router-dom";
-import ReportNavigation from "./ReportNavigation";
+import ReportFooter from "./ReportFooter";
 import styled from "../../styled-components";
 import {
   _secondary,
@@ -21,8 +21,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { _fullScreen, _center } from "../../css/styled-css";
 import { Scrollable } from "../layout/Srollable";
 import { Flex } from "../layout/Flex";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 import ReportHeader from "./ReportHeader";
+import { StepWrapper } from "../layout/StepWrapper";
 
 interface Props {
   uiStore?: UiStore;
@@ -73,10 +74,12 @@ class Report extends React.Component<Props> {
             <ReportMenu />
             <Flex dir="c" style={{ height: "100%" }}>
               <Scrollable dir="y" p={20}>
-                <ReportRoutes />
+                <StepWrapper>
+                  <ReportRoutes />
+                </StepWrapper>
               </Scrollable>
               <Footer>
-                <ReportNavigation />
+                <ReportFooter />
               </Footer>
             </Flex>
           </Flex>

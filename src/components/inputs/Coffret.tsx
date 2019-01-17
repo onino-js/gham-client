@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { InputTitle, StepWrapper } from "../shared/Styled";
+import { InputTitle } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
 import {
   MultipleChoiceButton,
@@ -33,7 +33,7 @@ const list4 = ["SUPPRIMER", "REEQUIPER", "POSER"];
 export class Coffret extends React.Component<Props> {
   public render() {
     return (
-      <StepWrapper>
+      <React.Fragment>
         <Divider>
           <InputTitle>Coffret actuel</InputTitle>
         </Divider>
@@ -90,7 +90,7 @@ export class Coffret extends React.Component<Props> {
           label="Pose détente BP?"
           mandatory={true}
         />
-      </StepWrapper>
+      </React.Fragment>
     );
   }
 }

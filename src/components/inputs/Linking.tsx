@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { InputTitle, StepWrapper } from "../shared/Styled";
+import { InputTitle } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
 import { observer, inject } from "mobx-react";
 import { AllStores } from "../../models/all.stores.model";
@@ -17,7 +17,7 @@ interface Props {
 export class Linking extends React.Component<Props> {
   public render() {
     return (
-      <StepWrapper>
+      <React.Fragment>
         <Divider>
           <InputTitle>Branchements</InputTitle>
         </Divider>
@@ -28,7 +28,6 @@ export class Linking extends React.Component<Props> {
           list={["INDIVIDUEL", "COLLECTIF", "IMPRODUCTIF"]}
         />
         <StringInput
-          type="number"
           keyStore="nbOfYears"
           label="Nombre d'annèes"
           mandatory={true}
@@ -39,7 +38,6 @@ export class Linking extends React.Component<Props> {
         </Divider>
         <StringInput keyStore="arrivalNature" label="Nature" mandatory={true} />
         <StringInput
-          type="number"
           keyStore="arrivalDiameter"
           label="Diamètre"
           mandatory={true}
@@ -53,7 +51,6 @@ export class Linking extends React.Component<Props> {
           mandatory={true}
         />
         <StringInput
-          type="number"
           keyStore="penetrationDiameter"
           label="Diamètre"
           mandatory={true}
@@ -72,13 +69,11 @@ export class Linking extends React.Component<Props> {
               mandatory={true}
             />
             <StringInput
-              type="number"
               keyStore="_penetrationDiameter"
               label="Diamètre"
               mandatory={true}
             />
             <StringInput
-              type="number"
               keyStore="_penetrationLength"
               label="Longueur"
               mandatory={true}
@@ -95,7 +90,7 @@ export class Linking extends React.Component<Props> {
           mandatory={true}
           list={["EXISTANTE", "A POSER"]}
         />
-      </StepWrapper>
+      </React.Fragment>
     );
   }
 }

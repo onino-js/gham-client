@@ -1,6 +1,6 @@
 import { observable, action, toJS } from "mobx";
 import { fabric } from "fabric";
-import uiStore from "./ui.store";
+import uiStore from "./ui/index";
 import contactStore, { ContactStore } from "./contact.store";
 
 interface Ipayload {

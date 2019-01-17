@@ -6,7 +6,7 @@ import { withRouter } from "react-router";
 import { Bullet } from "../shared/Bullet/Bullet";
 import { _secondary_bg, _primary } from "../../css/_colors";
 import { ContactStore } from "../../stores/contact.store";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 import { Button } from "antd";
 
 interface Props {
@@ -26,7 +26,7 @@ const Container = styled.div`
   contactStore: allStores.contactStore,
 }))
 @observer
-class ReportNavigation extends React.Component<Props> {
+class ReportFooter extends React.Component<Props> {
   public state = {
     openKeys: [""],
     activePage: "",
@@ -34,10 +34,6 @@ class ReportNavigation extends React.Component<Props> {
 
   private selectPage = (page: string, index: number) => {
     this.props.history.push(page);
-    this.props.contactStore!.setProp({
-      key: "activePageIndex",
-      value: index,
-    });
   };
 
   private validateStep = () => {
@@ -53,4 +49,4 @@ class ReportNavigation extends React.Component<Props> {
   }
 }
 
-export default withRouter(ReportNavigation);
+export default withRouter(ReportFooter);

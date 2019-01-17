@@ -1,12 +1,11 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
-import { navItems } from "./../../data/nav-items.data";
 import { withRouter } from "react-router";
 import { Bullet } from "../shared/Bullet/Bullet";
 import { _secondary_bg, _primary } from "../../css/_colors";
 import { ContactStore } from "../../stores/contact.store";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 
 interface Props {
   uiStore?: UiStore;
@@ -62,33 +61,28 @@ class ReportMenu extends React.Component<Props> {
 
   private selectPage = (page: string, index: number) => {
     this.props.history.push(page);
-    this.props.contactStore!.setProp({
-      key: "activePageIndex",
-      value: index,
-    });
   };
 
   public render() {
     return (
       <Container>
-        {this.props.contactStore!.completion.map((navItem, index) => (
-          <ItemBox
-            key={index}
-            active={index === this.props.contactStore!.activePageIndex}
-            onClick={() => this.selectPage(navItem.page, index)}
-          >
-            <Bullet
-              status={
-                navItem.status === "done"
-                  ? "done"
-                  : index === this.props.contactStore!.activePageIndex
-                  ? "pending"
-                  : "todo"
-              }
-            />
-            <TitleBox>{navItem.title}</TitleBox>
-          </ItemBox>
-        ))}
+        {this.props.uiStore!.steps.map((step, index) => {
+          const active = this.props.location.pathname === `/${step.page}`;
+          return (
+            <ItemBox
+              key={index}
+              active={active}
+              onClick={() => this.selectPage(step.page, index)}
+            >
+              <Bullet
+                status={
+                  step.status === "done" ? "done" : active ? "pending" : "todo"
+                }
+              />
+              <TitleBox>{step.title}</TitleBox>
+            </ItemBox>
+          );
+        })}
       </Container>
     );
   }

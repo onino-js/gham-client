@@ -3,8 +3,8 @@ import { inject, observer } from "mobx-react";
 import { Form, Icon, Input, Button } from "antd";
 import styled from "styled-components";
 import logo from "./../image/gham-logo.png";
-import { AuthStore } from "../stores/auth.store";
-import { UiStore } from "../stores/ui.store";
+import { AuthStore } from "../stores/auth/index";
+import { UiStore } from "../stores/ui/index";
 
 interface Props {
   uiStore?: UiStore;

@@ -1,12 +1,11 @@
 import * as React from "react";
-import { fabric } from "fabric";
-import { Button, message, Col, Drawer, Checkbox, Input, Slider } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../../stores/ui.store";
+import { UiStore } from "../../../stores/ui/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { CanvasStore } from "../../../stores/canvas.store";
+import { SquareButton } from "../../shared/Styled";
 
 interface Props {
   uiStore?: UiStore;
@@ -18,21 +17,6 @@ const ToolBox = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-`;
-
-const BigInputFile = styled.input`
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-`;
-
-const BigButton = styled(Button as any)`
-  height: 70px;
-  width: 70px;
-  margin: 10px;
 `;
 
 @inject((allStores: AllStores) => ({
@@ -52,18 +36,18 @@ class EditCanvas extends React.Component<Props, State> {
     const uiStore = this.props.uiStore!;
     return (
       <ToolBox>
-        <BigButton onClick={this.openAddItem}>
+        <SquareButton onClick={this.openAddItem} s={70}>
           <FontAwesomeIcon icon="plus" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={canvasStore.handModeOn}>
+        </SquareButton>
+        <SquareButton onClick={canvasStore.handModeOn} s={70}>
           <FontAwesomeIcon icon="hand-paper" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={canvasStore.clearSelection}>
+        </SquareButton>
+        <SquareButton onClick={canvasStore.clearSelection} s={70}>
           <FontAwesomeIcon icon="times" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={canvasStore.clearCanvas}>
+        </SquareButton>
+        <SquareButton onClick={canvasStore.clearCanvas} s={70}>
           <FontAwesomeIcon icon="sync-alt" style={{ fontSize: "2em" }} />
-        </BigButton>
+        </SquareButton>
       </ToolBox>
     );
   }

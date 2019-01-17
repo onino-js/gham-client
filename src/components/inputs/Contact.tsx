@@ -2,7 +2,7 @@ import * as React from "react";
 import { Divider } from "antd";
 import { ContactStore } from "../../stores/contact.store";
 import { StringInput } from "../shared/StringInput";
-import { InputTitle, StepWrapper } from "../shared/Styled";
+import { InputTitle } from "../shared/Styled";
 
 interface Props {
   uiStore?: any;
@@ -12,7 +12,7 @@ interface Props {
 export class Contact extends React.Component<Props> {
   public render() {
     return (
-      <StepWrapper>
+      <React.Fragment>
         <Divider>
           <InputTitle>Contact principal</InputTitle>
         </Divider>
@@ -66,7 +66,7 @@ export class Contact extends React.Component<Props> {
         <StringInput type="text" keyStore="co_city" label="Ville" />
         <StringInput type="text" keyStore="co_address" label="Adresse" />
         <StringInput type="text" keyStore="co_phone" label="phone" />
-      </StepWrapper>
+      </React.Fragment>
     );
   }
 }

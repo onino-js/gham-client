@@ -10,7 +10,7 @@ interface Props {
   match: any;
   location: any;
   disabled?: boolean;
-  size?: string;
+  size?: any;
 }
 
 @inject((allStores: any) => ({
@@ -27,7 +27,7 @@ class NextButton extends React.Component<Props> {
   };
   public render() {
     return (
-      <Button {...this.props as any} onClick={this.goNext}>
+      <Button size={this.props.size || "default"} onClick={this.goNext}>
         CONTINUER
       </Button>
     );

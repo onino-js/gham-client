@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import { Col } from "antd";
 
 import { ProjectStore } from "../../stores/project.store";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 import { AllStores } from "../../models/all.stores.model";
 import styled from "../../styled-components";
 import { htmlReport } from "../../services/report-generation/report-gerneration.service";

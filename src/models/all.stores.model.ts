@@ -1,7 +1,7 @@
 import { ContactStore } from "./../stores/contact.store";
 import { MapStore } from "./../stores/map.store";
-import { AuthStore } from "./../stores/auth.store";
-import { UiStore } from "../stores/ui.store";
+import { AuthStore } from "../stores/auth/index";
+import { UiStore } from "../stores/ui/index";
 import { ProjectStore } from "../stores/project.store";
 import { CanvasStore } from "../stores/canvas.store";
 

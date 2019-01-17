@@ -12,7 +12,7 @@ import {
 } from "../../css/_colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { _center } from "../../css/styled-css";
-import { UiStore } from "../../stores/ui.store";
+import { UiStore } from "../../stores/ui/index";
 import { withRouter } from "react-router";
 import { Menu, Dropdown } from "antd";
 

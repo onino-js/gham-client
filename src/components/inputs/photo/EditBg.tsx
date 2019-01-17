@@ -1,23 +1,18 @@
 import * as React from "react";
 import { Button, Drawer } from "antd";
 import styled from "styled-components";
-import { UiStore } from "./../../../stores/ui.store";
+import { UiStore } from "../../../stores/ui/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { CanvasStore } from "../../../stores/canvas.store";
+import { SquareButton } from "../../shared/Styled";
 
 interface Props {
   uiStore?: UiStore;
   canvasStore?: CanvasStore;
 }
 interface State {}
-
-const BigButton = styled(Button as any)`
-  height: 70px;
-  width: 70px;
-  margin: 10px;
-`;
 
 @inject((allStores: AllStores) => ({
   canvasStore: allStores.canvasStore,
@@ -49,24 +44,24 @@ class EditBg extends React.Component<Props, State> {
         onClose={this.closeEditBg}
         visible={uiStore.isEditBgVisible}
       >
-        <BigButton onClick={canvasStore.adjust}>
+        <SquareButton onClick={canvasStore.adjust} s={70}>
           <FontAwesomeIcon icon="expand" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={canvasStore.center}>
+        </SquareButton>
+        <SquareButton onClick={canvasStore.center} s={70}>
           <FontAwesomeIcon icon="compress" style={{ fontSize: "2em" }} />
-        </BigButton>
-        <BigButton onClick={this.scaleUp}>
+        </SquareButton>
+        <SquareButton onClick={this.scaleUp} s={70}>
           <FontAwesomeIcon
             icon="expand-arrows-alt"
             style={{ fontSize: "2em" }}
           />
-        </BigButton>
-        <BigButton onClick={this.scaleDown}>
+        </SquareButton>
+        <SquareButton onClick={this.scaleDown} s={70}>
           <FontAwesomeIcon
             icon="compress-arrows-alt"
             style={{ fontSize: "2em" }}
           />
-        </BigButton>
+        </SquareButton>
       </Drawer>
     );
   }

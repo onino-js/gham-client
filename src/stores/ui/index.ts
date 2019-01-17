@@ -1,4 +1,5 @@
 import { observable, action } from "mobx";
+import { Istep, steps } from "./steps";
 
 interface IpayloadBool {
   key: keyof UiStore;
@@ -14,6 +15,7 @@ export class UiStore {
   @observable public isCanvasAddItemVisible: boolean = false;
   @observable public isCanvasItemOptionsVisible: boolean = false;
   @observable public isEditBgVisible: boolean = false;
+  @observable public steps: Istep[] = steps;
 
   @action.bound
   public toggleIsSidebarVisible = (): void => {
