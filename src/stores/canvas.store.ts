@@ -10,18 +10,12 @@ interface Ipayload {
 
 interface Iinitialize {
   canvasId: string;
-  canvasType: string;
+  canvasType: keyof ContactStore;
 }
 
 export class CanvasStore {
   @observable public canvas: any = null;
-  @observable public jsonCanvases: any = {};
-  @observable public jsonBg: any = {};
-  @observable public objects: any = {
-    after: [],
-    before: [],
-    bg: [],
-  };
+  // @observable public jsonCanvases: any = {};
   @observable public canvasBox: any = null;
   @observable public resizeLoop: any = false;
   @observable public canvasHeight: any = false;
@@ -62,8 +56,8 @@ export class CanvasStore {
   public initialize({ canvasId, canvasType }: Iinitialize) {
     this.canvas = new fabric.Canvas(canvasId);
     this.canvasBox = document.getElementById("canvasBox");
-    this.addObjects(this.objects[canvasType]);
-    canvasType !== "bg" && this.setBackground();
+    this.addObjects(contactStore.photoObjects[canvasType]);
+    canvasType !== "photo" && this.setBackground();
     this.canvas.on("mouse:dblclick", this.requestOpenItemOptions);
     this.canvas.on("selection:updated", this.setActiveObj);
     this.resizeCanvas();
@@ -87,16 +81,19 @@ export class CanvasStore {
 
   @action.bound
   public setBackground() {
-    if (this.objects.bg.length === 0) return;
-    fabric.util.enlivenObjects(this.objects.bg, (objects: any) => {
-      const origRenderOnAddRemove = this.canvas.renderOnAddRemove;
-      this.canvas.renderOnAddRemove = false;
-      objects.forEach((o: any) => {
-        this.canvas.setBackgroundImage(o);
-      });
-      this.canvas.renderOnAddRemove = origRenderOnAddRemove;
-      this.canvas.renderAll();
-    });
+    if (contactStore.photoObjects.photo.length === 0) return;
+    fabric.util.enlivenObjects(
+      contactStore.photoObjects.photo,
+      (objects: any) => {
+        const origRenderOnAddRemove = this.canvas.renderOnAddRemove;
+        this.canvas.renderOnAddRemove = false;
+        objects.forEach((o: any) => {
+          this.canvas.setBackgroundImage(o);
+        });
+        this.canvas.renderOnAddRemove = origRenderOnAddRemove;
+        this.canvas.renderAll();
+      },
+    );
   }
 
   @action.bound
@@ -106,21 +103,21 @@ export class CanvasStore {
     this.canvas.dispose();
   }
 
-  @action.bound
-  public saveCanvas(canvasType: string) {
-    this.jsonCanvases[canvasType] = JSON.stringify(this.canvas);
-  }
+  // @action.bound
+  // public saveCanvas(canvasType: string) {
+  //   this.jsonCanvases[canvasType] = JSON.stringify(this.canvas);
+  // }
 
   @action.bound
   public saveObjects(canvasType: string) {
     if (this.canvas.isEmpty()) {
       return;
     } else {
-      this.objects[canvasType] = [];
+      contactStore.photoObjects[canvasType] = [];
       this.canvas.forEachObject((obj: any) => {
         if (obj.excludeFromExport) return;
         const newObj = obj.toJSON();
-        this.objects[canvasType].push(newObj);
+        contactStore.photoObjects[canvasType].push(newObj);
       });
     }
   }
@@ -137,7 +134,7 @@ export class CanvasStore {
 
   @action.bound
   public hasBg() {
-    if (this.objects.bg[0] === undefined) {
+    if (contactStore.photoObjects.bg[0] === undefined) {
       return false;
     } else {
       return true;

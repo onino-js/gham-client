@@ -1,6 +1,4 @@
 import * as React from "react";
-import { Col } from "antd";
-import styled from "styled-components";
 import { UiStore } from "../../../stores/ui/index";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
@@ -8,13 +6,15 @@ import EditCanvas from "./EditCanvas";
 import ObjOptions from "./ItemOptions";
 import AddItem from "./AddItem";
 import { CanvasStore } from "../../../stores/canvas.store";
-import { _secondary } from "../../../css/_colors";
 import { Flex } from "../../layout/Flex";
-import { CanvasBox } from "../../shared/Styled";
+import { CanvasBox } from "../StyledInput";
+import { ContactStore } from "../../../stores/contact.store";
 
 interface Props {
   uiStore?: UiStore;
   canvasStore?: CanvasStore;
+  canvasType: keyof ContactStore;
+  canvasId: string;
 }
 interface State {
   fileList?: any;
@@ -27,14 +27,14 @@ interface State {
 class PhotoEdit extends React.Component<Props, State> {
   public componentDidMount() {
     this.props.canvasStore!.initialize({
-      canvasId: "canvas",
-      canvasType: "after",
+      canvasId: this.props.canvasId,
+      canvasType: this.props.canvasType,
     });
   }
 
   public componentWillUnmount() {
-    this.props.canvasStore!.saveObjects("after");
-    this.props.canvasStore!.savePhoto("photoAfterWork");
+    this.props.canvasStore!.saveObjects(this.props.canvasType);
+    this.props.canvasStore!.savePhoto(this.props.canvasType);
     this.props.canvasStore!.unmount();
   }
 
@@ -43,7 +43,7 @@ class PhotoEdit extends React.Component<Props, State> {
       <Flex dir="c" alignH="center" style={{ height: "100%" }}>
         <EditCanvas />
         <CanvasBox id="canvasBox">
-          <canvas id="canvas" />
+          <canvas id={this.props.canvasId} />
         </CanvasBox>
         <ObjOptions />
         <AddItem />

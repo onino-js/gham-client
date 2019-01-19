@@ -4,7 +4,6 @@ import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../models/all.stores.model";
 import styled from "../../styled-components";
 import {
-  _secondary,
   _secondary_bg,
   _primary_bg,
   _tertiary_bg,

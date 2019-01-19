@@ -7,10 +7,10 @@ import { ProjectStore } from "../../stores/project.store";
 import { UiStore } from "../../stores/ui/index";
 import NextButton from "./../shared/NextButton";
 import { Flex } from "../layout/Flex";
-import { InputPrefix } from "../shared/InputPrefix";
+import { InputPrefix } from "../inputs/InputPrefix";
 
 interface Props {
-  uiStore: UiStore;
+  uiStore?: UiStore;
   projectStore?: ProjectStore;
 }
 

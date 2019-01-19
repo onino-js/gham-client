@@ -13,7 +13,7 @@ import {
   SmallBullet,
   InputCol,
   MyInput,
-} from "./../shared/Styled";
+} from ".//StyledInput";
 
 interface Props {
   uiStore?: any;

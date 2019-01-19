@@ -16,7 +16,7 @@ const Container = styled.div`
   background-image: url(${bg});
 `;
 
-const Welcome = styled.h1`
+const Title = styled.h1`
   max-width: 500px;
   padding-bottom: 100px;
   text-align: center;
@@ -45,11 +45,11 @@ const Start = styled.div`
   cursor: pointer;
 `;
 
-class Home extends React.Component<Props> {
+class Welcome extends React.Component<Props> {
   public render() {
     return (
       <Container>
-        <Welcome>Bienvenue dans votre outil de génération de rapport</Welcome>
+        <Title>Bienvenue dans votre outil de génération de rapport</Title>
         <P>
           Cet outil permet de générer de manière rapide et ergonomique des
           fiches clients dans le cadre d'une demande de raccordement au gaz de
@@ -64,4 +64,4 @@ class Home extends React.Component<Props> {
   }
 }
 
-export default Home;
+export default Welcome;

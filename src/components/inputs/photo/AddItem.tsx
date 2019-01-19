@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { CanvasStore } from "../../../stores/canvas.store";
-import { SquareButton } from "../../shared/Styled";
+import { SquareButton } from "../StyledInput";
 
 interface Props {
   uiStore?: UiStore;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Route, RouteComponentProps } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Photo from "./steps/Photo";
 import Signature from "./steps/Signature";
 import WorkoutBefore from "./steps/WorkoutBefore";
@@ -42,36 +42,5 @@ class ReportRoutes extends React.Component<Props> {
     );
   }
 }
-
-// class ReportRoutes extends React.Component<Props> {
-//   public render() {
-//     const match = this.props.match;
-//     return (
-//       <React.Fragment>
-//         <Route path={`${match.url}/`} exact component={ReportRef} />
-//         <Route path={`${match.url}/reference`} exact component={ReportRef} />
-//         <Route path={`${match.url}/contact/`} exact component={Contact} />
-//         <Route path={`${match.url}/coffret/`} exact component={Coffret} />
-//         <Route path={`${match.url}/compteur/`} exact component={Compteur} />
-//         <Route path={`${match.url}/liaison/`} exact component={Linking} />
-//         <Route
-//           path={`${match.url}/observations/`}
-//           exact
-//           component={Observations}
-//         />
-//         <Route path={`${match.url}/export/`} component={ReportExport} />
-//         <Route path={`${match.url}/photo/`} component={Photo} />
-//         <Route
-//           path={`${match.url}/workout-before/`}
-//           component={WorkoutBefore}
-//         />
-//         <Route path={`${match.url}/workout-after/`} component={WorkoutAfter} />
-//         <Route path={`${match.url}/map/`} component={ReportMap} />
-//         <Route path={`${match.url}/signature/`} component={Signature} />
-//         <Route path={`${match.url}/preview/`} component={Preview} />
-//       </React.Fragment>
-//     );
-//   }
-// }
 
 export default ReportRoutes;

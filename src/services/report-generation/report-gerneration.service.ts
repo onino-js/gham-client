@@ -7,7 +7,6 @@ import { reportFeatures } from "./features";
 import { reportSignature } from "./signature";
 export const htmlReport = () => {
   return `
- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 ${reportHead()}
 <body lang="fr-FR" text="#00000a" dir="ltr">

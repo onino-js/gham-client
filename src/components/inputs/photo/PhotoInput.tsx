@@ -1,37 +1,30 @@
 import * as React from "react";
-import { Col, Button } from "antd";
-import styled from "styled-components";
 import { UiStore } from "../../../stores/ui/index";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import EditCanvas from "./EditCanvas";
+import ObjOptions from "./ItemOptions";
+import AddItem from "./AddItem";
 import { CanvasStore } from "../../../stores/canvas.store";
-import EditBg from "./EditBg";
 import { Flex } from "../../layout/Flex";
-import { CanvasBox, SquareButton } from "../../shared/Styled";
+import { CanvasBox } from "../StyledInput";
+import { ContactStore } from "../../../stores/contact.store";
+import AddPhoto from "./AddPhoto";
+import EditBg from "./EditBg";
 
 interface Props {
   uiStore?: UiStore;
   canvasStore?: CanvasStore;
+  canvasType: keyof ContactStore;
+  canvasId: string;
+  addPhoto?: boolean;
+  addItems?: boolean;
+  editItem?: boolean;
+  editPhoto?: boolean;
 }
 interface State {
   fileList?: any;
 }
-
-const ToolBox = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-`;
-
-const BigInputFile = styled.input`
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-`;
 
 @inject((allStores: AllStores) => ({
   canvasStore: allStores.canvasStore,
@@ -40,53 +33,33 @@ const BigInputFile = styled.input`
 class PhotoInput extends React.Component<Props, State> {
   public componentDidMount() {
     this.props.canvasStore!.initialize({
-      canvasId: "canvas",
-      canvasType: "bg",
+      canvasId: this.props.canvasId,
+      canvasType: this.props.canvasType,
     });
   }
 
   public componentWillUnmount() {
-    this.props.canvasStore!.saveObjects("bg");
+    this.props.canvasStore!.saveObjects(this.props.canvasType);
+    this.props.canvasStore!.savePhoto(this.props.canvasType);
     this.props.canvasStore!.unmount();
   }
 
   public render(): React.ReactNode {
-    const canvasStore = this.props.canvasStore!;
     return (
       <Flex dir="c" alignH="center" style={{ height: "100%" }}>
-        <ToolBox>
-          <BigInputFile
-            id="photoUpload"
-            type="file"
-            name="file"
-            onChange={canvasStore.onPhotoUpload}
-          />
-          <SquareButton onClick={canvasStore.uploadRequest} s={70}>
-            <FontAwesomeIcon icon="camera" style={{ fontSize: "2em" }} />
-          </SquareButton>
-          <SquareButton
-            onClick={() => canvasStore.rotateBackground("left")}
-            s={70}
-          >
-            <FontAwesomeIcon icon="undo" style={{ fontSize: "2em" }} />
-          </SquareButton>
-          <SquareButton
-            onClick={() => canvasStore.rotateBackground("right")}
-            s={70}
-          >
-            <FontAwesomeIcon icon="redo" style={{ fontSize: "2em" }} />
-          </SquareButton>
-          <SquareButton onClick={canvasStore.clearSelection} s={70}>
-            <FontAwesomeIcon icon="times" style={{ fontSize: "2em" }} />
-          </SquareButton>
-          <SquareButton onClick={canvasStore.clearCanvas} s={70}>
-            <FontAwesomeIcon icon="sync-alt" style={{ fontSize: "2em" }} />
-          </SquareButton>
-        </ToolBox>
+        {this.props.addItems && (
+          <React.Fragment>
+            <EditCanvas />
+            <AddItem />
+          </React.Fragment>
+        )}
+        {this.props.editItem && <ObjOptions />}
+        {this.props.addPhoto && <AddPhoto />}
+        {this.props.editPhoto && <EditBg />}
+
         <CanvasBox id="canvasBox">
-          <canvas id="canvas" />
+          <canvas id={this.props.canvasId} />
         </CanvasBox>
-        <EditBg />
       </Flex>
     );
   }

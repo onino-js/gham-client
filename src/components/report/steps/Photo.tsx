@@ -1,16 +1,17 @@
 import * as React from "react";
 import PhotoInput from "../../inputs/photo/PhotoInput";
 
-interface Props {
-}
+interface Props {}
 
-interface State {
-  fileList?: any;
-}
-class Photo extends React.Component<Props, State> {
-    public render(): React.ReactNode {
+class Photo extends React.Component<Props> {
+  public render(): React.ReactNode {
     return (
-      <PhotoInput />
+      <PhotoInput
+        canvasType="photo"
+        canvasId="canvas"
+        addPhoto={true}
+        editPhoto={true}
+      />
     );
   }
 }

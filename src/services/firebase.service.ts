@@ -13,9 +13,27 @@ const config = {
 firebase.initializeApp(config);
 const database = firebase.database();
 
-export const saveDocument = (doc: any, callback?: any) => {
-  database.ref(`reports/${doc.reference}`).set(doc, (e: any) => {
-    console.log(e);
-    console.log("returned");
+export const saveReport = (doc: any, callback?: any) => {
+  database.ref(`reports/${doc.reference}/${doc.id}`).set(doc, (e: any) => {
+    if (callback) {
+      callback(e);
+    }
+  });
+};
+
+export const saveProject = (doc: any, callback?: any) => {
+  database
+    .ref(`projects/${doc.reference}/${doc.reportId}`)
+    .set(doc, (e: any) => {
+      if (callback) {
+        callback(e);
+      }
+    });
+};
+
+export const getProjectsList = (callback: any) => {
+  var reports = database.ref("reports/");
+  reports.on("value", function(res: any) {
+    callback(res.val());
   });
 };

@@ -4,13 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { observer, inject } from "mobx-react";
 
 import styled from "../../styled-components";
-import {
-  MyRow,
-  InfoCol,
-  LabelCol,
-  MyInput,
-  SmallBullet,
-} from "./../shared/Styled";
+import { MyRow, InfoCol, LabelCol, MyInput, SmallBullet } from "./StyledInput";
 import { ProjectStore } from "../../stores/project.store";
 import { UiStore } from "../../stores/ui/index";
 import { _primary, _secondary, _success, _error } from "../../css/_colors";

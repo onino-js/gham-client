@@ -1,7 +1,7 @@
 import { message } from "antd";
 import { observable, action, toJS, computed } from "mobx";
 import { navItems } from "../data/nav-items.data";
-import { saveDocument } from "../services/firebase.service";
+import { saveReport } from "../services/firebase.service";
 import projectStore from "./project.store";
 
 interface Ipayload {
@@ -83,9 +83,14 @@ export class ContactStore {
   @observable public obsRemarks: string = "";
 
   // PHOTOS
+  @observable public photo: string = "";
   @observable public photoBeforeWork: string = "";
   @observable public photoAfterWork: string = "";
-
+  @observable public photoObjects: any = {
+    photo: [],
+    photoBeforeWork: [],
+    photoAfterWork: [],
+  };
   // SIGNATURE
   @observable public signature: string = "";
 
@@ -132,8 +137,13 @@ export class ContactStore {
   public saveInDatabase(): void {
     const doc: any = toJS(this);
     doc.reference = projectStore.reference;
-    message.success("operation succedeed");
-    saveDocument(doc);
+    if (doc.reference === "" || doc.reference.length !== 7) {
+      message.error("Référence Grdf invalide");
+      return;
+    } else {
+      doc.id = projectStore.reference + "_" + this.address;
+      saveReport(doc, () => message.success("operation succedeed"));
+    }
   }
 }
 

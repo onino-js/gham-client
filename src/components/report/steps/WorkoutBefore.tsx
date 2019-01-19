@@ -1,14 +1,18 @@
 import * as React from "react";
-import PhotoEdit2 from "../../inputs/photo/PhotoEdit2";
+import PhotoInput from "../../inputs/photo/PhotoInput";
 
 interface Props {}
 
-interface State {
-  fileList?: any;
-}
-class WorkoutBefore extends React.Component<Props, State> {
+class WorkoutBefore extends React.Component<Props> {
   public render(): React.ReactNode {
-    return <PhotoEdit2 />;
+    return (
+      <PhotoInput
+        canvasType="photoBeforeWork"
+        canvasId="canvas"
+        addItems={true}
+        editItem={true}
+      />
+    );
   }
 }
 

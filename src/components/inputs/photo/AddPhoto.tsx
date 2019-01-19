@@ -1,9 +1,9 @@
 import * as React from "react";
 import styled from "styled-components";
 import { UiStore } from "../../../stores/ui/index";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CanvasStore } from "../../../stores/canvas.store";
 import { SquareButton } from "../StyledInput";
 
@@ -11,7 +11,9 @@ interface Props {
   uiStore?: UiStore;
   canvasStore?: CanvasStore;
 }
-interface State {}
+interface State {
+  fileList?: any;
+}
 
 const ToolBox = styled.div`
   display: flex;
@@ -19,28 +21,44 @@ const ToolBox = styled.div`
   flex-wrap: wrap;
 `;
 
+const BigInputFile = styled.input`
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+`;
+
 @inject((allStores: AllStores) => ({
   canvasStore: allStores.canvasStore,
-  uiStore: allStores.uiStore,
 }))
 @observer
-class EditCanvas extends React.Component<Props, State> {
-  private openAddItem = () => {
-    this.props.uiStore!.toggleBool({
-      key: "isCanvasAddItemVisible",
-      value: true,
-    });
-  };
+class AddPhoto extends React.Component<Props, State> {
   public render(): React.ReactNode {
     const canvasStore = this.props.canvasStore!;
-    const uiStore = this.props.uiStore!;
     return (
       <ToolBox>
-        <SquareButton onClick={this.openAddItem} s={70}>
-          <FontAwesomeIcon icon="plus" style={{ fontSize: "2em" }} />
+        <BigInputFile
+          id="photoUpload"
+          type="file"
+          name="file"
+          onChange={canvasStore.onPhotoUpload}
+        />
+        <SquareButton onClick={canvasStore.uploadRequest} s={70}>
+          <FontAwesomeIcon icon="camera" style={{ fontSize: "2em" }} />
         </SquareButton>
-        <SquareButton onClick={canvasStore.handModeOn} s={70}>
-          <FontAwesomeIcon icon="hand-paper" style={{ fontSize: "2em" }} />
+        <SquareButton
+          onClick={() => canvasStore.rotateBackground("left")}
+          s={70}
+        >
+          <FontAwesomeIcon icon="undo" style={{ fontSize: "2em" }} />
+        </SquareButton>
+        <SquareButton
+          onClick={() => canvasStore.rotateBackground("right")}
+          s={70}
+        >
+          <FontAwesomeIcon icon="redo" style={{ fontSize: "2em" }} />
         </SquareButton>
         <SquareButton onClick={canvasStore.clearSelection} s={70}>
           <FontAwesomeIcon icon="times" style={{ fontSize: "2em" }} />
@@ -53,4 +71,4 @@ class EditCanvas extends React.Component<Props, State> {
   }
 }
 
-export default EditCanvas;
+export default AddPhoto;

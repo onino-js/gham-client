@@ -9,10 +9,10 @@ import mapStore from "./stores/map.store";
 import contactStore from "./stores/contact.store";
 import canvasStore from "./stores/canvas.store";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./components/Home";
 import { FullScreen } from "./components/layout/FullScreen";
 import Report from "./components/report/Report";
-
+import userStore from "./stores/user";
+import DashBoard from "./components/dashboard/DashBoard";
 
 interface Props {
   uiStore?: UiStore;
@@ -34,7 +34,7 @@ class AppTemplate extends React.Component<Props> {
           <Route path="/login" component={Login} />
           {/* <Route path="/report" render={() => <Report />} /> */}
           <Route path="/report" component={Report} />
-          <Route exact path="/" component={Home} />
+          <Route path="/dashboard" component={DashBoard} />
         </FullScreen>
       </Router>
     );
@@ -49,6 +49,7 @@ const App = (
     authStore={authStore}
     contactStore={contactStore}
     canvasStore={canvasStore}
+    userStore={userStore}
   >
     <AppTemplate />
   </Provider>

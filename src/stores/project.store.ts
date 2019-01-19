@@ -1,45 +1,47 @@
 import { observable, action, computed } from "mobx";
 
+interface Ipayload {
+  key: keyof ProjectStore;
+  value: any;
+}
+
 export class ProjectStore {
   @observable public title: string = "";
   // @observable public description: string = "";
   @observable public reference: string = "";
   @observable public refPrefix: string = "R31";
-  @observable public address: string = "";
-  @observable public zipCode: number = 0;
-  @observable public city: string = "";
   @observable public reporterName: string = "Benjamin Hameury";
   @observable public reportDate: Date = new Date();
-
-  constructor() {
-    this.title = "";
-    this.reference = "";
-  }
+  @observable public numberOfReports: number = 0;
+  @observable public reportsIds: string[] = [];
 
   @action.bound
-  public setTitle(payload: string): void {
-    this.title = payload;
+  public setProp(payload: Ipayload): void {
+    const key: keyof ProjectStore = payload.key;
+    if (this.hasOwnProperty(key) && key !== "isReferenceValid") {
+      this[key] = payload.value;
+    } else {
+      const err = new Error();
+      err.message = `Property ${key} does not exist on ProjectStore`;
+      throw err;
+    }
   }
+
   @action.bound
   public setReference(payload: string): void {
     this.reference = payload.toUpperCase();
   }
+
   @action.bound
   public setRefPrefix(payload: string): void {
     this.refPrefix = payload;
   }
+
   @action.bound
-  public setZip(newZip: number): void {
-    this.zipCode = newZip;
+  public getNumberOfReports(): number {
+    return this.reportsIds.length;
   }
-  @action.bound
-  public setCity(newCity: string): void {
-    this.city = newCity;
-  }
-  @action.bound
-  public setAddress(newAdress: string): void {
-    this.address = newAdress;
-  }
+
   @computed get isReferenceValid() {
     if (this.reference === "") return false;
     else {

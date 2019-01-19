@@ -2,22 +2,18 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../models/all.stores.model";
 import Footer from "./../layout/Footer";
-import ReportRoutes from "./../report/ReportRoutes";
-import ReportMenu from "./../report/ReportMenu";
 import { RouteComponentProps } from "react-router-dom";
 import styled from "../../styled-components";
 import { _fullScreen } from "../../css/styled-css";
 import { Scrollable } from "../layout/Srollable";
 import { Flex } from "../layout/Flex";
 import { UiStore } from "../../stores/ui/index";
-import ReportHeader from "./ReportHeader";
 import { StepWrapper } from "../layout/StepWrapper";
-import { Button } from "antd";
-import { ContactStore } from "../../stores/contact.store";
+import Header from "./Header";
 
-interface Props extends RouteComponentProps {
+interface Props {
   uiStore?: UiStore;
-  contactStore?: ContactStore;
+  children: [React.ReactNode, React.ReactNode, React.ReactNode];
 }
 
 let Container = styled.div`
@@ -28,27 +24,20 @@ let Container = styled.div`
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
-  contactStore: allStores.contactStore,
 }))
 @observer
-class Report extends React.Component<Props> {
+class AppLayout extends React.Component<Props> {
   public render() {
     return (
       <Container>
-        <ReportHeader />
+        <Header />
         <Flex>
-          <ReportMenu />
+          {this.props.children[0]}
           <Flex dir="c" style={{ height: "100%" }}>
             <Scrollable dir="y" p={20}>
-              <StepWrapper>
-                <ReportRoutes />
-              </StepWrapper>
+              <StepWrapper>{this.props.children[1]}</StepWrapper>
             </Scrollable>
-            <Footer>
-              <Button onClick={this.props.contactStore!.saveInDatabase}>
-                Enregistrer
-              </Button>
-            </Footer>
+            <Footer>{this.props.children[2]}</Footer>
           </Flex>
         </Flex>
       </Container>
@@ -56,4 +45,4 @@ class Report extends React.Component<Props> {
   }
 }
 
-export default Report;
+export default AppLayout;
