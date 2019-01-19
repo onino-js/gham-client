@@ -37,7 +37,7 @@ const BigInputFile = styled.input`
   canvasStore: allStores.canvasStore,
 }))
 @observer
-class Photo extends React.Component<Props, State> {
+class PhotoInput extends React.Component<Props, State> {
   public componentDidMount() {
     this.props.canvasStore!.initialize({
       canvasId: "canvas",
@@ -92,4 +92,4 @@ class Photo extends React.Component<Props, State> {
   }
 }
 
-export default Photo;
+export default PhotoInput;

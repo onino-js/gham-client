@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { ContactStore } from "../../stores/contact.store";
-import { StringInput } from "../shared/StringInput";
-import { InputTitle } from "../shared/Styled";
+import { ContactStore } from "../../../stores/contact.store";
+import { StringInput } from "../../inputs/StringInput";
+import { InputTitle } from "../../shared/Styled";
 
 interface Props {
   uiStore?: any;

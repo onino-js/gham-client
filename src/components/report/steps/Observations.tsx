@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { InputTitle } from "../shared/Styled";
-import { StringInput } from "../shared/StringInput";
+import { InputTitle } from "../../shared/Styled";
+import { StringInput } from "../../inputs/StringInput";
 
 interface Props {}
 

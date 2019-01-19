@@ -24,7 +24,7 @@ interface State {
   canvasStore: allStores.canvasStore,
 }))
 @observer
-class WorkoutBefore extends React.Component<Props, State> {
+class PhotoEdit2 extends React.Component<Props, State> {
   public componentDidMount() {
     this.props.canvasStore!.initialize({
       canvasId: "canvas",
@@ -52,4 +52,4 @@ class WorkoutBefore extends React.Component<Props, State> {
   }
 }
 
-export default WorkoutBefore;
+export default PhotoEdit2;

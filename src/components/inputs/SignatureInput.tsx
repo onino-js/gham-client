@@ -15,6 +15,7 @@ interface Props {
   uiStore?: UiStore;
   contactStore?: ContactStore;
 }
+
 interface State {
   fileList?: any;
   showSignature: boolean;
@@ -37,7 +38,7 @@ const SignatureBox = styled.div`
   contactStore: allStores.contactStore,
 }))
 @observer
-class Signature extends React.Component<Props, State> {
+class SignatureInput extends React.Component<Props, State> {
   public state = {
     fileList: [],
     showSignature: false,
@@ -155,4 +156,4 @@ class Signature extends React.Component<Props, State> {
   }
 }
 
-export default Signature;
+export default SignatureInput;
