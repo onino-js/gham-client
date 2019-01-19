@@ -8,9 +8,11 @@ import projectStore from "./stores/project.store";
 import mapStore from "./stores/map.store";
 import contactStore from "./stores/contact.store";
 import canvasStore from "./stores/canvas.store";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import { FullScreen } from "./components/layout/FullScreen";
+import Report from "./components/report/Report";
+import ReportRoutes from "./components/report/ReportRoutes";
 
 interface Props {
   uiStore?: UiStore;
@@ -26,24 +28,30 @@ interface Props {
 class AppTemplate extends React.Component<Props> {
   public render() {
     return (
-      <FullScreen>{!this.props.isLogged ? <Home /> : <Login />}</FullScreen>
+      // <FullScreen>{!this.props.isLogged ? <Home /> : <Login />}</FullScreen>
+      <Router>
+        <FullScreen>
+          <Route path="/login" component={Login} />
+          {/* <Route path="/report" render={() => <Report />} /> */}
+          <Route path="/report" component={Report} />
+          <Route exact path="/" component={Home} />
+        </FullScreen>
+      </Router>
     );
   }
 }
 
 const App = (
-  <Router>
-    <Provider
-      mapStore={mapStore}
-      uiStore={uiStore}
-      projectStore={projectStore}
-      authStore={authStore}
-      contactStore={contactStore}
-      canvasStore={canvasStore}
-    >
-      <AppTemplate />
-    </Provider>
-  </Router>
+  <Provider
+    mapStore={mapStore}
+    uiStore={uiStore}
+    projectStore={projectStore}
+    authStore={authStore}
+    contactStore={contactStore}
+    canvasStore={canvasStore}
+  >
+    <AppTemplate />
+  </Provider>
 );
 
 export default App;

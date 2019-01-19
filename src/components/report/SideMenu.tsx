@@ -3,13 +3,10 @@ import { Icon, Menu, Drawer } from "antd";
 import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
 import { navItems } from "./../../data/nav-items.data";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router";
 
-interface Props {
+interface Props extends RouteComponentProps {
   uiStore?: any;
-  history: any;
-  match: any;
-  location: any;
 }
 
 const MenuItem = Menu.Item;

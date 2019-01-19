@@ -1,10 +1,6 @@
-// LIBS IMPORTS
 import * as React from "react";
-import { Route } from "react-router-dom";
-import General from "./../project/General";
-import Exports from "./../project/Export";
+import { Route, RouteComponentProps } from "react-router-dom";
 import Photo from "./../inputs/photo/Photo";
-import { MapView } from "./../project/Map";
 import Signature from "./../inputs/Signature";
 import WorkoutBefore from "./../inputs/photo/WorkoutBefore";
 import WorkoutAfter from "./../inputs/photo/WorkoutAfter";
@@ -14,31 +10,68 @@ import { Compteur } from "./../inputs/Compteur";
 import { Linking } from "./../inputs/Linking";
 import { Observations } from "./../inputs/Observations";
 import Preview from "./Preview";
+import { ReportMap } from "./ReportMap";
+import { ReportRef } from "./ReportRef";
+import ReportExport from "./ReportExport";
 
 interface Props {
   uiStore?: any;
+  match?: any;
 }
 
 class ReportRoutes extends React.Component<Props> {
   public render() {
     return (
       <React.Fragment>
-        <Route path="/general/" exact component={General} />
-        <Route path="/contact/" exact component={Contact} />
-        <Route path="/coffret/" exact component={Coffret} />
-        <Route path="/compteur/" exact component={Compteur} />
-        <Route path="/liaison/" exact component={Linking} />
-        <Route path="/observations/" exact component={Observations} />
-        <Route path="/export/" component={Exports} />
-        <Route path="/photo/" component={Photo} />
-        <Route path="/workout-before/" component={WorkoutBefore} />
-        <Route path="/workout-after/" component={WorkoutAfter} />
-        <Route path="/map/" component={MapView} />
-        <Route path="/signature/" component={Signature} />
-        <Route path="/preview/" component={Preview} />
+        <Route path={`/report/general`} exact component={ReportRef} />
+        <Route path={`/report/reference`} exact component={ReportRef} />
+        <Route path={`/report/contact`} exact component={Contact} />
+        <Route path={`/report/coffret`} exact component={Coffret} />
+        <Route path={`/report/compteur`} exact component={Compteur} />
+        <Route path={`/report/liaison`} exact component={Linking} />
+        <Route path={`/report/observations`} exact component={Observations} />
+        <Route path={`/report/export`} component={ReportExport} />
+        <Route path={`/report/photo`} component={Photo} />
+        <Route path={`/report/workout-before`} component={WorkoutBefore} />
+        <Route path={`/report/workout-after`} component={WorkoutAfter} />
+        <Route path={`/report/map`} component={ReportMap} />
+        <Route path={`/report/signature`} component={Signature} />
+        <Route path={`/report/preview`} component={Preview} />
+        <Route path={`/`} exact component={ReportRef} />
       </React.Fragment>
     );
   }
 }
+
+// class ReportRoutes extends React.Component<Props> {
+//   public render() {
+//     const match = this.props.match;
+//     return (
+//       <React.Fragment>
+//         <Route path={`${match.url}/`} exact component={ReportRef} />
+//         <Route path={`${match.url}/reference`} exact component={ReportRef} />
+//         <Route path={`${match.url}/contact/`} exact component={Contact} />
+//         <Route path={`${match.url}/coffret/`} exact component={Coffret} />
+//         <Route path={`${match.url}/compteur/`} exact component={Compteur} />
+//         <Route path={`${match.url}/liaison/`} exact component={Linking} />
+//         <Route
+//           path={`${match.url}/observations/`}
+//           exact
+//           component={Observations}
+//         />
+//         <Route path={`${match.url}/export/`} component={ReportExport} />
+//         <Route path={`${match.url}/photo/`} component={Photo} />
+//         <Route
+//           path={`${match.url}/workout-before/`}
+//           component={WorkoutBefore}
+//         />
+//         <Route path={`${match.url}/workout-after/`} component={WorkoutAfter} />
+//         <Route path={`${match.url}/map/`} component={ReportMap} />
+//         <Route path={`${match.url}/signature/`} component={Signature} />
+//         <Route path={`${match.url}/preview/`} component={Preview} />
+//       </React.Fragment>
+//     );
+//   }
+// }
 
 export default ReportRoutes;

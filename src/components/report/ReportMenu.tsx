@@ -1,13 +1,14 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router";
 import { Bullet } from "../shared/Bullet/Bullet";
 import { _secondary_bg, _primary } from "../../css/_colors";
 import { ContactStore } from "../../stores/contact.store";
 import { UiStore } from "../../stores/ui/index";
+import { Link } from "react-router-dom";
 
-interface Props {
+interface Props extends RouteComponentProps {
   uiStore?: UiStore;
   contactStore?: ContactStore;
   history: any;
@@ -60,14 +61,15 @@ class ReportMenu extends React.Component<Props> {
   };
 
   private selectPage = (page: string, index: number) => {
-    this.props.history.push(page);
+    this.props.history.push(`${this.props.match.url}/${page}`);
   };
 
   public render() {
     return (
       <Container>
         {this.props.uiStore!.steps.map((step, index) => {
-          const active = this.props.location.pathname === `/${step.page}`;
+          const active =
+            this.props.location.pathname === `/report/${step.page}`;
           return (
             <ItemBox
               key={index}

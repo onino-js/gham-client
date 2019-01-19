@@ -16,18 +16,6 @@ export const MyRow = styled(Row as any)`
   height: 40px;
 `;
 
-export const Content = styled(Layout.Content)`
-  /* height: 100%; */
-  padding: 20px;
-  min-width: 340px;
-  display: flex;
-  flex: 1;
-  /* overflow-y: auto; */
-  flex-direction: column;
-  background-color: ${_primary_bg};
-  /* border: 1px solid blue; */
-`;
-
 export const InputTitle: any = styled.span`
   font-size: 1.5em;
   font-weight: 700;

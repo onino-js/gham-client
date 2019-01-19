@@ -3,9 +3,6 @@ import { Layout, Button } from "antd";
 import styled from "../../styled-components";
 import { withRouter } from "react-router";
 import {
-  _secondary,
-  _secondary_bg,
-  _primary_bg,
   _tertiary_bg,
 } from "../../css/_colors";
 

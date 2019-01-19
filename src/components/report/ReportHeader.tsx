@@ -14,7 +14,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { _center } from "../../css/styled-css";
 import { UiStore } from "../../stores/ui/index";
 import { withRouter } from "react-router";
-import { Menu, Dropdown } from "antd";
+import gham from "./../../image/gham-logo2.png";
+import { Flex } from "../layout/Flex";
+import { Link } from "react-router-dom";
 
 interface Props {
   uiStore?: UiStore;
@@ -26,11 +28,12 @@ interface Props {
 const Container = styled.div`
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-items: space-between;
   height: 70px;
   width: 100%;
   background-color: ${_tertiary_bg};
-  padding-right: 70px;
+  padding-right: 20px;
+  padding-left: 20px;
 `;
 
 const HeaderButton: any = styled.div`
@@ -43,6 +46,26 @@ const HeaderButton: any = styled.div`
   font-size: 2em;
   background-color: ${_secondary_bg};
   color: ${(props: any) => (props.active ? _primary : _primary_bg)};
+`;
+
+const LeftBox: any = styled(Flex).attrs({
+  alignV: "center",
+})`
+  cursor: pointer;
+  flex: 0;
+`;
+
+const RightBox: any = styled(Flex).attrs({
+  alignH: "flex-end",
+})`
+  flex: 1;
+`;
+
+const Logo = styled.img.attrs({
+  src: gham,
+})`
+  height: 60px;
+  width: auto;
 `;
 
 @inject((allStores: AllStores) => ({
@@ -62,33 +85,40 @@ class ReportHeader extends React.Component<Props> {
     const path = this.props.location.pathname;
     return (
       <Container>
-        <HeaderButton
-          onClick={() => this.goToPage("/general")}
-          active={path === "/general"}
-        >
-          <FontAwesomeIcon icon="map-marker-alt" />
-        </HeaderButton>
-        <HeaderButton
-          onClick={() => this.goToPage("/map")}
-          active={path === "/map"}
-        >
-          <FontAwesomeIcon icon="map-marker-alt" />
-        </HeaderButton>
-        <HeaderButton>
+        <LeftBox>
+          <Link to="/">
+            <Logo />
+          </Link>
+        </LeftBox>
+        <RightBox>
+          <HeaderButton
+            onClick={() => this.goToPage("/report/general")}
+            active={path === "/report/general"}
+          >
+            REF
+          </HeaderButton>
+          <HeaderButton
+            onClick={() => this.goToPage("/report/map")}
+            active={path === "/report/map"}
+          >
+            <FontAwesomeIcon icon="map-marker-alt" />
+          </HeaderButton>
+          {/* <HeaderButton>
           <FontAwesomeIcon icon="plus" />
-        </HeaderButton>
-        <HeaderButton
-          onClick={() => this.goToPage("/preview")}
-          active={path === "/preview"}
-        >
-          <FontAwesomeIcon icon="search" />
-        </HeaderButton>
-        <HeaderButton
-          onClick={() => this.goToPage("/export")}
-          active={path === "/export"}
-        >
-          <FontAwesomeIcon icon="file-download" />
-        </HeaderButton>
+        </HeaderButton> */}
+          <HeaderButton
+            onClick={() => this.goToPage("/report/preview")}
+            active={path === "/report/preview"}
+          >
+            <FontAwesomeIcon icon="eye" />
+          </HeaderButton>
+          <HeaderButton
+            onClick={() => this.goToPage("/report/export")}
+            active={path === "/report/export"}
+          >
+            <FontAwesomeIcon icon="file-download" />
+          </HeaderButton>
+        </RightBox>
       </Container>
     );
   }

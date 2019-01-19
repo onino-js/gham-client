@@ -47,7 +47,7 @@ const Title = styled.div`
   uiStore: allStores.uiStore,
 }))
 @observer
-class Exports extends React.Component<Props> {
+class ReportExport extends React.Component<Props> {
   private exportWord = () => {
     const htmlString = htmlReport();
     const byteNumbers = new Uint8Array(htmlString.length);
@@ -109,4 +109,4 @@ class Exports extends React.Component<Props> {
   }
 }
 
-export default Exports;
+export default ReportExport;

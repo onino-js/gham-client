@@ -33,7 +33,7 @@ const ErrorMessage = styled.div`
   projectStore: allStores.projectStore,
 }))
 @observer
-export class General extends React.Component<Props> {
+export class ReportRef extends React.Component<Props> {
   public render() {
     const isValid = this.props.projectStore!.isReferenceValid;
     return (
@@ -58,4 +58,4 @@ export class General extends React.Component<Props> {
   }
 }
 
-export default General;
+export default ReportRef;

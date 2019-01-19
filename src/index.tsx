@@ -43,6 +43,7 @@ import {
   faCheck,
   faExclamationTriangle,
   faExclamation,
+  faEye,
 } from "@fortawesome/free-solid-svg-icons";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -83,6 +84,7 @@ library.add(faCaretRight);
 library.add(faCheck);
 library.add(faExclamationTriangle);
 library.add(faExclamation);
+library.add(faEye);
 
 ReactDOM.render(App, document.getElementById("root") as HTMLElement);
 registerServiceWorker();

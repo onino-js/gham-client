@@ -2,10 +2,6 @@ import * as React from "react";
 import { Divider } from "antd";
 import { InputTitle } from "../shared/Styled";
 import { StringInput } from "../shared/StringInput";
-import {
-  MultipleChoiceButton,
-  IchoiceItem,
-} from "../shared/MultipleChoiceButton";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "../../models/all.stores.model";
 import { ContactStore } from "../../stores/contact.store";

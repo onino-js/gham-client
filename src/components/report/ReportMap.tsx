@@ -67,7 +67,7 @@ const ListItem = styled.div`
   projectStore: allStores.projectStore,
 }))
 @observer
-export class MapView extends React.Component<Props, State> {
+export class ReportMap extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.googleMapsClient = createClient({
@@ -115,9 +115,9 @@ export class MapView extends React.Component<Props, State> {
     latitude,
     longitude,
   }: {
-    latitude: number;
-    longitude: number;
-  }) => {
+      latitude: number;
+      longitude: number;
+    }) => {
     this.googleMapsClient.reverseGeocode(
       { latlng: { latitude, longitude } },
       (err, response) => {
@@ -190,4 +190,4 @@ export class MapView extends React.Component<Props, State> {
   }
 }
 
-export default MapView;
+export default ReportMap;
