@@ -1,5 +1,8 @@
-import { observable, action } from "mobx";
+import { message } from "antd";
+import { observable, action, toJS, computed } from "mobx";
 import { navItems } from "../data/nav-items.data";
+import { saveDocument } from "../services/firebase.service";
+import projectStore from "./project.store";
 
 interface Ipayload {
   key: keyof ContactStore;
@@ -123,6 +126,14 @@ export class ContactStore {
     return `${this._genre} ${
       this.co_firstName
     } ${this.co_lastName.toUpperCase()}`;
+  }
+
+  @action.bound
+  public saveInDatabase(): void {
+    const doc: any = toJS(this);
+    doc.reference = projectStore.reference;
+    message.success("operation succedeed");
+    saveDocument(doc);
   }
 }
 

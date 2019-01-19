@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./components/Home";
 import { FullScreen } from "./components/layout/FullScreen";
 import Report from "./components/report/Report";
-import ReportRoutes from "./components/report/ReportRoutes";
+
 
 interface Props {
   uiStore?: UiStore;

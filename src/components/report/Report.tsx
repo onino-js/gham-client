@@ -13,9 +13,12 @@ import { Flex } from "../layout/Flex";
 import { UiStore } from "../../stores/ui/index";
 import ReportHeader from "./ReportHeader";
 import { StepWrapper } from "../layout/StepWrapper";
+import { Button } from "antd";
+import { ContactStore } from "../../stores/contact.store";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
+  contactStore?: ContactStore;
 }
 
 let Container = styled.div`
@@ -26,6 +29,7 @@ let Container = styled.div`
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
+  contactStore: allStores.contactStore,
 }))
 @observer
 class Report extends React.Component<Props> {
@@ -34,7 +38,6 @@ class Report extends React.Component<Props> {
   };
 
   public render() {
-    console.log(this.props);
     return (
       <Container>
         <ReportHeader />
@@ -46,7 +49,11 @@ class Report extends React.Component<Props> {
                 <ReportRoutes />
               </StepWrapper>
             </Scrollable>
-            <Footer />
+            <Footer>
+              <Button onClick={this.props.contactStore!.saveInDatabase}>
+                SYNCHRONISER{" "}
+              </Button>
+            </Footer>
           </Flex>
         </Flex>
       </Container>
