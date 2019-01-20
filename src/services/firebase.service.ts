@@ -21,18 +21,14 @@ export const saveReport = (doc: any, callback?: any) => {
   });
 };
 
-export const saveProject = (doc: any, callback?: any) => {
-  database
-    .ref(`projects/${doc.reference}/${doc.reportId}`)
-    .set(doc, (e: any) => {
-      if (callback) {
-        callback(e);
-      }
-    });
+export const saveProject = (doc: any, callback: any) => {
+  database.ref(`projects/${doc.reference}`).set(doc, (e: any) => {
+    callback(e);
+  });
 };
 
 export const getProjectsList = (callback: any) => {
-  var reports = database.ref("reports/");
+  var reports = database.ref("projects/");
   reports.on("value", function(res: any) {
     callback(res.val());
   });

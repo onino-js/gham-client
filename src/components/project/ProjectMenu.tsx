@@ -7,8 +7,9 @@ import { ContactStore } from "../../stores/contact.store";
 import { UiStore } from "../../stores/ui/index";
 import SideMenu from "../layout/SideMenu";
 import MenuItem from "../shared/MenuItem";
-import pages, { Ipage } from "./pages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import projectPages from "./pages";
+import { Ipage } from "../dashboard/pages";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
@@ -27,20 +28,20 @@ const Title = styled.div`
   contactStore: allStores.contactStore,
 }))
 @observer
-class DashBoardMenu extends React.Component<Props> {
+class ProjectMenu extends React.Component<Props> {
   public state = {
     openKeys: [""],
     activePage: "",
   };
 
   private selectPage = (page: string) => {
-    this.props.history.push(`/dashboard/${page}`);
+    this.props.history.push(`${this.props.match.url}/${page}`);
   };
 
   public render() {
     return (
       <SideMenu>
-        {pages.map((page: Ipage) => (
+        {projectPages.map((page: Ipage) => (
           <MenuItem
             key={page.link}
             page={page.link}
@@ -63,4 +64,4 @@ class DashBoardMenu extends React.Component<Props> {
   }
 }
 
-export default withRouter(DashBoardMenu);
+export default withRouter(ProjectMenu);

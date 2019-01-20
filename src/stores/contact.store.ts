@@ -2,7 +2,6 @@ import { message } from "antd";
 import { observable, action, toJS, computed } from "mobx";
 import { navItems } from "../data/nav-items.data";
 import { saveReport } from "../services/firebase.service";
-import projectStore from "./project.store";
 
 interface Ipayload {
   key: keyof ContactStore;
@@ -10,6 +9,9 @@ interface Ipayload {
 }
 
 export class ContactStore {
+  @observable public reference: string = "";
+  @observable public reportDate: Date = new Date();
+
   @observable public genre: string = "";
   @observable public _genre: string = "";
   @observable public occupation: string = "";
@@ -136,12 +138,11 @@ export class ContactStore {
   @action.bound
   public saveInDatabase(): void {
     const doc: any = toJS(this);
-    doc.reference = projectStore.reference;
     if (doc.reference === "" || doc.reference.length !== 7) {
       message.error("Référence Grdf invalide");
       return;
     } else {
-      doc.id = projectStore.reference + "_" + this.address;
+      doc.id = doc.reference + "_" + doc.address;
       saveReport(doc, () => message.success("operation succedeed"));
     }
   }

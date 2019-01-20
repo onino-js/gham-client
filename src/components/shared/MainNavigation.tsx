@@ -40,10 +40,10 @@ const HeaderButton: any = styled.div`
   height: 70px;
   width: 70px;
   cursor: pointer;
-  border-left: 1px solid ${_primary_bg};
-  border-right: 1px solid ${_primary_bg};
+  /* border-left: 1px solid ${_primary_bg};
+  border-right: 1px solid ${_primary_bg}; */
   font-size: 2em;
-  background-color: ${_secondary_bg};
+  /* background-color: ${_secondary_bg}; */
   color: ${(props: any) => (props.active ? _primary : _primary_bg)};
 `;
 
@@ -71,7 +71,7 @@ const Logo = styled.img.attrs({
   uiStore: allStores.uiStore,
 }))
 @observer
-class ReportHeader extends React.Component<Props> {
+class MainNavigation extends React.Component<Props> {
   public state = {
     collapsed: false,
   };
@@ -82,6 +82,8 @@ class ReportHeader extends React.Component<Props> {
 
   public render() {
     const path = this.props.location.pathname;
+    var myWord = "dashboard";
+    const reg = new RegExp("\\b" + myWord + "\\b");
     return (
       <Container>
         <LeftBox>
@@ -91,31 +93,16 @@ class ReportHeader extends React.Component<Props> {
         </LeftBox>
         <RightBox>
           <HeaderButton
-            onClick={() => this.goToPage("/report/general")}
-            active={path === "/report/general"}
+            onClick={() => this.goToPage("/dashboard")}
+            active={reg.test(path)}
           >
-            REF
+            <FontAwesomeIcon icon="home" />
           </HeaderButton>
           <HeaderButton
-            onClick={() => this.goToPage("/report/map")}
-            active={path === "/report/map"}
+            onClick={() => this.goToPage("/user-account")}
+            active={path === "/user-account"}
           >
-            <FontAwesomeIcon icon="map-marker-alt" />
-          </HeaderButton>
-          {/* <HeaderButton>
-          <FontAwesomeIcon icon="plus" />
-        </HeaderButton> */}
-          <HeaderButton
-            onClick={() => this.goToPage("/report/preview")}
-            active={path === "/report/preview"}
-          >
-            <FontAwesomeIcon icon="eye" />
-          </HeaderButton>
-          <HeaderButton
-            onClick={() => this.goToPage("/report/export")}
-            active={path === "/report/export"}
-          >
-            <FontAwesomeIcon icon="file-download" />
+            <FontAwesomeIcon icon="user" />
           </HeaderButton>
         </RightBox>
       </Container>
@@ -123,4 +110,4 @@ class ReportHeader extends React.Component<Props> {
   }
 }
 
-export default withRouter(ReportHeader);
+export default withRouter(MainNavigation);

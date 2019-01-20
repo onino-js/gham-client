@@ -2,15 +2,13 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import { Col } from "antd";
 
-import { ProjectStore } from "../../stores/project.store";
-import { UiStore } from "../../stores/ui/index";
-import { AllStores } from "../../models/all.stores.model";
-import styled from "../../styled-components";
-import { htmlReport } from "../../services/report-generation/report-gerneration.service";
-import { ContactStore } from "../../stores/contact.store";
+import { UiStore } from "../../../stores/ui/index";
+import { AllStores } from "../../../models/all.stores.model";
+import styled from "../../../styled-components";
+import { htmlReport } from "../../../services/report-generation/report-gerneration.service";
+import { ContactStore } from "../../../stores/contact.store";
 
 interface Props {
-  projectStore?: ProjectStore;
   contactStore: ContactStore;
   uiStore?: UiStore;
 }
@@ -23,12 +21,11 @@ const MyContainer: any = styled(Col as any).attrs({
 `;
 
 @inject((allStores: AllStores) => ({
-  projectStore: allStores.projectStore,
   contactStore: allStores.contactStore,
   uiStore: allStores.uiStore,
 }))
 @observer
-class Preview extends React.Component<Props> {
+class ReportPreview extends React.Component<Props> {
   state = {
     src: "",
   };
@@ -53,4 +50,4 @@ class Preview extends React.Component<Props> {
   }
 }
 
-export default Preview;
+export default ReportPreview;

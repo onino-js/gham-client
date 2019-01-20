@@ -44,6 +44,7 @@ class ReportMenu extends React.Component<Props> {
             >
               {[
                 <Bullet
+                  key="bullet"
                   status={
                     step.status === "done"
                       ? "done"
@@ -52,8 +53,7 @@ class ReportMenu extends React.Component<Props> {
                       : "todo"
                   }
                 />,
-                <TitleBox>{step.title}</TitleBox>,
-                <div />,
+                <TitleBox key="title">{step.title}</TitleBox>,
               ]}
             </MenuItem>
           );

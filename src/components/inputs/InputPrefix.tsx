@@ -5,9 +5,9 @@ import { observer, inject } from "mobx-react";
 
 import styled from "../../styled-components";
 import { MyRow, InfoCol, LabelCol, MyInput, SmallBullet } from "./StyledInput";
-import { ProjectStore } from "../../stores/project.store";
 import { UiStore } from "../../stores/ui/index";
 import { _primary, _secondary, _success, _error } from "../../css/_colors";
+import { ProjectStore } from "../../stores/projects";
 
 interface Props {
   uiStore?: UiStore;
@@ -54,18 +54,18 @@ const SpanChoice: any = styled.div`
 }))
 @observer
 export class InputPrefix extends React.Component<Props> {
-  private setReference = (e: any) => {
-    this.props.projectStore!.setReference(e.currentTarget.value);
+  private setValue = (e: any) => {
+    console.log(e.target.value)
   };
 
-  private selectRefPrefix = (e: any) => {
-    this.props.projectStore!.setRefPrefix(e.key);
+  private setPrefix = (e: any) => {
+   
   };
 
   public render() {
     const isValid = this.props.isValid;
     const menu = (
-      <Menu selectable={true} onSelect={this.selectRefPrefix}>
+      <Menu selectable={true} onSelect={this.setPrefix}>
         {this.props.list.map((item: string) => (
           <Menu.Item key={item}>{item}</Menu.Item>
         ))}
@@ -74,28 +74,30 @@ export class InputPrefix extends React.Component<Props> {
     return (
       <MyRow>
         <LabelCol
-          haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+          // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
         >
           <SmallBullet mandatory={this.props.mandatory} />
           {this.props.label}
         </LabelCol>
-        <MenuCol haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}>
+        <MenuCol 
+        // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+        >
           <Dropdown overlay={menu} placement="bottomLeft">
-            <SpanChoice>{this.props.projectStore!.refPrefix}</SpanChoice>
+            <SpanChoice>R31</SpanChoice>
           </Dropdown>
         </MenuCol>
         <InputCol>
           <MyInput
-            haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
-            value={this.props.projectStore!.reference}
-            onChange={this.setReference}
+            // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+            // value={this.props.projectStore!.reference}
+            onChange={this.setValue}
             placeholder=""
             size="large"
             style={{ width: "100%", letterSpacing: "5px" }}
           />
         </InputCol>
         <InfoCol
-          haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+          // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
           valid={isValid ? 1 : 0}
         >
           {isValid ? (

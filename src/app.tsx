@@ -4,7 +4,6 @@ import Login from "./components/Login";
 import authStore, { AuthStore } from "./stores/auth/index";
 import uiStore, { UiStore } from "./stores/ui/index";
 import { AllStores } from "./models/all.stores.model";
-import projectStore from "./stores/project.store";
 import mapStore from "./stores/map.store";
 import contactStore from "./stores/contact.store";
 import canvasStore from "./stores/canvas.store";
@@ -13,6 +12,10 @@ import { FullScreen } from "./components/layout/FullScreen";
 import Report from "./components/report/Report";
 import userStore from "./stores/user";
 import DashBoard from "./components/dashboard/DashBoard";
+import Welcome from "./components/Welcome";
+import projectStore from "./stores/projects";
+import ProjectHome from "./components/project/ProjectHome";
+import UserAccount from "./components/user-account/UserAccount";
 
 interface Props {
   uiStore?: UiStore;
@@ -35,6 +38,9 @@ class AppTemplate extends React.Component<Props> {
           {/* <Route path="/report" render={() => <Report />} /> */}
           <Route path="/report" component={Report} />
           <Route path="/dashboard" component={DashBoard} />
+          <Route path="/project" component={ProjectHome} />
+          <Route path="/user-account" component={UserAccount} />
+          <Route exact path="/" component={Welcome} />
         </FullScreen>
       </Router>
     );

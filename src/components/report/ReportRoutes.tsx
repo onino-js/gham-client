@@ -9,10 +9,10 @@ import { Coffret } from "./steps/Coffret";
 import { Compteur } from "./steps/Compteur";
 import { Linking } from "./steps/Linking";
 import { Observations } from "./steps/Observations";
-import Preview from "./Preview";
-import { ReportMap } from "./ReportMap";
-import { ReportRef } from "./ReportRef";
-import ReportExport from "./ReportExport";
+import ReportPreview from "./pages/ReportPreview";
+import { ReportMap } from "./pages/ReportMap";
+import { ReportRef } from "./pages/ReportRef";
+import ReportExport from "./pages/ReportExport";
 
 interface Props {
   uiStore?: any;
@@ -36,7 +36,7 @@ class ReportRoutes extends React.Component<Props> {
         <Route path={`/report/workout-after`} component={WorkoutAfter} />
         <Route path={`/report/map`} component={ReportMap} />
         <Route path={`/report/signature`} component={Signature} />
-        <Route path={`/report/preview`} component={Preview} />
+        <Route path={`/report/preview`} component={ReportPreview} />
         <Route path={`/`} exact component={ReportRef} />
       </React.Fragment>
     );

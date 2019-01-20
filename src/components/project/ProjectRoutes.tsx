@@ -1,21 +1,21 @@
 import * as React from "react";
 import { Route } from "react-router-dom";
-import pages from "./pages";
+import projectPages from "./pages";
 
 interface Props {
   uiStore?: any;
   match?: any;
 }
 
-class DashBoardRoutes extends React.Component<Props> {
+class ProjectRoutes extends React.Component<Props> {
   public render() {
     return (
       <React.Fragment>
-        {pages.map((page: any) => (
+        {projectPages.map((page: any) => (
           <Route
             exact
             key={page.link}
-            path={`/dashboard/${page.link}`}
+            path={`/project/${page.link}`}
             component={page.component}
           />
         ))}
@@ -24,4 +24,4 @@ class DashBoardRoutes extends React.Component<Props> {
   }
 }
 
-export default DashBoardRoutes;
+export default ProjectRoutes;

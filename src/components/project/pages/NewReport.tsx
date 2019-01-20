@@ -34,13 +34,13 @@ const ErrorMessage = styled.div`
   projectStore: allStores.projectStore,
 }))
 @observer
-class NewProject extends React.Component<Props> {
+class NewReport extends React.Component<Props> {
   componentDidMount() {}
   private setNewReference = (e: any) => {
     this.props.projectStore!.setNewReference(e.currentTarget.value);
   };
-  private createProject = () => {
-    this.props.projectStore!.create();
+  private createReport = () => {
+    // this.props.projectStore!.create();
   };
   public render() {
     const isReferenceValid = this.props.projectStore!.isReferenceValid;
@@ -61,7 +61,7 @@ class NewProject extends React.Component<Props> {
           <ButtonWrapper isValid={isReferenceValid ? 1 : 0}>
             <Button
               disabled={!isReferenceValid}
-              onClick={this.createProject}
+              onClick={this.createReport}
               size={"large"}
             >
               CREER LE PROJET
@@ -73,4 +73,4 @@ class NewProject extends React.Component<Props> {
   }
 }
 
-export default NewProject;
+export default NewReport;

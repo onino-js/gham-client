@@ -2,10 +2,10 @@ import * as React from "react";
 import { UiStore } from "../../stores/ui";
 import { UserStore } from "../../stores/user";
 import { inject, observer } from "mobx-react";
-import { getProjectsList } from "../../services/firebase.service";
 import AppLayout from "../layout/AppLayout";
-import DashBoardMenu from "./DashBoardMenu";
-import DashBoardRoutes from "./DashBoardRoutes";
+import ProjectRoutes from "./ProjectRoutes";
+import ProjectMenu from "./ProjectMenu";
+import ProjectFooter from "./ProjectFooter";
 
 interface Props {
   uiStore?: UiStore;
@@ -18,21 +18,21 @@ interface Props {
   projectStore: allStores.projectStore,
 }))
 @observer
-class DashBoard extends React.Component<Props> {
+class ProjectHome extends React.Component<Props> {
   componentDidMount() {
-    // getProjectsList(console.log);
+    // getProjectList(console.log);
   }
   public render() {
     return (
       <AppLayout>
         {[
-          <DashBoardMenu key="dashboard" />,
-          <DashBoardRoutes key="dashboard-routes" />,
-          <div key="rien" />,
+          <ProjectMenu key="project" />,
+          <ProjectRoutes key="project-routes" />,
+          <ProjectFooter key="project-footer" />,
         ]}
       </AppLayout>
     );
   }
 }
 
-export default DashBoard;
+export default ProjectHome;

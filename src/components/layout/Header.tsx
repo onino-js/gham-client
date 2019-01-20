@@ -39,6 +39,7 @@ class Header extends React.Component<Props> {
         <ArrowContainer onClick={toggleIsSidebarVisible}>
           <FontAwesomeIcon icon="bars" style={{ fontSize: "3em" }} />
         </ArrowContainer>
+        {this.props.children}
       </Container>
     );
   }

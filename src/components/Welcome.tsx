@@ -56,7 +56,7 @@ class Welcome extends React.Component<Props> {
           ville. Les rapports générés répondent aux spécifications de Grdf pour
           la région ile de France, excepté Paris intra-muros.
         </P>
-        <Link to="/report/general">
+        <Link to="/dashboard/">
           <Start>Créer un nouveau rapport</Start>
         </Link>
       </Container>

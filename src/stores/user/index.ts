@@ -8,7 +8,7 @@ interface Ipayload {
 export class UserStore {
   @observable public projectIds: string[] = [];
   @observable public firstName: string = "";
-  @observable public lastName: string = "";
+  @observable public lastName: string = "Hameury";
   @observable public newProjectId: string = "";
 
   constructor() {}

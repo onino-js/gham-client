@@ -8,9 +8,9 @@ import {
   GeocodingResult,
   GoogleMapsClient,
 } from "@google/maps";
-import GeolocationInput from "./../shared/GeolocationInput";
-import styled from "../../styled-components";
-import { _secondary } from "../../css/_colors";
+import GeolocationInput from "./../../shared/GeolocationInput";
+import styled from "../../../styled-components";
+import { _secondary } from "../../../css/_colors";
 
 interface Props {
   uiStore: any;

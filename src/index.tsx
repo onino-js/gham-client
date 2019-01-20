@@ -44,6 +44,15 @@ import {
   faExclamationTriangle,
   faExclamation,
   faEye,
+  faClipboardList,
+  faListOl,
+  faObjectGroup,
+  faUsers,
+  faHome,
+  faUser,
+  faArrowLeft,
+  faArrowRight,
+  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -85,6 +94,15 @@ library.add(faCheck);
 library.add(faExclamationTriangle);
 library.add(faExclamation);
 library.add(faEye);
+library.add(faClipboardList);
+library.add(faListOl);
+library.add(faObjectGroup);
+library.add(faUsers);
+library.add(faHome);
+library.add(faUser);
+library.add(faArrowLeft);
+library.add(faArrowRight);
+library.add(faEdit);
 
 ReactDOM.render(App, document.getElementById("root") as HTMLElement);
 registerServiceWorker();

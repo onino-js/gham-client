@@ -9,17 +9,22 @@ import { UiStore } from "../../stores/ui/index";
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
   contactStore?: ContactStore;
-  children: [React.ReactNode, React.ReactNode, React.ReactNode];
+  children: [React.ReactNode, React.ReactNode];
   active?: boolean;
   onClick?: (page: string) => void;
   page: string;
+  size?: "large" | "normal" | "small";
 }
 
 const TitleBox = styled.div`
   line-height: 50px;
   flex: 1;
-  padding-left: 5px;
   font-weight: 900;
+`;
+
+const IconBox = styled.div`
+  padding-left: 20px;
+  padding-right: 20px;
 `;
 
 const ItemBox: any = styled.div`
@@ -27,7 +32,14 @@ const ItemBox: any = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 50px;
+  height: ${(props: any) =>
+    props.size === "large"
+      ? "70px"
+      : props.size === "normal"
+      ? "50px"
+      : props.size === "small"
+      ? "30px"
+      : "50px"};
   color: ${(props: any) => (props.active ? _primary : "#FFF")};
   cursor: pointer;
   :hover {
@@ -49,11 +61,14 @@ class MenuItem extends React.Component<Props> {
   };
   public render() {
     return (
-      <ItemBox active={this.props.active} onClick={this.onClick}>
+      <ItemBox
+        active={this.props.active}
+        onClick={this.onClick}
+        size={this.props.size}
+      >
         {[
-          this.props.children[0],
-          <TitleBox>{this.props.children[1]}</TitleBox>,
-          this.props.children[2],
+          <IconBox key="item-icon">{this.props.children[0]}</IconBox>,
+          <TitleBox key="item-title">{this.props.children[1]}</TitleBox>,
         ]}
       </ItemBox>
     );

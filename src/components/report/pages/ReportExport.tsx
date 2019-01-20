@@ -4,16 +4,14 @@ import { inject, observer } from "mobx-react";
 import { Button, Col } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { ProjectStore } from "../../stores/project.store";
-import { UiStore } from "../../stores/ui/index";
-import { AllStores } from "../../models/all.stores.model";
-import styled from "../../styled-components";
-import { htmlReport } from "../../services/report-generation/report-gerneration.service";
-import { ContactStore } from "../../stores/contact.store";
-import { _secondary } from "../../css/_colors";
+import { UiStore } from "../../../stores/ui/index";
+import { AllStores } from "../../../models/all.stores.model";
+import styled from "../../../styled-components";
+import { htmlReport } from "../../../services/report-generation/report-gerneration.service";
+import { ContactStore } from "../../../stores/contact.store";
+import { _secondary } from "../../../css/_colors";
 
 interface Props {
-  projectStore?: ProjectStore;
   contactStore: ContactStore;
   uiStore?: UiStore;
 }
@@ -42,7 +40,6 @@ const Title = styled.div`
 `;
 
 @inject((allStores: AllStores) => ({
-  projectStore: allStores.projectStore,
   contactStore: allStores.contactStore,
   uiStore: allStores.uiStore,
 }))

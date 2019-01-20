@@ -10,6 +10,7 @@ import { Flex } from "../layout/Flex";
 import { UiStore } from "../../stores/ui/index";
 import { StepWrapper } from "../layout/StepWrapper";
 import Header from "./Header";
+import MainNavigation from "../shared/MainNavigation";
 
 interface Props {
   uiStore?: UiStore;
@@ -30,12 +31,14 @@ class AppLayout extends React.Component<Props> {
   public render() {
     return (
       <Container>
-        <Header />
+        <Header>
+          <MainNavigation />
+        </Header>
         <Flex>
           {this.props.children[0]}
           <Flex dir="c" style={{ height: "100%" }}>
             <Scrollable dir="y" p={20}>
-              <StepWrapper>{this.props.children[1]}</StepWrapper>
+              {this.props.children[1]}
             </Scrollable>
             <Footer>{this.props.children[2]}</Footer>
           </Flex>
