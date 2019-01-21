@@ -29,8 +29,9 @@ class Report extends React.Component<Props> {
         {[
           <ReportMenu key="report" />,
           <StepWrapper key="report-routes">
-            <ReportRoutes />{" "}
+            <ReportRoutes />
           </StepWrapper>,
+          <div />,
           <ReportFooter />,
         ]}
       </AppLayout>

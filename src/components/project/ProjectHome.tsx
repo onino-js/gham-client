@@ -28,6 +28,7 @@ class ProjectHome extends React.Component<Props> {
         {[
           <ProjectMenu key="project" />,
           <ProjectRoutes key="project-routes" />,
+          <div />,
           <ProjectFooter key="project-footer" />,
         ]}
       </AppLayout>

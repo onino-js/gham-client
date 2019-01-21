@@ -3,6 +3,7 @@ import { Flex } from "./../../layout/Flex";
 import { UiStore } from "../../../stores/ui";
 import { UserStore } from "../../../stores/user";
 import { inject, observer } from "mobx-react";
+import NotReady from "../../shared/NotReady";
 
 interface Props {
   uiStore?: UiStore;
@@ -14,14 +15,14 @@ interface Props {
   userStore: allStores.userStore,
 }))
 @observer
-class UserContact extends React.Component<Props> {
+class UserSettings extends React.Component<Props> {
   public render() {
     return (
       <Flex dir="c">
-        <h2> Mes contacts </h2>
+        <NotReady />
       </Flex>
     );
   }
 }
 
-export default UserContact;
+export default UserSettings;

@@ -1,9 +1,9 @@
-import NewProject from "./NewProject";
 import UserLists from "./UserLists";
 import ObjectList from "./ObjectLIst";
 import ImageList from "./ImageList";
 import ProjectList from "./ProjectList";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import ContactList from "./ContactList";
 
 export interface Ipage {
   link: string;
@@ -19,12 +19,12 @@ const pages: Ipage[] = [
     title: "Mes projets",
     icon: "clipboard-list",
   },
-  {
-    link: "new-project",
-    component: NewProject,
-    title: "Nouveau projet",
-    icon: "plus",
-  },
+  // {
+  //   link: "new-project",
+  //   component: NewProject,
+  //   title: "Nouveau projet",
+  //   icon: "plus",
+  // },
   {
     link: "user-list",
     component: UserLists,
@@ -45,7 +45,7 @@ const pages: Ipage[] = [
   },
   {
     link: "contact-list",
-    component: ImageList,
+    component: ContactList,
     title: "Mes contacts",
     icon: "users",
   },

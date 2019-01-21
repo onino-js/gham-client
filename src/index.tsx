@@ -53,6 +53,8 @@ import {
   faArrowLeft,
   faArrowRight,
   faEdit,
+  faSignOutAlt,
+  faClone,
 } from "@fortawesome/free-solid-svg-icons";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -103,6 +105,8 @@ library.add(faUser);
 library.add(faArrowLeft);
 library.add(faArrowRight);
 library.add(faEdit);
+library.add(faSignOutAlt);
+library.add(faClone);
 
 ReactDOM.render(App, document.getElementById("root") as HTMLElement);
 registerServiceWorker();

@@ -15,7 +15,7 @@ interface Props {
   userStore: allStores.userStore,
 }))
 @observer
-class UserLists extends React.Component<Props> {
+class UserBills extends React.Component<Props> {
   public render() {
     return (
       <Flex dir="c">
@@ -25,4 +25,4 @@ class UserLists extends React.Component<Props> {
   }
 }
 
-export default UserLists;
+export default UserBills;

@@ -31,7 +31,7 @@ const Container = styled.div`
   height: 70px;
   width: 100%;
   background-color: ${_tertiary_bg};
-  padding-right: 20px;
+  padding-right: 90px;
   padding-left: 20px;
 `;
 
@@ -40,8 +40,8 @@ const HeaderButton: any = styled.div`
   height: 70px;
   width: 70px;
   cursor: pointer;
-  /* border-left: 1px solid ${_primary_bg};
-  border-right: 1px solid ${_primary_bg}; */
+  border-left: 1px solid ${_primary_bg};
+  border-right: 1px solid ${_primary_bg};
   font-size: 2em;
   /* background-color: ${_secondary_bg}; */
   color: ${(props: any) => (props.active ? _primary : _primary_bg)};

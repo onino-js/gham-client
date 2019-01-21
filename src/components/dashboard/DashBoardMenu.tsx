@@ -9,22 +9,18 @@ import SideMenu from "../layout/SideMenu";
 import MenuItem from "../shared/MenuItem";
 import pages, { Ipage } from "./pages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DashBoardStore } from "../../stores/dashboard";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
   contactStore?: ContactStore;
+  dashBoardStore?: DashBoardStore;
 }
-
-const Title = styled.div`
-  line-height: 50px;
-  flex: 1;
-  padding-left: 5px;
-  font-weight: 900;
-`;
 
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
   contactStore: allStores.contactStore,
+  dashBoardStore: allStores.dashBoardStore,
 }))
 @observer
 class DashBoardMenu extends React.Component<Props> {
@@ -34,6 +30,7 @@ class DashBoardMenu extends React.Component<Props> {
   };
 
   private selectPage = (page: string) => {
+    this.props.dashBoardStore!.resetSelection();
     this.props.history.push(`/dashboard/${page}`);
   };
 

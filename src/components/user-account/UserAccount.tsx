@@ -13,6 +13,7 @@ class UserAccount extends React.Component<Props> {
         {[
           <UserAccountMenu key="user-account" />,
           <UserAccountRoutes key="user-account-routes" />,
+          <div />,
           <UserAccountFooter key="user-account-footer" />,
         ]}
       </AppLayout>

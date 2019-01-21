@@ -16,6 +16,7 @@ import Welcome from "./components/Welcome";
 import projectStore from "./stores/projects";
 import ProjectHome from "./components/project/ProjectHome";
 import UserAccount from "./components/user-account/UserAccount";
+import dashBoardStore from "./stores/dashboard";
 
 interface Props {
   uiStore?: UiStore;
@@ -56,6 +57,7 @@ const App = (
     contactStore={contactStore}
     canvasStore={canvasStore}
     userStore={userStore}
+    dashBoardStore={dashBoardStore}
   >
     <AppTemplate />
   </Provider>

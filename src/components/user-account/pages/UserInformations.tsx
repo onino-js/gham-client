@@ -2,6 +2,8 @@ import * as React from "react";
 import { UiStore } from "../../../stores/ui";
 import { UserStore } from "../../../stores/user";
 import { inject, observer } from "mobx-react";
+import { Flex } from "../../layout/Flex";
+import NotReady from "../../shared/NotReady";
 
 interface Props {
   uiStore?: UiStore;
@@ -18,7 +20,11 @@ class UserInformations extends React.Component<Props> {
     // getProjectList(console.log);
   }
   public render() {
-    return <div>hey</div>;
+    return (
+      <Flex dir="c">
+        <NotReady />
+      </Flex>
+    );
   }
 }
 

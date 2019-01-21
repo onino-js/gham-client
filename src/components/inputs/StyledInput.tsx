@@ -90,9 +90,3 @@ export const SmallBullet: any = styled.div`
   margin-right: 20px;
   background-color: ${(props: any) => (props.mandatory ? _error : _primary)};
 `;
-
-export const SquareButton = styled(Button as any)`
-  height: ${(props: any) => props.s}px;
-  width: ${(props: any) => props.s}px;
-  margin: 10px;
-`;

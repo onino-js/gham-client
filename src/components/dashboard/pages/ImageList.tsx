@@ -3,6 +3,7 @@ import { Flex } from "./../../layout/Flex";
 import { UiStore } from "../../../stores/ui";
 import { UserStore } from "../../../stores/user";
 import { inject, observer } from "mobx-react";
+import NotReady from "../../shared/NotReady";
 
 interface Props {
   uiStore?: UiStore;
@@ -18,7 +19,7 @@ class ImageList extends React.Component<Props> {
   public render() {
     return (
       <Flex dir="c">
-        <h2> Mes images </h2>
+        <NotReady />
       </Flex>
     );
   }
