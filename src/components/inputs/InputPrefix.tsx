@@ -7,11 +7,11 @@ import styled from "../../styled-components";
 import { MyRow, InfoCol, LabelCol, MyInput, SmallBullet } from "./StyledInput";
 import { UiStore } from "../../stores/ui/index";
 import { _primary, _secondary, _success, _error } from "../../css/_colors";
-import { ProjectStore } from "../../stores/projects";
+import { DomainStore } from "../../stores/domain";
 
 interface Props {
   uiStore?: UiStore;
-  projectStore?: ProjectStore;
+  domainStore?: DomainStore;
   list: string[];
   isValid?: boolean;
   label: string;
@@ -50,7 +50,7 @@ const SpanChoice: any = styled.div`
 `;
 
 @inject((allStores: any) => ({
-  projectStore: allStores.projectStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 export class InputPrefix extends React.Component<Props> {
@@ -74,13 +74,13 @@ export class InputPrefix extends React.Component<Props> {
     return (
       <MyRow>
         <LabelCol
-          // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+          // haschanged={this.props.domainStore!.reference !== "" ? 1 : 0}
         >
           <SmallBullet mandatory={this.props.mandatory} />
           {this.props.label}
         </LabelCol>
         <MenuCol 
-        // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+        // haschanged={this.props.domainStore!.reference !== "" ? 1 : 0}
         >
           <Dropdown overlay={menu} placement="bottomLeft">
             <SpanChoice>R31</SpanChoice>
@@ -88,8 +88,8 @@ export class InputPrefix extends React.Component<Props> {
         </MenuCol>
         <InputCol>
           <MyInput
-            // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
-            // value={this.props.projectStore!.reference}
+            // haschanged={this.props.domainStore!.reference !== "" ? 1 : 0}
+            // value={this.props.domainStore!.reference}
             onChange={this.setValue}
             placeholder=""
             size="large"
@@ -97,7 +97,7 @@ export class InputPrefix extends React.Component<Props> {
           />
         </InputCol>
         <InfoCol
-          // haschanged={this.props.projectStore!.reference !== "" ? 1 : 0}
+          // haschanged={this.props.domainStore!.reference !== "" ? 1 : 0}
           valid={isValid ? 1 : 0}
         >
           {isValid ? (

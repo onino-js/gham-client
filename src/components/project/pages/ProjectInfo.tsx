@@ -5,7 +5,7 @@ import { UiStore } from "../../../stores/ui/index";
 import { Flex } from "../../layout/Flex";
 import { Input, Row, Col } from "antd";
 import { IprojectJSON } from "../../../models/project.model";
-import { ProjectStore } from "../../../stores/projects";
+import { DomainStore } from "../../../stores/domain";
 import { AllStores } from "../../../models/all.stores.model";
 import styled from "../../../styled-components";
 import { _error, _primary_bg, _secondary_bg } from "../../../css/_colors";
@@ -15,7 +15,7 @@ import grdfImg from "./../../../image/grdf.jpg";
 interface Props {
   uiStore?: UiStore;
   editedProject?: IprojectJSON;
-  projectStore?: ProjectStore;
+  domainStore?: DomainStore;
 }
 
 const ErrorMessage: any = styled.div`
@@ -47,8 +47,8 @@ const Img = styled.img`
 `;
 
 @inject((allStores: AllStores) => ({
-  editedProject: allStores.projectStore.editedProject,
-  projectStore: allStores.projectStore,
+  editedProject: allStores.domainStore.editedProject,
+  domainStore: allStores.domainStore,
   uiStore: allStores.uiStore,
 }))
 @observer
@@ -57,7 +57,7 @@ export class ProjectInfo extends React.Component<Props> {
     this.props.uiStore!.setActivePage("project-general");
   }
   public render() {
-    return this.props.projectStore!.editedProject ? (
+    return this.props.domainStore!.editedProject ? (
       <Flex dir="c" alignH="center">
         <PrimaryTitle>Informations générales</PrimaryTitle>
         <MyRow>

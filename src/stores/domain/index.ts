@@ -4,9 +4,10 @@ import {
   saveProject,
   getProjectsList,
 } from "./../../services/firebase.service";
-import { observable, action, computed } from "mobx";
+import { observable, action, computed, toJS } from "mobx";
 import { IprojectJSON } from "../../models/project.model";
-import projectStore from "../projects";
+import { ReportStore } from "./../report/index";
+import { createReport, getReportList } from "../../services/firebase.service";
 
 export interface Iobject {
   id: string | null;
@@ -14,7 +15,7 @@ export interface Iobject {
 
 type IactivePage = "projects" | "objects" | "texts" | "contacts" | "images";
 
-export class DashBoardStore {
+export class DomainStore {
   // PROJECTS
   @observable public selectedProjectId: string | null = null;
   @observable public showNewProject: boolean = false;
@@ -22,14 +23,15 @@ export class DashBoardStore {
   @observable public activePage: IactivePage | null = null;
   @observable public projects: any = {};
   @observable public newReference: string = "";
-  @observable public loaded: boolean = false;
+  @observable public projectLoaded: boolean = false;
+  @observable public editedProject: IprojectJSON | null = null;
+  @observable public reportsLoaded: boolean = false;
+  @observable public reports: any = null;
+  @observable public selectedReportId: string | null = null;
 
   constructor() {
     this.loadProjects();
   }
-
-  // PROJECTS SETTERS
-  // PROJECTS REQUESTS
 
   @action.bound
   requestAddProject(): void {
@@ -45,7 +47,7 @@ export class DashBoardStore {
   setSelectedProjectId(id: string | null): void {
     this.selectedProjectId = id;
     if (id !== null) {
-      projectStore.setEditedProject(this.projects[id]);
+      this.setEditedProject(this.projects[id]);
     }
   }
 
@@ -113,10 +115,55 @@ export class DashBoardStore {
   public loadProjects() {
     getProjectsList((projects: any) => {
       this.projects = projects;
-      this.loaded = true;
+      this.projectLoaded = true;
     });
+  }
+
+  @action.bound
+  public setEditedProject(project: IprojectJSON): void {
+    this.editedProject = project;
+  }
+
+  @action.bound
+  public setSelectedReportId(reportId: string): void {
+    this.selectedReportId = reportId;
+  }
+
+  @action.bound
+  public createReport(): void {
+    const projectId = this.selectedProjectId;
+    if (projectId !== null) {
+      let newReport = new ReportStore();
+      newReport = toJS(newReport);
+      newReport.reference = this.projects[projectId].reference;
+      newReport.creationDate = new Date().toUTCString();
+      newReport.lastModifDate = new Date().toUTCString();
+      newReport.status = "new";
+      createReport(newReport, projectId, () =>
+        message.success("Nouveau rapport créé"),
+      );
+    } else {
+      message.error("Aucun projet selectionné");
+    }
+  }
+
+  @action.bound
+  public loadRequest() {
+    if (this.selectedProjectId !== null) {
+      this.loadReports();
+    }
+  }
+
+  @action.bound
+  public loadReports() {
+    if (this.selectedProjectId !== null) {
+      getReportList(this.selectedProjectId, (reports: any) => {
+        this.reports = reports;
+        this.reportsLoaded = true;
+      });
+    }
   }
 }
 
-const dashBoardStore = new DashBoardStore();
-export default dashBoardStore;
+const domainStore = new DomainStore();
+export default domainStore;

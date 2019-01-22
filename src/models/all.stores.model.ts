@@ -5,8 +5,7 @@ import { MapStore } from "./../stores/map.store";
 import { AuthStore } from "../stores/auth/index";
 import { UiStore } from "../stores/ui/index";
 import { CanvasStore } from "../stores/canvas.store";
-import { ProjectStore } from "../stores/projects";
-import { DashBoardStore } from "../stores/dashboard";
+import { DomainStore } from "../stores/domain";
 
 export interface AllStores {
   uiStore: UiStore;
@@ -16,6 +15,5 @@ export interface AllStores {
   canvasStore: CanvasStore;
   reportStore: ReportStore;
   userStore: UserStore;
-  projectStore: ProjectStore;
-  dashBoardStore: DashBoardStore;
+  domainStore: DomainStore;
 }

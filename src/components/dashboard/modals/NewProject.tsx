@@ -5,16 +5,14 @@ import { UserStore } from "../../../stores/user";
 import { inject, observer } from "mobx-react";
 import { Input, Button, Modal } from "antd";
 import styled from "styled-components";
-import { ProjectStore } from "../../../stores/projects";
-import { DashBoardStore } from "../../../stores/dashboard";
+import { DomainStore } from "../../../stores/domain";
 import { _primary_bg, _error } from "../../../css/_colors";
 
 interface Props {
   uiStore?: UiStore;
   userStore?: UserStore;
-  projectStore?: ProjectStore;
   showNewProject?: boolean;
-  dashBoardStore?: DashBoardStore;
+  domainStore?: DomainStore;
 }
 
 const ErrorMessage: any = styled.div`
@@ -35,29 +33,28 @@ const RefInput = styled(Input as any)`
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
   userStore: allStores.userStore,
-  projectStore: allStores.projectStore,
-  showNewProject: allStores.dashBoardStore.showNewProject,
-  dashBoardStore: allStores.dashBoardStore,
+  domainStore: allStores.domainStore,
+  showNewProject: allStores.domainStore.showNewProject,
 }))
 @observer
 class NewProject extends React.Component<Props> {
   componentDidMount() {}
   private setNewReference = (e: any) => {
-    this.props.dashBoardStore!.setNewReference(e.currentTarget.value);
+    this.props.domainStore!.setNewReference(e.currentTarget.value);
   };
   private createProject = () => {
-    this.props.dashBoardStore!.createProject();
-    this.props.dashBoardStore!.setSelectedProjectId(null);
+    this.props.domainStore!.createProject();
+    this.props.domainStore!.setSelectedProjectId(null);
     this.handleCancel();
   };
   private handleCancel = () => {
-    this.props.dashBoardStore!.closeNewReference();
-    this.props.dashBoardStore!.setNewReference("");
+    this.props.domainStore!.closeNewReference();
+    this.props.domainStore!.setNewReference("");
   };
   public render() {
-    const isReferenceValid = this.props.dashBoardStore!.isReferenceValid;
+    const isReferenceValid = this.props.domainStore!.isReferenceValid;
     const showMesage =
-      !isReferenceValid && this.props.dashBoardStore!.newReference !== "";
+      !isReferenceValid && this.props.domainStore!.newReference !== "";
     return (
       <Modal
         visible={this.props.showNewProject}
@@ -77,7 +74,7 @@ class NewProject extends React.Component<Props> {
           <Flex dir="c">
             <h2>Entrez la référence du projet</h2>
             <RefInput
-              value={this.props.dashBoardStore!.newReference}
+              value={this.props.domainStore!.newReference}
               onChange={this.setNewReference}
             />
             <ErrorMessage show={showMesage}>

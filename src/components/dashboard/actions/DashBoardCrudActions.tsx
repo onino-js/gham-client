@@ -3,15 +3,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../../models/all.stores.model";
 import { ActionButton } from "../../shared/Buttons";
-import { DashBoardStore } from "../../../stores/dashboard";
+import { DomainStore } from "../../../stores/domain";
 import { withRouter, RouteComponentProps } from "react-router";
 
 interface Props extends RouteComponentProps {
-  dashBoardStore?: DashBoardStore;
+  domainStore?: DomainStore;
 }
 
 @inject((allStores: AllStores) => ({
-  dashBoardStore: allStores.dashBoardStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 class DashBoardCrudActions extends React.Component<Props> {
@@ -20,11 +20,11 @@ class DashBoardCrudActions extends React.Component<Props> {
   };
   private cloneProject = () => {};
   public render(): React.ReactNode {
-    const allowAction = this.props.dashBoardStore!.selectedProjectId !== null;
+    const allowAction = this.props.domainStore!.selectedProjectId !== null;
     return (
       <React.Fragment>
         <ActionButton
-          onClick={this.props.dashBoardStore!.requestAddProject}
+          onClick={this.props.domainStore!.requestAddProject}
           s={70}
           enabled={true}
         >
@@ -49,7 +49,7 @@ class DashBoardCrudActions extends React.Component<Props> {
           <FontAwesomeIcon icon="clone" />
         </ActionButton>
         <ActionButton
-          onClick={this.props.dashBoardStore!.requestRemoveProject}
+          onClick={this.props.domainStore!.requestRemoveProject}
           s={70}
           enabled={allowAction}
           disabled={!allowAction}

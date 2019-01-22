@@ -13,16 +13,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { UiStore } from "../../../stores/ui/index";
 import { withRouter, RouteComponentProps } from "react-router";
 import { ActionButton } from "../../shared/Buttons";
-import { ProjectStore } from "../../../stores/projects";
+import { DomainStore } from "../../../stores/domain";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
-  projectStore?: ProjectStore;
+  domainStore?: DomainStore;
 }
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
-  projectStore: allStores.projectStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 class ProjectFooter extends React.Component<Props> {
@@ -30,7 +30,7 @@ class ProjectFooter extends React.Component<Props> {
     this.props.history.push(path);
   };
   private createReport = () => {
-    this.props.projectStore!.createReport();
+    this.props.domainStore!.createReport();
   };
 
   public render() {

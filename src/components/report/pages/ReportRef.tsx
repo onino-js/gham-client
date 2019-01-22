@@ -10,7 +10,7 @@ import { InputPrefix } from "../../inputs/InputPrefix";
 
 interface Props {
   uiStore?: UiStore;
-  // projectStore?: ProjectStore;
+  // domainStore?: DomainStore;
 }
 
 const ButtonWrapper: any = styled.div`
@@ -29,12 +29,12 @@ const ErrorMessage = styled.div`
 `;
 
 @inject((allStores: any) => ({
-  projectStore: allStores.projectStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 export class ReportRef extends React.Component<Props> {
   public render() {
-    // const isValid = this.props.projectStore!.isReferenceValid;
+    // const isValid = this.props.domainStore!.isReferenceValid;
     return (
       <Flex dir="c" alignH="center">
         <PrimaryTitle>Informations générales</PrimaryTitle>
@@ -45,7 +45,7 @@ export class ReportRef extends React.Component<Props> {
           mandatory={true}
         />
         <MyRow>
-          {/* {!isValid && this.props.projectStore!.reference !== "" && (
+          {/* {!isValid && this.props.domainStore!.reference !== "" && (
             <ErrorMessage>Veuillez rentrer un nombre à 7 chiffres</ErrorMessage>
           )} */}
         </MyRow>

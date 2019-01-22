@@ -54,7 +54,7 @@ const col6 = {
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
-  reports: allStores.projectStore.reports,
+  reports: allStores.domainStore.reports,
 }))
 @observer
 class ReportItems extends React.Component<Props> {

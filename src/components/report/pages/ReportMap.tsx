@@ -14,7 +14,7 @@ import { _secondary } from "../../../css/_colors";
 
 interface Props {
   uiStore: any;
-  projectStore: any;
+  domainStore: any;
   form: any;
 }
 
@@ -64,7 +64,7 @@ const ListItem = styled.div`
 `;
 
 @inject((allStores: any) => ({
-  projectStore: allStores.projectStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 export class ReportMap extends React.Component<Props, State> {
@@ -84,7 +84,7 @@ export class ReportMap extends React.Component<Props, State> {
   private googleMapsClient: GoogleMapsClient;
 
   private setAddress = (e: React.FormEvent<HTMLInputElement>) => {
-    this.props.projectStore!.setAddress(e.currentTarget.value);
+    this.props.domainStore!.setAddress(e.currentTarget.value);
   };
 
   private handleAddressChoice = (fa: any) => {
@@ -92,13 +92,13 @@ export class ReportMap extends React.Component<Props, State> {
       ...fa.geometry.location,
       isModalOpen: false,
     });
-    this.props.projectStore!.setAddress(fa.formatted_address);
+    this.props.domainStore!.setAddress(fa.formatted_address);
   };
 
   private geocode = async () => {
     this.googleMapsClient.geocode(
       {
-        address: `${this.props.projectStore.address}`,
+        address: `${this.props.domainStore.address}`,
       },
       (err, response) => {
         if (!err) {
@@ -147,7 +147,7 @@ export class ReportMap extends React.Component<Props, State> {
         <SearchHeader>
           <AddressInput
             id="address-input-text"
-            value={this.props.projectStore.address}
+            value={this.props.domainStore.address}
             onChange={this.setAddress}
             size="large"
           />

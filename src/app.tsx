@@ -13,10 +13,9 @@ import Report from "./components/report/Report";
 import userStore from "./stores/user";
 import DashBoard from "./components/dashboard/DashBoard";
 import Welcome from "./components/Welcome";
-import projectStore from "./stores/projects";
 import ProjectHome from "./components/project/ProjectHome";
 import UserAccount from "./components/user-account/UserAccount";
-import dashBoardStore from "./stores/dashboard";
+import domainStore from "./stores/domain";
 
 interface Props {
   uiStore?: UiStore;
@@ -52,12 +51,11 @@ const App = (
   <Provider
     mapStore={mapStore}
     uiStore={uiStore}
-    projectStore={projectStore}
+    domainStore={domainStore}
     authStore={authStore}
     contactStore={contactStore}
     canvasStore={canvasStore}
     userStore={userStore}
-    dashBoardStore={dashBoardStore}
   >
     <AppTemplate />
   </Provider>

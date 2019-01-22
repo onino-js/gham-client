@@ -4,35 +4,32 @@ import { UiStore } from "../../../stores/ui";
 import { UserStore } from "../../../stores/user";
 import { inject, observer } from "mobx-react";
 import { Button, Modal } from "antd";
-import { ProjectStore } from "../../../stores/projects";
-import { DashBoardStore } from "../../../stores/dashboard";
+import { DomainStore } from "../../../stores/domain";
 
 interface Props {
   uiStore?: UiStore;
   userStore?: UserStore;
-  projectStore?: ProjectStore;
   showRemoveProject?: boolean;
-  dashBoardStore?: DashBoardStore;
+  domainStore?: DomainStore;
 }
 
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
   userStore: allStores.userStore,
-  projectStore: allStores.projectStore,
-  showRemoveProject: allStores.dashBoardStore.showRemoveProject,
-  dashBoardStore: allStores.dashBoardStore,
+  domainStore: allStores.domainStore,
+  showRemoveProject: allStores.domainStore.showRemoveProject,
 }))
 @observer
 class RemoveProject extends React.Component<Props> {
   componentDidMount() {}
   private removeProject = () => {
-    this.props.dashBoardStore!.deleteProject(
-      this.props.dashBoardStore!.selectedProjectId,
+    this.props.domainStore!.deleteProject(
+      this.props.domainStore!.selectedProjectId,
     );
     this.handleCancel();
   };
   private handleCancel = () => {
-    this.props.dashBoardStore!.closeRemoveProject();
+    this.props.domainStore!.closeRemoveProject();
   };
   public render() {
     return (

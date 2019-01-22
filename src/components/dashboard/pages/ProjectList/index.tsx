@@ -5,7 +5,7 @@ import NoProject from "./NoProject";
 import ProjectItems from "./ProjectItems";
 import Loading from "../../../shared/Loading";
 import { AllStores } from "../../../../models/all.stores.model";
-import { DashBoardStore } from "../../../../stores/dashboard";
+import { DomainStore } from "../../../../stores/domain";
 import { isEmpty } from "../../../../services/app.service";
 import { IprojectJSON } from "../../../../models/project.model";
 import { PrimaryTitle } from "../../../shared/Styled";
@@ -14,15 +14,15 @@ import { UiStore } from "../../../../stores/ui";
 interface Props {
   projects?: { [key: string]: IprojectJSON };
   loaded?: boolean;
-  dashBoardStore?: DashBoardStore;
+  domainStore?: DomainStore;
   uiStore?: UiStore;
 }
 
 @inject((allStores: AllStores) => ({
-  projects: allStores.dashBoardStore.projects,
+  projects: allStores.domainStore.projects,
   uiStore: allStores.uiStore,
-  loaded: allStores.dashBoardStore.loaded,
-  dashBoardStore: allStores.dashBoardStore,
+  loaded: allStores.domainStore.projectLoaded,
+  domainStore: allStores.domainStore,
 }))
 @observer
 class ProjectList extends React.Component<Props> {

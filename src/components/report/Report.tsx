@@ -16,7 +16,7 @@ interface Props {
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
   userStore: allStores.userStore,
-  projectStore: allStores.projectStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 class Report extends React.Component<Props> {

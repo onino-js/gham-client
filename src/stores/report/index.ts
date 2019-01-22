@@ -23,30 +23,19 @@ export class ReportStore {
   @observable public _genre: string = "";
   @observable public occupation: string = "";
 
-  @observable public isMan: boolean = true;
-  @observable public isWoman: boolean = false;
   @observable public lastName: string = "";
   @observable public firstName: string = "";
   @observable public address: string = "";
   @observable public city: string = "";
   @observable public phone: string = "";
-  @observable public isOwner: boolean = true;
-  @observable public isRenter: boolean = false;
-  @observable public co_isMan: boolean = true;
-  @observable public co_isWoman: boolean = false;
   @observable public co_lastName: string = "";
   @observable public co_firstName: string = "";
   @observable public co_address: string = "";
   @observable public co_city: string = "";
   @observable public co_phone: string = "";
-  @observable public co_isOwner: boolean = false;
 
   // BRANCHEMENTS
   @observable public linking: string = "";
-
-  @observable public individualPlug: boolean = false;
-  @observable public collectivePlug: boolean = false;
-  @observable public improductivePlug: boolean = false;
   @observable public nbOfYears: string = "";
 
   // COFFRET

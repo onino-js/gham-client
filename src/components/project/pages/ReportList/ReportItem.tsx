@@ -6,12 +6,12 @@ import { formatDate } from "../../../../services/app.service";
 import { TableRow } from "../../../shared/Tables";
 import styled from "styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
-import { ProjectStore } from "../../../../stores/projects";
+import { DomainStore } from "../../../../stores/domain";
 
 interface Props extends RouteComponentProps {
   reportId: any;
   report?: any;
-  projectStore?: ProjectStore;
+  domainStore?: DomainStore;
 }
 
 const col1 = {
@@ -55,23 +55,23 @@ const StatusBox = styled.div`
 `;
 
 @inject((allStores: AllStores, props: Props) => ({
-  report: allStores.projectStore.reports[props.reportId],
+  report: allStores.domainStore.reports[props.reportId],
   userStore: allStores.userStore,
-  projectStore: allStores.projectStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 class ReportItem extends React.Component<Props> {
   private selectObject = () => {
-    this.props.projectStore!.setSelectedReportId(this.props.reportId);
+    this.props.domainStore!.setSelectedReportId(this.props.reportId);
   };
   private goToReport = () => {
-    // this.props.projectStore!.setSelectedReportId(this.props.reportId);
+    // this.props.domainStore!.setSelectedReportId(this.props.reportId);
     this.props.history.push("/report/");
   };
   public render() {
     const report = this.props.report!;
     const active =
-      this.props.projectStore!.selectedReportId! === this.props.reportId;
+      this.props.domainStore!.selectedReportId! === this.props.reportId;
     return (
       <TableRow
         hover={true}

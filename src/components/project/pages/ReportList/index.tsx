@@ -8,27 +8,27 @@ import { AllStores } from "../../../../models/all.stores.model";
 import { isEmpty } from "../../../../services/app.service";
 import { IprojectJSON } from "../../../../models/project.model";
 import { PrimaryTitle } from "../../../shared/Styled";
-import { ProjectStore } from "../../../../stores/projects";
+import { DomainStore } from "../../../../stores/domain";
 import { UiStore } from "../../../../stores/ui";
 
 interface Props {
   reports?: { [key: string]: IprojectJSON };
   loaded?: boolean;
-  projectStore?: ProjectStore;
+  domainStore?: DomainStore;
   uiStore?: UiStore;
 }
 
 @inject((allStores: AllStores) => ({
-  reports: allStores.projectStore.reports,
-  loaded: allStores.projectStore.loaded,
-  projectStore: allStores.projectStore,
+  reports: allStores.domainStore.reports,
+  loaded: allStores.domainStore.reportsLoaded,
+  domainStore: allStores.domainStore,
   uiStore: allStores.uiStore,
 }))
 @observer
 class ReportList extends React.Component<Props> {
   componentWillMount() {
     this.props.uiStore!.setActivePage("report-list");
-    this.props.projectStore!.loadRequest();
+    this.props.domainStore!.loadRequest();
   }
   public render() {
     const loaded: boolean = this.props.loaded!;

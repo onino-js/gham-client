@@ -4,7 +4,7 @@ import { AllStores } from "../../../../models/all.stores.model";
 import { Col } from "antd";
 import { formatDate } from "../../../../services/app.service";
 import { TableRow } from "../../../shared/Tables";
-import { DashBoardStore } from "../../../../stores/dashboard";
+import { DomainStore } from "../../../../stores/domain";
 import { IprojectJSON } from "../../../../models/project.model";
 import styled from "styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
@@ -12,7 +12,7 @@ import { withRouter, RouteComponentProps } from "react-router";
 interface Props extends RouteComponentProps {
   projectId: any;
   project?: IprojectJSON;
-  dashBoardStore?: DashBoardStore;
+  domainStore?: DomainStore;
 }
 
 const col1 = {
@@ -56,23 +56,23 @@ const StatusBox = styled.div`
 `;
 
 @inject((allStores: AllStores, props: Props) => ({
-  project: allStores.dashBoardStore.projects[props.projectId],
+  project: allStores.domainStore.projects[props.projectId],
   userStore: allStores.userStore,
-  dashBoardStore: allStores.dashBoardStore,
+  domainStore: allStores.domainStore,
 }))
 @observer
 class ProjectItem extends React.Component<Props> {
   private selectObject = () => {
-    this.props.dashBoardStore!.setSelectedProjectId(this.props.projectId);
+    this.props.domainStore!.setSelectedProjectId(this.props.projectId);
   };
   private goToProject = () => {
-    this.props.dashBoardStore!.setSelectedProjectId(this.props.projectId);
+    this.props.domainStore!.setSelectedProjectId(this.props.projectId);
     this.props.history.push("/project/project-general");
   };
   public render() {
     const project = this.props.project!;
     const active =
-      this.props.dashBoardStore!.selectedProjectId! === this.props.projectId;
+      this.props.domainStore!.selectedProjectId! === this.props.projectId;
     return (
       <TableRow
         hover={true}
