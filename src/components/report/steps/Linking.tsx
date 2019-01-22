@@ -4,14 +4,14 @@ import { InputTitle } from "../../shared/Styled";
 import { StringInput } from "../../inputs/StringInput";
 import { observer, inject } from "mobx-react";
 import { AllStores } from "../../../models/all.stores.model";
-import { ContactStore } from "../../../stores/contact.store";
+import { ReportStore } from "../../../stores/report";
 
 interface Props {
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
 }
 
 @inject((allStores: AllStores) => ({
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 export class Linking extends React.Component<Props> {
@@ -61,7 +61,7 @@ export class Linking extends React.Component<Props> {
           mandatory={true}
           list={["OUI", "NON"]}
         />
-        {this.props.contactStore!.penetrationConserved === "NON" && (
+        {this.props.reportStore!.penetrationConserved === "NON" && (
           <React.Fragment>
             <StringInput
               keyStore="_penetrationNature"

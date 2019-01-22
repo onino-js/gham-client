@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 import { UiStore } from "../../stores/ui/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ContactStore } from "../../stores/contact.store";
+import { ReportStore } from "../../stores/report";
 import { AllStores } from "../../models/all.stores.model";
 import { _secondary } from "../../css/_colors";
 import { BigButton, PrimaryTitle } from "../shared/Styled";
@@ -13,7 +13,7 @@ import { Flex } from "../layout/Flex";
 
 interface Props {
   uiStore?: UiStore;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
 }
 
 interface State {
@@ -35,7 +35,7 @@ const SignatureBox = styled.div`
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 class SignatureInput extends React.Component<Props, State> {
@@ -49,11 +49,11 @@ class SignatureInput extends React.Component<Props, State> {
 
   public componentDidMount() {
     this.signatureContainer = document.getElementById("signatureBox");
-    if (this.props.contactStore!.signature !== "") {
+    if (this.props.reportStore!.signature !== "") {
       const img = new Image();
       img.style.border = `1px solid ${_secondary}`;
       img.style.borderStyle = "dashed";
-      img.src = this.props.contactStore!.signature;
+      img.src = this.props.reportStore!.signature;
       this.signatureContainer!.appendChild(img);
       this.setState({ canDelete: true });
     }
@@ -71,7 +71,7 @@ class SignatureInput extends React.Component<Props, State> {
     const dataURL = this.canvas.toDataURL("image/png");
     img.src = dataURL;
     this.signatureContainer!.appendChild(img);
-    this.props.contactStore!.setProp({
+    this.props.reportStore!.setProp({
       key: "signature",
       value: dataURL,
     });
@@ -107,7 +107,7 @@ class SignatureInput extends React.Component<Props, State> {
   private deleteSignature = () => {
     this.signatureContainer.removeChild(this.signatureContainer.childNodes[0]);
     this.setState({ canDelete: false });
-    this.props.contactStore!.setProp({
+    this.props.reportStore!.setProp({
       key: "signature",
       value: "",
     });

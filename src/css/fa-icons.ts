@@ -1,8 +1,3 @@
-import "antd/dist/antd.css";
-import * as ReactDOM from "react-dom";
-import App from "./app";
-import "./css/leaflet.css";
-import "./css/index.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {
   faBars,
@@ -58,8 +53,6 @@ import {
   faChartPie,
 } from "@fortawesome/free-solid-svg-icons";
 
-import registerServiceWorker from "./registerServiceWorker";
-
 library.add(faBars);
 library.add(faSyncAlt);
 library.add(faPlus);
@@ -111,6 +104,3 @@ library.add(faClone);
 library.add(faQuestion);
 library.add(faQuestionCircle);
 library.add(faChartPie);
-
-ReactDOM.render(App, document.getElementById("root") as HTMLElement);
-registerServiceWorker();

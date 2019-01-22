@@ -26,11 +26,15 @@ export class ReportStore {
   @observable public lastName: string = "";
   @observable public firstName: string = "";
   @observable public address: string = "";
+  @observable public addressNumber: string = "";
+  @observable public addressZip: string = "";
   @observable public city: string = "";
   @observable public phone: string = "";
   @observable public co_lastName: string = "";
   @observable public co_firstName: string = "";
   @observable public co_address: string = "";
+  @observable public co_addressNumber: string = "";
+  @observable public co_addressZip: string = "";
   @observable public co_city: string = "";
   @observable public co_phone: string = "";
 

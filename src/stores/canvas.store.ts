@@ -1,7 +1,7 @@
 import { observable, action, toJS } from "mobx";
 import { fabric } from "fabric";
 import uiStore from "./ui/index";
-import contactStore, { ContactStore } from "./contact.store";
+import reportStore, { ReportStore } from "./report";
 
 interface Ipayload {
   key: keyof CanvasStore;
@@ -10,7 +10,7 @@ interface Ipayload {
 
 interface Iinitialize {
   canvasId: string;
-  canvasType: keyof ContactStore;
+  canvasType: keyof ReportStore;
 }
 
 export class CanvasStore {
@@ -41,7 +41,7 @@ export class CanvasStore {
       this[key] = payload.value;
     } else {
       const err = new Error();
-      err.message = `Property ${key} does not exist on ContactStore`;
+      err.message = `Property ${key} does not exist on ReportStore`;
       throw err;
     }
   }
@@ -56,7 +56,7 @@ export class CanvasStore {
   public initialize({ canvasId, canvasType }: Iinitialize) {
     this.canvas = new fabric.Canvas(canvasId);
     this.canvasBox = document.getElementById("canvasBox");
-    this.addObjects(contactStore.photoObjects[canvasType]);
+    this.addObjects(reportStore.photoObjects[canvasType]);
     canvasType !== "photo" && this.setBackground();
     this.canvas.on("mouse:dblclick", this.requestOpenItemOptions);
     this.canvas.on("selection:updated", this.setActiveObj);
@@ -81,9 +81,9 @@ export class CanvasStore {
 
   @action.bound
   public setBackground() {
-    if (contactStore.photoObjects.photo.length === 0) return;
+    if (reportStore.photoObjects.photo.length === 0) return;
     fabric.util.enlivenObjects(
-      contactStore.photoObjects.photo,
+      reportStore.photoObjects.photo,
       (objects: any) => {
         const origRenderOnAddRemove = this.canvas.renderOnAddRemove;
         this.canvas.renderOnAddRemove = false;
@@ -113,20 +113,20 @@ export class CanvasStore {
     if (this.canvas.isEmpty()) {
       return;
     } else {
-      contactStore.photoObjects[canvasType] = [];
+      reportStore.photoObjects[canvasType] = [];
       this.canvas.forEachObject((obj: any) => {
         if (obj.excludeFromExport) return;
         const newObj = obj.toJSON();
-        contactStore.photoObjects[canvasType].push(newObj);
+        reportStore.photoObjects[canvasType].push(newObj);
       });
     }
   }
 
   @action.bound
-  public savePhoto(photoType: keyof ContactStore) {
+  public savePhoto(photoType: keyof ReportStore) {
     const dataURL = this.canvas.toDataURL("image/png");
-    contactStore[photoType] = dataURL;
-    contactStore.setProp({
+    reportStore[photoType] = dataURL;
+    reportStore.setProp({
       key: photoType,
       value: dataURL,
     });
@@ -134,7 +134,7 @@ export class CanvasStore {
 
   @action.bound
   public hasBg() {
-    if (contactStore.photoObjects.bg[0] === undefined) {
+    if (reportStore.photoObjects.bg[0] === undefined) {
       return false;
     } else {
       return true;

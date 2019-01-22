@@ -1,5 +1,5 @@
 import { formatDate } from "../app.service";
-import contactStore from "../../stores/contact.store";
+import reportStore from "../../stores/report";
 
 export const reportAffaire = () => {
   return `<tr>
@@ -13,7 +13,7 @@ export const reportAffaire = () => {
 <tr>
 <td colspan="9" rowspan="2" bgcolor="#ffffff" width="530" height="11">
 <p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: large;"><strong>
-  ${contactStore.reference}
+  ${reportStore.reference}
 </strong></span></span></p>
 </td>
 <td bgcolor="#ffffff" width="52">
@@ -21,7 +21,7 @@ export const reportAffaire = () => {
 </td>
 <td colspan="2" bgcolor="#ffffff" width="111">
 <p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">
-  ${formatDate(contactStore.reportDate.toUTCString())}
+  ${formatDate(reportStore.reportDate.toUTCString())}
 </span></span></p>
 </td>
 </tr>

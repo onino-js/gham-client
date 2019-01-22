@@ -38,19 +38,19 @@ class AddItem extends React.Component<Props, State> {
         visible={uiStore.isCanvasAddItemVisible}
       >
         <SquareButton onClick={photo.addSquare} s={70}>
-          <FontAwesomeIcon icon="square" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="square" />
         </SquareButton>
         <SquareButton onClick={photo.addLine} s={70}>
-          <FontAwesomeIcon icon="slash" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="slash" />
         </SquareButton>
         <SquareButton onClick={photo.addCircle} s={70}>
-          <FontAwesomeIcon icon="circle" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="circle" />
         </SquareButton>
         <SquareButton onClick={photo.addText} s={70}>
-          <FontAwesomeIcon icon="font" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="font" />
         </SquareButton>
         <SquareButton onClick={photo.drawingModeOn} s={70}>
-          <FontAwesomeIcon icon="pen" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="pen" />
         </SquareButton>
       </Drawer>
     );

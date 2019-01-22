@@ -1,7 +1,7 @@
 import * as React from "react";
 import { inject, observer } from "mobx-react";
 import { withRouter, RouteComponentProps } from "react-router";
-import { ContactStore } from "../../stores/contact.store";
+import { ReportStore } from "../../stores/report";
 import { UiStore } from "../../stores/ui/index";
 import SideMenu from "../layout/SideMenu";
 import MenuItem from "../shared/MenuItem";
@@ -11,12 +11,12 @@ import { ProjectComponents } from "./ProjectComponents";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
 }
 
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 class ProjectMenu extends React.Component<Props> {

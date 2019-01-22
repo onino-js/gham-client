@@ -1,10 +1,10 @@
 import { createImage } from "./../app.service";
-import contactStore from "../../stores/contact.store";
+import reportStore from "../../stores/report";
 import { resCaseC } from "./styles";
 
 export const reportSignature = () => {
   const opt = {
-    path: contactStore.signature,
+    path: reportStore.signature,
     width: 363,
     height: 154,
   };
@@ -37,7 +37,7 @@ export const reportSignature = () => {
       <p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Terrassement int&eacute;rieur&nbsp;:</span></span></p>
    </td>
    <td valign="top" bgcolor="#ffffff" width="51">
-       ${resCaseC(contactStore.obsTerass)}
+       ${resCaseC(reportStore.obsTerass)}
    </td>
 </tr>
 <tr>
@@ -45,7 +45,7 @@ export const reportSignature = () => {
       <p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Saign&eacute;e sous coffret&nbsp;:</span></span></p>
    </td>
    <td valign="top" bgcolor="#ffffff" width="51">
-      ${resCaseC(contactStore.obsSaignee)}
+      ${resCaseC(reportStore.obsSaignee)}
    </td>
 </tr>
 <tr>
@@ -53,7 +53,7 @@ export const reportSignature = () => {
       <p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Percement de mur&nbsp;:</span></span></p>
    </td>
    <td valign="top" bgcolor="#ffffff" width="51">
-      ${resCaseC(contactStore.obsPerc)}
+      ${resCaseC(reportStore.obsPerc)}
    </td>
 </tr>
 <tr>
@@ -69,7 +69,7 @@ export const reportSignature = () => {
       <p class="western">&nbsp;</p>
    </td>
    <td colspan="4" rowspan="3" valign="top" bgcolor="#ffffff" width="230">
-      ${resCaseC(contactStore.obsRemarks)}
+      ${resCaseC(reportStore.obsRemarks)}
    </td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ export const reportSignature = () => {
    <td colspan="4" valign="top" bgcolor="#ffffff" width="231">
       <p class="western">
          <img src="${
-           contactStore.signature
+           reportStore.signature
          }" width="107" height="45" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
       </p>
    </td>

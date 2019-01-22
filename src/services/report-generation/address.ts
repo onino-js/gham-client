@@ -1,4 +1,4 @@
-import contactStore from "../../stores/contact.store";
+import reportStore from "../../stores/report";
 import { resCase, titleCase, crossCase } from "./styles";
 
 export const reportAddress = () => {
@@ -15,13 +15,13 @@ export const reportAddress = () => {
     ${titleCase("Nom complet :")}
   </td>
   <td colspan="4" width="231">
-    ${resCase(contactStore.getCompletName())}
+    ${resCase(reportStore.getCompletName())}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Nom complet :")}
   </td>
   <td colspan="4" width="230">
-     ${resCase(contactStore.co_getCompletName())}
+     ${resCase(reportStore.co_getCompletName())}
   </td>
 </tr>
 <tr>
@@ -29,13 +29,13 @@ export const reportAddress = () => {
     ${titleCase("Adresse :")}
   </td>
   <td colspan="4" width="231">
-     ${resCase(contactStore.address)}
+     ${resCase(reportStore.address)}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Adresse :")}
   </td>
   <td colspan="4" width="230">
-     ${resCase(contactStore.co_address)}
+     ${resCase(reportStore.co_address)}
   </td>
 </tr>
 <tr>
@@ -43,13 +43,13 @@ export const reportAddress = () => {
     ${titleCase("Ville :")}
    </td>
   <td colspan="4" width="231">
-    ${resCase(contactStore.city)}
+    ${resCase(reportStore.city)}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Ville :")}
    </td>
   <td colspan="4" width="230">
-     ${resCase(contactStore.co_city)}
+     ${resCase(reportStore.co_city)}
   </td>
 </tr>
 <tr>
@@ -57,13 +57,13 @@ export const reportAddress = () => {
     ${titleCase("T&eacute;l&eacute;phone&nbsp;:")}
   </td>
   <td colspan="4" width="231">
-    ${resCase(contactStore.phone)}
+    ${resCase(reportStore.phone)}
   </td>
   <td colspan="2" width="112">
     ${titleCase("T&eacute;l&eacute;phone&nbsp;:")}
    </td>
   <td colspan="4" width="230">
-    ${resCase(contactStore.co_phone)}
+    ${resCase(reportStore.co_phone)}
   </td>
 </tr>
 <tr>
@@ -71,13 +71,13 @@ export const reportAddress = () => {
      ${titleCase("Propri&eacute;taire&nbsp;:")}
   </td>
   <td width="52">
-    ${crossCase(contactStore.occupation === "PROPRIETAIRE" ? "X" : "")}
+    ${crossCase(reportStore.occupation === "PROPRIETAIRE" ? "X" : "")}
   </td>
   <td colspan="2" width="112" height="11">
      ${titleCase("Locataire&nbsp;:")}
   </td>
   <td width="52" height="11">
-     ${crossCase(contactStore.occupation === "LOCATAIRE" ? "X" : "")}
+     ${crossCase(reportStore.occupation === "LOCATAIRE" ? "X" : "")}
   </td>
   <td colspan="6" width="112" height="11">
     <p style="font-size: xx-small;"></p>

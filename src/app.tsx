@@ -5,7 +5,7 @@ import authStore, { AuthStore } from "./stores/auth/index";
 import uiStore, { UiStore } from "./stores/ui/index";
 import { AllStores } from "./models/all.stores.model";
 import mapStore from "./stores/map.store";
-import contactStore from "./stores/contact.store";
+import reportStore from "./stores/report";
 import canvasStore from "./stores/canvas.store";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { FullScreen } from "./components/layout/FullScreen";
@@ -35,7 +35,6 @@ class AppTemplate extends React.Component<Props> {
       <Router>
         <FullScreen>
           <Route path="/login" component={Login} />
-          {/* <Route path="/report" render={() => <Report />} /> */}
           <Route path="/report" component={Report} />
           <Route path="/dashboard" component={DashBoard} />
           <Route path="/project" component={ProjectHome} />
@@ -53,7 +52,7 @@ const App = (
     uiStore={uiStore}
     domainStore={domainStore}
     authStore={authStore}
-    contactStore={contactStore}
+    reportStore={reportStore}
     canvasStore={canvasStore}
     userStore={userStore}
   >

@@ -44,21 +44,21 @@ class EditBg extends React.Component<Props, State> {
         visible={uiStore.isEditBgVisible}
       >
         <SquareButton onClick={canvasStore.adjust} s={70}>
-          <FontAwesomeIcon icon="expand" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="expand" />
         </SquareButton>
         <SquareButton onClick={canvasStore.center} s={70}>
-          <FontAwesomeIcon icon="compress" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="compress" />
         </SquareButton>
         <SquareButton onClick={this.scaleUp} s={70}>
           <FontAwesomeIcon
             icon="expand-arrows-alt"
-            style={{ fontSize: "2em" }}
+          
           />
         </SquareButton>
         <SquareButton onClick={this.scaleDown} s={70}>
           <FontAwesomeIcon
             icon="compress-arrows-alt"
-            style={{ fontSize: "2em" }}
+          
           />
         </SquareButton>
       </Drawer>

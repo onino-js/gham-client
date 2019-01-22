@@ -3,12 +3,12 @@ import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
 import { _primary } from "../../css/_colors";
-import { ContactStore } from "../../stores/contact.store";
+import { ReportStore } from "../../stores/report";
 import { UiStore } from "../../stores/ui/index";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
   children: [React.ReactNode, React.ReactNode];
   active?: boolean;
   onClick?: (page: string) => void;
@@ -52,7 +52,7 @@ const ItemBox: any = styled.div`
 
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 class MenuItem extends React.Component<Props> {

@@ -8,14 +8,14 @@ import AddItem from "./AddItem";
 import { CanvasStore } from "../../../stores/canvas.store";
 import { Flex } from "../../layout/Flex";
 import { CanvasBox } from "../StyledInput";
-import { ContactStore } from "../../../stores/contact.store";
+import { ReportStore } from "../../../stores/report";
 import AddPhoto from "./AddPhoto";
 import EditBg from "./EditBg";
 
 interface Props {
   uiStore?: UiStore;
   canvasStore?: CanvasStore;
-  canvasType: keyof ContactStore;
+  canvasType: keyof ReportStore;
   canvasId: string;
   addPhoto?: boolean;
   addItems?: boolean;

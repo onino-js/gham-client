@@ -3,7 +3,7 @@ import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
 import { _secondary_bg, _primary } from "../../css/_colors";
-import { ContactStore } from "../../stores/contact.store";
+import { ReportStore } from "../../stores/report";
 import { UiStore } from "../../stores/ui/index";
 import SideMenu from "../layout/SideMenu";
 import MenuItem from "../shared/MenuItem";
@@ -14,13 +14,13 @@ import DashBoardComponents from "./DashBoardComponents";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
   domainStore?: DomainStore;
 }
 
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
   domainStore: allStores.domainStore,
 }))
 @observer

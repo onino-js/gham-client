@@ -4,11 +4,11 @@ import { navItems } from "../data/nav-items.data";
 import { saveReport } from "../services/firebase.service";
 
 interface Ipayload {
-  key: keyof ContactStore;
+  key: keyof ReportStore;
   value: any;
 }
 
-export class ContactStore {
+export class ReportStore {
   @observable public reference: string = "";
   @observable public reportDate: Date = new Date();
 
@@ -115,12 +115,12 @@ export class ContactStore {
 
   @action.bound
   public setProp(payload: Ipayload): void {
-    const key: keyof ContactStore = payload.key;
+    const key: keyof ReportStore = payload.key;
     if (this.hasOwnProperty(key)) {
       this[key] = payload.value;
     } else {
       const err = new Error();
-      err.message = `Property ${key} does not exist on ContactStore`;
+      err.message = `Property ${key} does not exist on ReportStore`;
       throw err;
     }
   }
@@ -148,5 +148,5 @@ export class ContactStore {
   }
 }
 
-const contactStore = new ContactStore();
-export default contactStore;
+const reportStore = new ReportStore();
+export default reportStore;

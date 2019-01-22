@@ -37,16 +37,16 @@ class EditCanvas extends React.Component<Props, State> {
     return (
       <ToolBox>
         <SquareButton onClick={this.openAddItem} s={70}>
-          <FontAwesomeIcon icon="plus" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="plus" />
         </SquareButton>
         <SquareButton onClick={canvasStore.handModeOn} s={70}>
-          <FontAwesomeIcon icon="hand-paper" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="hand-paper" />
         </SquareButton>
         <SquareButton onClick={canvasStore.clearSelection} s={70}>
-          <FontAwesomeIcon icon="times" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="times" />
         </SquareButton>
         <SquareButton onClick={canvasStore.clearCanvas} s={70}>
-          <FontAwesomeIcon icon="sync-alt" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="sync-alt" />
         </SquareButton>
       </ToolBox>
     );

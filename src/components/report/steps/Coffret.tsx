@@ -4,10 +4,10 @@ import { InputTitle } from "../../shared/Styled";
 import { StringInput } from "../../inputs/StringInput";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "../../../models/all.stores.model";
-import { ContactStore } from "../../../stores/contact.store";
+import { ReportStore } from "../../../stores/report";
 
 interface Props {
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
 }
 
 const list: string[] = ["S/CARTER", "ROB. FAC.", "COFFRET"];
@@ -23,7 +23,7 @@ const list2: string[] = [
 const list4 = ["SUPPRIMER", "REEQUIPER", "POSER"];
 
 @inject((allStores: AllStores) => ({
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 export class Coffret extends React.Component<Props> {
@@ -39,7 +39,7 @@ export class Coffret extends React.Component<Props> {
           label="Type"
           mandatory={true}
         />
-        {this.props.contactStore!.boitierType === "COFFRET" && (
+        {this.props.reportStore!.boitierType === "COFFRET" && (
           <React.Fragment>
             <StringInput keyStore="coffretType" label="type" mandatory={true} />
             <StringInput
@@ -65,7 +65,7 @@ export class Coffret extends React.Component<Props> {
           label="Action"
           mandatory={true}
         />
-        {this.props.contactStore!.action === "POSER" && (
+        {this.props.reportStore!.action === "POSER" && (
           <React.Fragment>
             <StringInput
               keyStore="_coffretType"

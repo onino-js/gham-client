@@ -6,10 +6,10 @@ import { UiStore } from "../../../stores/ui/index";
 import { AllStores } from "../../../models/all.stores.model";
 import styled from "../../../styled-components";
 import { htmlReport } from "../../../services/report-generation/report-gerneration.service";
-import { ContactStore } from "../../../stores/contact.store";
+import { ReportStore } from "../../../stores/report";
 
 interface Props {
-  contactStore: ContactStore;
+  reportStore: ReportStore;
   uiStore?: UiStore;
 }
 
@@ -21,7 +21,7 @@ const MyContainer: any = styled(Col as any).attrs({
 `;
 
 @inject((allStores: AllStores) => ({
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
   uiStore: allStores.uiStore,
 }))
 @observer

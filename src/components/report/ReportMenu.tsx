@@ -3,14 +3,14 @@ import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
 import { Bullet } from "../shared/Bullet/Bullet";
-import { ContactStore } from "../../stores/contact.store";
+import { ReportStore } from "../../stores/report";
 import { UiStore } from "../../stores/ui/index";
 import SideMenu from "../layout/SideMenu";
 import MenuItem from "../shared/MenuItem";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
 }
 
 const TitleBox = styled.div`
@@ -22,7 +22,7 @@ const TitleBox = styled.div`
 
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 class ReportMenu extends React.Component<Props> {

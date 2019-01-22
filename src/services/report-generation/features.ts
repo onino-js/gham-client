@@ -1,4 +1,4 @@
-import contactStore from "../../stores/contact.store";
+import reportStore from "../../stores/report";
 import {
   bigTitle,
   titleCase,
@@ -30,13 +30,13 @@ export const reportFeatures = () => {
   ${titleCase("Individuel:")}
   </td>
   <td colspan="2" width="112">
-      ${crossCase(contactStore.linking === "INDIVIDUEL" ? "X" : "")}
+      ${crossCase(reportStore.linking === "INDIVIDUEL" ? "X" : "")}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Collectif:")}
   </td>
   <td colspan="2" width="112">
-    ${crossCase(contactStore.linking === "COLLECTIF" ? "X" : "")}
+    ${crossCase(reportStore.linking === "COLLECTIF" ? "X" : "")}
   </td>
   <td width="52">
     ${titleCaseC("Marque")}
@@ -56,25 +56,25 @@ export const reportFeatures = () => {
     ${titleCase("Improductif:")}
   </td>
   <td colspan="2" width="112">
-    ${crossCase(contactStore.linking === "IMPRODUCTIF" ? "X" : "")}
+    ${crossCase(reportStore.linking === "IMPRODUCTIF" ? "X" : "")}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Nombre d&rsquo;ann&eacute;e:")}
   </td>
   <td colspan="2" width="112">
-    ${resCase(contactStore.nbOfYears.toString())}
+    ${resCase(reportStore.nbOfYears.toString())}
   </td>
   <td width="52">
-     ${resCase(contactStore.compteurBrand)}
+     ${resCase(reportStore.compteurBrand)}
   </td>
   <td width="52">
-    ${resCase(contactStore.compteurType)}  
+    ${resCase(reportStore.compteurType)}  
   </td>
   <td width="52">
-    ${resCase(contactStore.arrivalNature)}  
+    ${resCase(reportStore.arrivalNature)}  
   </td>
   <td width="51">
-    ${resCase(contactStore.arrivalDiameter.toString())}  
+    ${resCase(reportStore.arrivalDiameter.toString())}  
   </td>
 </tr>
 <tr>
@@ -85,7 +85,7 @@ export const reportFeatures = () => {
     ${titleCaseC("D&eacute;bit:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.compteurFlow.toString())}  
+    ${resCaseC(reportStore.compteurFlow.toString())}  
   </td>
   <td colspan="2" bgcolor="#ffff99" width="111">
     <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>P&eacute;n&eacute;tration</strong></span></span></span></p>
@@ -102,7 +102,7 @@ export const reportFeatures = () => {
     ${titleCase("Conserv&eacute;:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.compteurConserv)}
+    ${resCaseC(reportStore.compteurConserv)}
   </td>
   <td width="52">
     ${titleCaseC("Nature")}
@@ -116,15 +116,15 @@ export const reportFeatures = () => {
     ${titleCase("S/Carter")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.boitierType === "S/CARTER" ? "X" : "")}
+    ${resCaseC(reportStore.boitierType === "S/CARTER" ? "X" : "")}
   </td>
   <td width="52">
     ${titleCase("Enterr&eacute;")}
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.boitierType === "COFFRET" &&
-        contactStore.fixation === "ENTERRE"
+      reportStore.boitierType === "COFFRET" &&
+        reportStore.fixation === "ENTERRE"
         ? "X"
         : "",
     )}
@@ -133,14 +133,14 @@ export const reportFeatures = () => {
     ${titleCase("Suppr?")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.action === "SUPPRIMER" ? "X" : "")}
+    ${resCaseC(reportStore.action === "SUPPRIMER" ? "X" : "")}
   </td>
   <td width="52">
     ${titleCase("Enterr&eacute;")}
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.action === "POSER" && contactStore._fixation === "ENTERRE"
+      reportStore.action === "POSER" && reportStore._fixation === "ENTERRE"
         ? "X"
         : "",
     )}
@@ -149,13 +149,13 @@ export const reportFeatures = () => {
     ${titleCase("Ann&eacute;e:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.compteurYear.toString())}  
+    ${resCaseC(reportStore.compteurYear.toString())}  
   </td>
   <td width="52">
-    ${resCaseC(contactStore.penetrationNature)}  
+    ${resCaseC(reportStore.penetrationNature)}  
   </td>
   <td width="51">
-    ${resCaseC(contactStore.penetrationDiameter.toString())}  
+    ${resCaseC(reportStore.penetrationDiameter.toString())}  
   </td>
 </tr>
 <tr>
@@ -163,15 +163,15 @@ export const reportFeatures = () => {
     ${titleCase("Rob. Fa&ccedil;")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.boitierType === "ROB. FAC." ? "X" : "")}  
+    ${resCaseC(reportStore.boitierType === "ROB. FAC." ? "X" : "")}  
   </td>
   <td width="52">
     ${titleCase("Encastr&eacute;")}
   </td>
   <td width="52">
      ${resCaseC(
-       contactStore.boitierType === "COFFRET" &&
-         contactStore.fixation === "ENCASTRE"
+       reportStore.boitierType === "COFFRET" &&
+         reportStore.fixation === "ENCASTRE"
          ? "X"
          : "",
      )}  
@@ -180,14 +180,14 @@ export const reportFeatures = () => {
      ${titleCase("Reequip?")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.action === "REEQUIPER" ? "X" : "")} 
+    ${resCaseC(reportStore.action === "REEQUIPER" ? "X" : "")} 
   </td>
   <td width="52">
     ${titleCase("Encastr&eacute;")}
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.action === "POSER" && contactStore._fixation === "ENCASTRE"
+      reportStore.action === "POSER" && reportStore._fixation === "ENCASTRE"
         ? "X"
         : "",
     )} 
@@ -196,7 +196,7 @@ export const reportFeatures = () => {
     ${titleCase("N&deg;:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.compteurNumber)}
+    ${resCaseC(reportStore.compteurNumber)}
   </td>
   <td colspan="2" width="111">
     ${titleCase("Conserv&eacute;e:")}
@@ -207,15 +207,15 @@ export const reportFeatures = () => {
     ${titleCase("Coffret")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.boitierType === "COFFRET" ? "X" : "")}
+    ${resCaseC(reportStore.boitierType === "COFFRET" ? "X" : "")}
   </td>
   <td width="52">
     ${titleCase("Grillage")}
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.boitierType === "COFFRET" &&
-        contactStore.fixation === "GRILLAGE"
+      reportStore.boitierType === "COFFRET" &&
+        reportStore.fixation === "GRILLAGE"
         ? "X"
         : "",
     )}
@@ -224,14 +224,14 @@ export const reportFeatures = () => {
     ${titleCase("Pose")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.action === "POSER" ? "X" : "")}
+    ${resCaseC(reportStore.action === "POSER" ? "X" : "")}
   </td>
   <td width="52">
     ${titleCase("Grillage")}
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.action === "POSER" && contactStore._fixation === "GRILLAGE"
+      reportStore.action === "POSER" && reportStore._fixation === "GRILLAGE"
         ? "X"
         : "",
     )}
@@ -240,7 +240,7 @@ export const reportFeatures = () => {
     <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>D&eacute;tente</strong></span></span></span></p>
   </td>
   <td colspan="2" width="111">
-    ${resCaseC(contactStore.penetrationConserved === "OUI" ? "X" : "")}
+    ${resCaseC(reportStore.penetrationConserved === "OUI" ? "X" : "")}
   </td>
 </tr>
 <tr>
@@ -252,8 +252,8 @@ export const reportFeatures = () => {
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.boitierType === "COFFRET" &&
-        contactStore.fixation === "SUR SOCLE"
+      reportStore.boitierType === "COFFRET" &&
+        reportStore.fixation === "SUR SOCLE"
         ? "X"
         : "",
     )}
@@ -266,7 +266,7 @@ export const reportFeatures = () => {
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.action === "POSER" && contactStore._fixation === "SUR SOCLE"
+      reportStore.action === "POSER" && reportStore._fixation === "SUR SOCLE"
         ? "X"
         : "",
     )}
@@ -275,7 +275,7 @@ export const reportFeatures = () => {
     ${titleCase("Type")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.detenteType)}
+    ${resCaseC(reportStore.detenteType)}
   </td>
   <td colspan="2" bgcolor="#dddddd" width="111">
     <p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Projet&eacute;e</span></span></p>
@@ -284,7 +284,7 @@ export const reportFeatures = () => {
 <tr>
   <td colspan="2" rowspan="2" width="111" height="11">
      ${resCaseC(
-       contactStore.boitierType === "COFFRET" ? contactStore.coffretType : "",
+       reportStore.boitierType === "COFFRET" ? reportStore.coffretType : "",
      )}
   </td>
   <td width="52">
@@ -292,15 +292,15 @@ export const reportFeatures = () => {
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.boitierType === "COFFRET" &&
-        contactStore.fixation === "EN SAILLIE"
+      reportStore.boitierType === "COFFRET" &&
+        reportStore.fixation === "EN SAILLIE"
         ? "X"
         : "",
     )}
   </td>
   <td colspan="2" rowspan="2" width="112">
      ${resCaseC(
-       contactStore.action === "POSER" ? contactStore._coffretType : "",
+       reportStore.action === "POSER" ? reportStore._coffretType : "",
      )}
   </td>
   <td width="52">
@@ -308,7 +308,7 @@ export const reportFeatures = () => {
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.action === "POSER" && contactStore._fixation === "EN SAILLIE"
+      reportStore.action === "POSER" && reportStore._fixation === "EN SAILLIE"
         ? "X"
         : "",
     )}
@@ -317,7 +317,7 @@ export const reportFeatures = () => {
     ${titleCase("Existante:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.detentePose === "EXISTANTE" ? "X" : "")}
+    ${resCaseC(reportStore.detentePose === "EXISTANTE" ? "X" : "")}
   </td>
   <td bgcolor="#dddddd" width="52">
     <p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Nature</span></span></p>
@@ -332,8 +332,8 @@ export const reportFeatures = () => {
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.boitierType === "COFFRET" &&
-        contactStore.fixation === "HORS LIMITE"
+      reportStore.boitierType === "COFFRET" &&
+        reportStore.fixation === "HORS LIMITE"
         ? "X"
         : "",
     )}
@@ -343,8 +343,8 @@ export const reportFeatures = () => {
   </td>
   <td width="52">
     ${resCaseC(
-      contactStore.action === "POSER" &&
-        contactStore._fixation === "HORS LIMITE"
+      reportStore.action === "POSER" &&
+        reportStore._fixation === "HORS LIMITE"
         ? "X"
         : "",
     )}
@@ -353,13 +353,13 @@ export const reportFeatures = () => {
     ${titleCase("&Agrave; poser;")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.detentePose === "A POSER" ? "X" : "")}
+    ${resCaseC(reportStore.detentePose === "A POSER" ? "X" : "")}
   </td>
   <td bgcolor="#dddddd" width="52">
-    ${resCaseC(contactStore._penetrationNature)}
+    ${resCaseC(reportStore._penetrationNature)}
   </td>
   <td bgcolor="#dddddd" width="51">
-    ${resCaseC(contactStore._penetrationDiameter.toString())}
+    ${resCaseC(reportStore._penetrationDiameter.toString())}
   </td>
 </tr>
 <tr>
@@ -367,13 +367,13 @@ export const reportFeatures = () => {
     ${titleCase("Pose de d&eacute;tente BP:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore.poseBp)}
+    ${resCaseC(reportStore.poseBp)}
   </td>
   <td colspan="3" width="172">
     ${titleCase("Pose de d&eacute;tente BP:")}
   </td>
   <td width="52">
-    ${resCaseC(contactStore._poseBp)}
+    ${resCaseC(reportStore._poseBp)}
   </td>
   <td width="52">
     ${resCaseC("")}
@@ -385,7 +385,7 @@ export const reportFeatures = () => {
     ${titleCase("Longueur:")}
   </td>
   <td bgcolor="#dddddd" width="51">
-    ${resCaseC(contactStore._penetrationLength.toString())}
+    ${resCaseC(reportStore._penetrationLength.toString())}
   </td>
 </tr>`;
 };

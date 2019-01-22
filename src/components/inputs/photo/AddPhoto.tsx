@@ -46,25 +46,25 @@ class AddPhoto extends React.Component<Props, State> {
           onChange={canvasStore.onPhotoUpload}
         />
         <SquareButton onClick={canvasStore.uploadRequest} s={70}>
-          <FontAwesomeIcon icon="camera" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="camera" />
         </SquareButton>
         <SquareButton
           onClick={() => canvasStore.rotateBackground("left")}
           s={70}
         >
-          <FontAwesomeIcon icon="undo" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="undo" />
         </SquareButton>
         <SquareButton
           onClick={() => canvasStore.rotateBackground("right")}
           s={70}
         >
-          <FontAwesomeIcon icon="redo" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="redo" />
         </SquareButton>
         <SquareButton onClick={canvasStore.clearSelection} s={70}>
-          <FontAwesomeIcon icon="times" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="times" />
         </SquareButton>
         <SquareButton onClick={canvasStore.clearCanvas} s={70}>
-          <FontAwesomeIcon icon="sync-alt" style={{ fontSize: "2em" }} />
+          <FontAwesomeIcon icon="sync-alt" />
         </SquareButton>
       </ToolBox>
     );

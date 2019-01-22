@@ -3,7 +3,7 @@ import { Input, Row, Col, Dropdown, Menu } from "antd";
 import { observer, inject } from "mobx-react";
 import styled from "../../styled-components";
 import { AllStores } from "../../models/all.stores.model";
-import { ContactStore } from "../../stores/contact.store";
+import { ReportStore } from "../../stores/report";
 import { _secondary, _error, _primary } from "../../css/_colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -17,9 +17,9 @@ import {
 
 interface Props {
   uiStore?: any;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
   label: string;
-  keyStore: keyof (ContactStore);
+  keyStore: keyof (ReportStore);
   mandatory?: boolean;
   list?: string[];
   type?: string;
@@ -34,12 +34,12 @@ const SearchBox = styled.div`
 `;
 
 @inject((allStores: AllStores) => ({
-  contactStore: allStores.contactStore,
+  reportStore: allStores.reportStore,
 }))
 @observer
 export class StringInput extends React.Component<Props> {
-  private setContactProp = (e: any, key: keyof (ContactStore)) => {
-    this.props.contactStore!.setProp({
+  private setContactProp = (e: any, key: keyof (ReportStore)) => {
+    this.props.reportStore!.setProp({
       key: key,
       value:
         this.props.type === "number"
@@ -47,15 +47,15 @@ export class StringInput extends React.Component<Props> {
           : e.currentTarget.value,
     });
   };
-  private _setContactProp = (value: any, key: keyof (ContactStore)) => {
-    this.props.contactStore!.setProp({
+  private _setContactProp = (value: any, key: keyof (ReportStore)) => {
+    this.props.reportStore!.setProp({
       key: key,
       value: value,
     });
   };
 
   public render() {
-    const currentValue = this.props.contactStore![this.props.keyStore];
+    const currentValue = this.props.reportStore![this.props.keyStore];
     const haschanged = currentValue !== "" ? 1 : 0;
     const isList = this.props.list && this.props.list.length !== 0;
     if (this.props.type === "number" && isList) {
@@ -102,7 +102,7 @@ export class StringInput extends React.Component<Props> {
           <MyInput
             haschanged={haschanged}
             type="text"
-            value={this.props.contactStore![this.props.keyStore]}
+            value={this.props.reportStore![this.props.keyStore]}
             onChange={(e: any) => this.setContactProp(e, this.props.keyStore)}
             size="large"
           />

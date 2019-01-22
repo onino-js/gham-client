@@ -1,12 +1,12 @@
 import * as React from "react";
 import { Divider } from "antd";
-import { ContactStore } from "../../../stores/contact.store";
+import { ReportStore } from "../../../stores/report";
 import { StringInput } from "../../inputs/StringInput";
 import { InputTitle } from "../../shared/Styled";
 
 interface Props {
   uiStore?: any;
-  contactStore?: ContactStore;
+  reportStore?: ReportStore;
 }
 
 export class Contact extends React.Component<Props> {
@@ -43,6 +43,18 @@ export class Contact extends React.Component<Props> {
         <StringInput
           type="text"
           mandatory={true}
+          keyStore="addressZip"
+          label="Code postal"
+        />
+        <StringInput
+          type="text"
+          mandatory={true}
+          keyStore="addressNumber"
+          label="Numéro de rue"
+        />
+        <StringInput
+          type="text"
+          mandatory={true}
           keyStore="address"
           label="Adresse"
         />
@@ -64,6 +76,12 @@ export class Contact extends React.Component<Props> {
         />
         <StringInput type="text" keyStore="co_firstName" label="Prénom(s)" />
         <StringInput type="text" keyStore="co_city" label="Ville" />
+        <StringInput type="text" keyStore="co_addressZip" label="Code postal" />
+        <StringInput
+          type="text"
+          keyStore="co_addressNumber"
+          label="Numéro de rue"
+        />
         <StringInput type="text" keyStore="co_address" label="Adresse" />
         <StringInput type="text" keyStore="co_phone" label="phone" />
       </React.Fragment>

@@ -1,10 +1,10 @@
 import { createImage } from "./../app.service";
-import contactStore from "../../stores/contact.store";
+import reportStore from "../../stores/report";
 import { resCaseC } from "./styles";
 
 export const reportPhoto = () => {
   // const opt = {
-  //   path: contactStore.signature,
+  //   path: reportStore.signature,
   //   width: 363,
   //   height: 154,
   // };
@@ -26,14 +26,14 @@ export const reportPhoto = () => {
 <td colspan="6" bgcolor="#ffffff" width="350" height="272">
 <p class="western">
          <img src="${
-           contactStore.photoBeforeWork
+           reportStore.photoBeforeWork
          }" width="350" height="270" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
 </p>
 </td>
 <td colspan="6" bgcolor="#ffffff" width="350">
 <p class="western">
          <img src="${
-           contactStore.photoAfterWork
+           reportStore.photoAfterWork
          }" width="350" height="270" style="display: block; margin-left: auto; margin-right: auto;" alt="#"  />
 </p>
 </td>
