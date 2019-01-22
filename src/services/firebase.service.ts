@@ -27,6 +27,18 @@ export const saveProject = (doc: any, callback: any) => {
   });
 };
 
+export const removeProject = (id: string, callback: any) => {
+  database.ref(`projects/${id}`).set(null, (e: any) => {
+    callback(e);
+  });
+};
+
+export const deleteProject = (id: string, callback: any) => {
+  database.ref(`projects/${id}`).remove((e: any) => {
+    callback(e);
+  });
+};
+
 export const getProjectsList = (callback: any) => {
   var reports = database.ref("projects/");
   reports.on("value", function(res: any) {

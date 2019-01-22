@@ -15,7 +15,6 @@ interface Props extends RouteComponentProps {
 }))
 @observer
 class DashBoardActions extends React.Component<Props> {
-  private addItem = () => {};
   private editItem = () => {
     this.props.history.push("/project");
   };
@@ -26,7 +25,11 @@ class DashBoardActions extends React.Component<Props> {
     const allowAction = this.props.dashBoardStore!.selectedObject.id !== null;
     return (
       <React.Fragment>
-        <ActionButton onClick={this.addItem} s={70} enabled={true}>
+        <ActionButton
+          onClick={this.props.dashBoardStore!.requestAddItem}
+          s={70}
+          enabled={true}
+        >
           <FontAwesomeIcon icon="plus" style={{ fontSize: "2em" }} />
         </ActionButton>
         <ActionButton
@@ -46,7 +49,7 @@ class DashBoardActions extends React.Component<Props> {
           <FontAwesomeIcon icon="clone" style={{ fontSize: "2em" }} />
         </ActionButton>
         <ActionButton
-          onClick={this.removeItem}
+          onClick={this.props.dashBoardStore!.requestRemoveItem}
           s={70}
           enabled={allowAction}
           disabled={!allowAction}

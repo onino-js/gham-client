@@ -13,8 +13,24 @@ export interface Iobject {
   id: string | null;
 }
 
+type IactivePage = "project";
+
+// interface Imapping {
+//   [key: IactivePage] : keyof DashBoardStore;
+// }
+
+const addItemMapping: any = {
+  project: "showNewProject",
+};
+const removeItemMapping: any = {
+  project: "showRemoveProject",
+};
+
 export class DashBoardStore {
   @observable public selectedObject: Iobject = { id: null };
+  @observable public showNewProject: boolean = false;
+  @observable public showRemoveProject: boolean = false;
+  @observable public activePage: IactivePage | null = null;
 
   @action.bound
   public setProp(payload: Ipayload): void {
@@ -26,6 +42,25 @@ export class DashBoardStore {
       err.message = `Property ${key} does not exist on DashBoardStore`;
       throw err;
     }
+  }
+
+  @action.bound
+  requestAddItem() {
+    this.activePage !== null &&
+      this.setProp({
+        key: addItemMapping[this.activePage],
+        value: true,
+      });
+  }
+
+  @action.bound
+  requestRemoveItem() {
+    this.activePage !== null &&
+      this.setProp({
+        key: removeItemMapping[this.activePage],
+        value: true,
+      });
+    // this.selectedObject = { id: null };
   }
 
   @action.bound

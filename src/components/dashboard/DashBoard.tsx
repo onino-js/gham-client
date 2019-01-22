@@ -7,6 +7,7 @@ import AppLayout from "../layout/AppLayout";
 import DashBoardMenu from "./DashBoardMenu";
 import DashBoardRoutes from "./DashBoardRoutes";
 import DashBoardActions from "./DashBoardActions";
+import DashBoardFooter from "./DashBoardFooter";
 
 interface Props {
   uiStore?: UiStore;
@@ -30,7 +31,7 @@ class DashBoard extends React.Component<Props> {
           <DashBoardMenu key="dashboard" />,
           <DashBoardRoutes key="dashboard-routes" />,
           <DashBoardActions key="dashboard-actions" />,
-          <div key="rien" />,
+          <DashBoardFooter key="dashboard-footer" />,
         ]}
       </AppLayout>
     );

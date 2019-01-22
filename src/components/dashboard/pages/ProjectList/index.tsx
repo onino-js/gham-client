@@ -6,18 +6,34 @@ import ProjectItems from "./ProjectItems";
 import { Project } from "../../../../stores/projects/project";
 import Loading from "../../../shared/Loading";
 import { AllStores } from "../../../../models/all.stores.model";
+import { DashBoardStore } from "../../../../stores/dashboard";
+import { isEmpty } from "../../../../services/app.service";
 
 interface Props {
   projects?: Project[];
   loaded?: boolean;
+  dashBoardStore?: DashBoardStore;
 }
 
 @inject((allStores: AllStores) => ({
   projects: allStores.projectStore.projects,
   loaded: allStores.projectStore.loaded,
+  dashBoardStore: allStores.dashBoardStore,
 }))
 @observer
 class ProjectList extends React.Component<Props> {
+  componentDidMount() {
+    this.props.dashBoardStore!.setProp({
+      key: "activePage",
+      value: "project",
+    });
+  }
+  componentWillUnmount() {
+    this.props.dashBoardStore!.setProp({
+      key: "activePage",
+      value: null,
+    });
+  }
   public render() {
     const loaded: boolean = this.props.loaded!;
     return (
@@ -25,7 +41,7 @@ class ProjectList extends React.Component<Props> {
         <h2> Mes Projets </h2>
         {!loaded ? (
           <Loading />
-        ) : this.props.projects!.length === 0 ? (
+        ) : isEmpty(this.props.projects!) ? (
           <NoProject />
         ) : (
           <ProjectItems />

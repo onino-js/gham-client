@@ -31,3 +31,10 @@ export const formatHour = (date: Date) => {
   const min = date.getMinutes();
   return `${day}/${month} ${hour}:${min}`;
 };
+
+export const isEmpty = (obj: any) => {
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) return false;
+  }
+  return true;
+};

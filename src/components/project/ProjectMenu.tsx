@@ -2,7 +2,6 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import styled from "./../../styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
-import { _secondary_bg, _primary } from "../../css/_colors";
 import { ContactStore } from "../../stores/contact.store";
 import { UiStore } from "../../stores/ui/index";
 import SideMenu from "../layout/SideMenu";
@@ -16,24 +15,12 @@ interface Props extends RouteComponentProps {
   contactStore?: ContactStore;
 }
 
-const Title = styled.div`
-  line-height: 50px;
-  flex: 1;
-  padding-left: 5px;
-  font-weight: 900;
-`;
-
 @inject((allStores: any) => ({
   uiStore: allStores.uiStore,
   contactStore: allStores.contactStore,
 }))
 @observer
 class ProjectMenu extends React.Component<Props> {
-  public state = {
-    openKeys: [""],
-    activePage: "",
-  };
-
   private selectPage = (page: string) => {
     this.props.history.push(`${this.props.match.url}/${page}`);
   };

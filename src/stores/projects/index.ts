@@ -1,6 +1,10 @@
+import { message } from "antd";
+import { _success } from "./../../css/_colors";
 import {
   saveProject,
   getProjectsList,
+  deleteProject,
+  removeProject,
 } from "./../../services/firebase.service";
 import { observable, action, computed } from "mobx";
 import { Project, IprojectJSON } from "./project";
@@ -11,7 +15,7 @@ interface IprojectMapJSON {
 
 export class ProjectStore {
   @observable public projects: any = {};
-  @observable public selectedProjectIndex: number | null = null;
+  // @observable public selectedProjectIndex: number | null = null;
   @observable public newReference: string = "";
   @observable public loaded: boolean = false;
 
@@ -36,12 +40,12 @@ export class ProjectStore {
     return list;
   }
 
-  @action.bound
-  public selectProject(projectId: string) {
-    this.selectedProjectIndex = this.projects.findIndex(
-      (project: Project) => project.id === projectId,
-    );
-  }
+  // @action.bound
+  // public selectProject(projectId: string) {
+  //   this.selectedProjectIndex = this.projects.findIndex(
+  //     (project: Project) => project.id === projectId,
+  //   );
+  // }
 
   @action.bound
   public load() {
@@ -69,11 +73,18 @@ export class ProjectStore {
     };
     const project: Project = new Project(opt);
     this.save(project.asJson);
+    this.newReference = "";
   }
 
-  public delete() {
-    console.log("delete from store");
-    console.log("delete from database");
+  public delete(projectId: string | null) {
+    projectId &&
+      // deleteProject(projectId, () => {
+      //   message.success("Le projet à été supprimé");
+      // });
+      removeProject(projectId, () => {
+        delete this.projects[projectId];
+        message.success("Le projet à été supprimé");
+      });
   }
 
   public update() {
