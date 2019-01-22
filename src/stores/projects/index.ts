@@ -1,99 +1,60 @@
 import { message } from "antd";
-import { _success } from "./../../css/_colors";
-import {
-  saveProject,
-  getProjectsList,
-  deleteProject,
-  removeProject,
-} from "./../../services/firebase.service";
-import { observable, action, computed } from "mobx";
-import { Project, IprojectJSON } from "./project";
-
-interface IprojectMapJSON {
-  [key: string]: IprojectJSON;
-}
+import { ReportStore } from "./../report/index";
+import { observable, action, computed, toJS } from "mobx";
+import { IprojectJSON } from "../../models/project.model";
+import { createReport, getReportList } from "../../services/firebase.service";
+import dashBoardStore from "../dashboard";
 
 export class ProjectStore {
-  @observable public projects: any = {};
-  // @observable public selectedProjectIndex: number | null = null;
+  @observable public editedProject: IprojectJSON | null = null;
   @observable public newReference: string = "";
   @observable public loaded: boolean = false;
+  @observable public reports: any = null;
+  @observable public selectedReportId: string | null = null;
 
-  constructor() {
-    this.load();
+  @action.bound
+  public setEditedProject(project: IprojectJSON): void {
+    this.editedProject = project;
   }
 
   @action.bound
-  public setNewReference(payload: string) {
-    this.newReference = payload;
+  public setSelectedReportId(reportId: string): void {
+    this.selectedReportId = reportId;
   }
 
-  @computed get isReferenceValid() {
-    return !isNaN(this.newReference as any) && this.newReference.length === 7;
-  }
-
-  @computed get projectList() {
-    const list = [];
-    for (let key in this.projects!) {
-      list.push(key);
+  @action.bound
+  public createReport(): void {
+    const projectId = dashBoardStore.selectedProjectId;
+    if (projectId !== null) {
+      let newReport = new ReportStore();
+      newReport = toJS(newReport);
+      newReport.reference = dashBoardStore.projects[projectId].reference;
+      newReport.creationDate = new Date().toUTCString();
+      newReport.lastModifDate = new Date().toUTCString();
+      newReport.status = "new";
+      createReport(newReport, projectId, () =>
+        message.success("Nouveau rapport créé"),
+      );
+    } else {
+      message.error("Aucun projet selectionné");
     }
-    return list;
   }
-
-  // @action.bound
-  // public selectProject(projectId: string) {
-  //   this.selectedProjectIndex = this.projects.findIndex(
-  //     (project: Project) => project.id === projectId,
-  //   );
-  // }
 
   @action.bound
-  public load() {
-    getProjectsList((items: any) => {
-      for (let key in items) {
-        this.projects[key as any] = new Project(items[key]);
-      }
-      this.loaded = true;
-    });
+  public loadRequest() {
+    if (dashBoardStore.selectedProjectId !== null) {
+      this.loadReports();
+    }
   }
-
-  // @action.bound
-  // public setProjectList(obj: any) {
-  //   const projects = [];
-  //   for (let key in obj) {
-  //     projects.push(obj[key]);
-  //   }
-  //   this.projects = projects;
-  // }
 
   @action.bound
-  public create(newProject?: IprojectJSON) {
-    const opt: any = newProject || {
-      reference: this.newReference,
-    };
-    const project: Project = new Project(opt);
-    this.save(project.asJson);
-    this.newReference = "";
-  }
-
-  public delete(projectId: string | null) {
-    projectId &&
-      // deleteProject(projectId, () => {
-      //   message.success("Le projet à été supprimé");
-      // });
-      removeProject(projectId, () => {
-        delete this.projects[projectId];
-        message.success("Le projet à été supprimé");
+  public loadReports() {
+    if (dashBoardStore.selectedProjectId !== null) {
+      getReportList(dashBoardStore.selectedProjectId, (reports: any) => {
+        this.reports = reports;
+        this.loaded = true;
       });
-  }
-
-  public update() {
-    console.log("update from store");
-    console.log("update from database");
-  }
-
-  public save(project: any): void {
-    saveProject(project, console.log);
+    }
   }
 }
 

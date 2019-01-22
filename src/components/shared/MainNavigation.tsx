@@ -31,8 +31,6 @@ const Container = styled.div`
   height: 70px;
   width: 100%;
   background-color: ${_tertiary_bg};
-  padding-right: 90px;
-  padding-left: 20px;
 `;
 
 const HeaderButton: any = styled.div`
@@ -52,12 +50,23 @@ const LeftBox: any = styled(Flex).attrs({
 })`
   cursor: pointer;
   flex: 0;
+  min-width: 250px;
 `;
 
 const RightBox: any = styled(Flex).attrs({
   alignH: "flex-end",
 })`
+  padding-right: 90px;
+  flex: 0;
+`;
+
+const CenterBox: any = styled(Flex).attrs({
+  alignH: "flex-start",
+  alignV: "center",
+})`
   flex: 1;
+  font-size: 1.5em;
+  padding-left: 20px;
 `;
 
 const Logo = styled.img.attrs({
@@ -65,6 +74,7 @@ const Logo = styled.img.attrs({
 })`
   height: 60px;
   width: auto;
+  padding-left: 20px;
 `;
 
 @inject((allStores: AllStores) => ({
@@ -72,10 +82,6 @@ const Logo = styled.img.attrs({
 }))
 @observer
 class MainNavigation extends React.Component<Props> {
-  public state = {
-    collapsed: false,
-  };
-
   private goToPage = (path: string) => {
     this.props.history.push(path);
   };
@@ -91,9 +97,10 @@ class MainNavigation extends React.Component<Props> {
             <Logo />
           </Link>
         </LeftBox>
+        <CenterBox>YOUKOULELE</CenterBox>
         <RightBox>
           <HeaderButton
-            onClick={() => this.goToPage("/dashboard")}
+            onClick={() => this.goToPage("/dashboard/project-list")}
             active={reg.test(path)}
           >
             <FontAwesomeIcon icon="home" />

@@ -1,20 +1,20 @@
 import * as React from "react";
-import { withRouter, RouteComponentProps, Route } from "react-router";
-import pages from "./pages";
+import { Route } from "react-router";
 import DashBoardComponents from "./DashBoardComponents";
+import { IpageComponent } from "../../models/layout.models";
 
-interface Props extends RouteComponentProps {}
+interface Props {}
 
-class DashBoardActions extends React.Component<Props> {
+class DashBoardModals extends React.Component<Props> {
   public render(): React.ReactNode {
     return (
       <React.Fragment>
-        {DashBoardComponents.map((page: any) => (
+        {DashBoardComponents.map((page: IpageComponent) => (
           <Route
             exact
             key={page.link}
             path={`/dashboard/${page.link}`}
-            component={page.actions}
+            component={page.modals}
           />
         ))}
       </React.Fragment>
@@ -22,4 +22,4 @@ class DashBoardActions extends React.Component<Props> {
   }
 }
 
-export default withRouter(DashBoardActions);
+export default DashBoardModals;

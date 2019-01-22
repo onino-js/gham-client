@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Container = styled.div`
-  width: 300px;
+  width: 250px;
   height: 100%;
   overflow-y: auto;
   background-color: ${_secondary_bg};

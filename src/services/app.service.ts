@@ -17,7 +17,8 @@ export const createImage = (opt: IcreateImageParams): string => {
   return dataURL;
 };
 
-export const formatDate = (date: Date) => {
+export const formatDate = (dateStr: string) => {
+  const date = new Date(dateStr);
   const month = date.getMonth();
   const day = date.getDate();
   const year = date.getFullYear();

@@ -43,23 +43,21 @@ const RefInput = styled(Input as any)`
 class NewProject extends React.Component<Props> {
   componentDidMount() {}
   private setNewReference = (e: any) => {
-    this.props.projectStore!.setNewReference(e.currentTarget.value);
+    this.props.dashBoardStore!.setNewReference(e.currentTarget.value);
   };
   private createProject = () => {
-    this.props.projectStore!.create();
+    this.props.dashBoardStore!.createProject();
+    this.props.dashBoardStore!.setSelectedProjectId(null);
     this.handleCancel();
   };
   private handleCancel = () => {
-    this.props.dashBoardStore!.setProp({
-      key: "showNewProject",
-      value: false,
-    });
-    this.props.projectStore!.setNewReference("");
+    this.props.dashBoardStore!.closeNewReference();
+    this.props.dashBoardStore!.setNewReference("");
   };
   public render() {
-    const isReferenceValid = this.props.projectStore!.isReferenceValid;
+    const isReferenceValid = this.props.dashBoardStore!.isReferenceValid;
     const showMesage =
-      !isReferenceValid && this.props.projectStore!.newReference !== "";
+      !isReferenceValid && this.props.dashBoardStore!.newReference !== "";
     return (
       <Modal
         visible={this.props.showNewProject}
@@ -79,7 +77,7 @@ class NewProject extends React.Component<Props> {
           <Flex dir="c">
             <h2>Entrez la référence du projet</h2>
             <RefInput
-              value={this.props.projectStore!.newReference}
+              value={this.props.dashBoardStore!.newReference}
               onChange={this.setNewReference}
             />
             <ErrorMessage show={showMesage}>

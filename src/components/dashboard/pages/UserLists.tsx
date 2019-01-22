@@ -16,6 +16,9 @@ interface Props {
 }))
 @observer
 class UserLists extends React.Component<Props> {
+  componentWillMount() {
+    this.props.uiStore!.setActivePage("user-list");
+  }
   public render() {
     return (
       <Flex dir="c">

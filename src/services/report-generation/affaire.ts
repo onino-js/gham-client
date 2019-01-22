@@ -21,7 +21,7 @@ export const reportAffaire = () => {
 </td>
 <td colspan="2" bgcolor="#ffffff" width="111">
 <p class="western"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">
-  ${formatDate(contactStore.reportDate)}
+  ${formatDate(contactStore.reportDate.toUTCString())}
 </span></span></p>
 </td>
 </tr>

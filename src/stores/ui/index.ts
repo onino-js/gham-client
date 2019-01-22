@@ -21,6 +21,7 @@ export class UiStore {
   @observable public isCanvasItemOptionsVisible: boolean = false;
   @observable public isEditBgVisible: boolean = false;
   @observable public steps: Istep[] = steps;
+  @observable public activePage: string = "/";
 
   @action.bound
   public setProp(payload: Ipayload): void {
@@ -32,6 +33,11 @@ export class UiStore {
       err.message = `Property ${key} does not exist on UiStore`;
       throw err;
     }
+  }
+
+  @action.bound
+  public setActivePage(payload: string) {
+    this.activePage = payload;
   }
 
   @action.bound

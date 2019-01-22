@@ -22,7 +22,8 @@ export const saveReport = (doc: any, callback?: any) => {
 };
 
 export const saveProject = (doc: any, callback: any) => {
-  database.ref(`projects/${doc.reference}`).set(doc, (e: any) => {
+  const ref = database.ref(`projects/`).push();
+  ref.set(doc, (e: any) => {
     callback(e);
   });
 };
@@ -43,5 +44,19 @@ export const getProjectsList = (callback: any) => {
   var reports = database.ref("projects/");
   reports.on("value", function(res: any) {
     callback(res.val());
+  });
+};
+
+export const getReportList = (projectId: string, callback: any) => {
+  var reports = database.ref(`reports/${projectId}`);
+  reports.on("value", function(res: any) {
+    callback(res.val());
+  });
+};
+
+export const createReport = (report: any, projectId: string, callback: any) => {
+  const ref1 = database.ref(`reports/${projectId}`).push();
+  ref1.set(report, (e: any) => {
+    callback(e);
   });
 };

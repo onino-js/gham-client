@@ -15,10 +15,7 @@ interface Props {
   userStore: allStores.userStore,
 }))
 @observer
-class ContactList extends React.Component<Props> {
-  componentWillMount() {
-    this.props.uiStore!.setActivePage("contact-list");
-  }
+class ProjectStats extends React.Component<Props> {
   public render() {
     return (
       <Flex dir="c">
@@ -28,4 +25,4 @@ class ContactList extends React.Component<Props> {
   }
 }
 
-export default ContactList;
+export default ProjectStats;

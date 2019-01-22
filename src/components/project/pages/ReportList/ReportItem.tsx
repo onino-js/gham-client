@@ -4,15 +4,14 @@ import { AllStores } from "../../../../models/all.stores.model";
 import { Col } from "antd";
 import { formatDate } from "../../../../services/app.service";
 import { TableRow } from "../../../shared/Tables";
-import { DashBoardStore } from "../../../../stores/dashboard";
-import { IprojectJSON } from "../../../../models/project.model";
 import styled from "styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
+import { ProjectStore } from "../../../../stores/projects";
 
 interface Props extends RouteComponentProps {
-  projectId: any;
-  project?: IprojectJSON;
-  dashBoardStore?: DashBoardStore;
+  reportId: any;
+  report?: any;
+  projectStore?: ProjectStore;
 }
 
 const col1 = {
@@ -56,44 +55,44 @@ const StatusBox = styled.div`
 `;
 
 @inject((allStores: AllStores, props: Props) => ({
-  project: allStores.dashBoardStore.projects[props.projectId],
+  report: allStores.projectStore.reports[props.reportId],
   userStore: allStores.userStore,
-  dashBoardStore: allStores.dashBoardStore,
+  projectStore: allStores.projectStore,
 }))
 @observer
-class ProjectItem extends React.Component<Props> {
+class ReportItem extends React.Component<Props> {
   private selectObject = () => {
-    this.props.dashBoardStore!.setSelectedProjectId(this.props.projectId);
+    this.props.projectStore!.setSelectedReportId(this.props.reportId);
   };
-  private goToProject = () => {
-    this.props.dashBoardStore!.setSelectedProjectId(this.props.projectId);
-    this.props.history.push("/project/project-general");
+  private goToReport = () => {
+    // this.props.projectStore!.setSelectedReportId(this.props.reportId);
+    this.props.history.push("/report/");
   };
   public render() {
-    const project = this.props.project!;
+    const report = this.props.report!;
     const active =
-      this.props.dashBoardStore!.selectedProjectId! === this.props.projectId;
+      this.props.projectStore!.selectedReportId! === this.props.reportId;
     return (
       <TableRow
         hover={true}
         active={active}
         onClick={this.selectObject}
-        onDoubleClick={this.goToProject}
+        onDoubleClick={this.goToReport}
       >
         <Col {...col1}>
-          <RefBox>{project.reference}</RefBox>
+          <RefBox>{report.reference}</RefBox>
         </Col>
-        <Col {...col2}>{formatDate(project.projectDate)}</Col>
-        <Col {...col3}>{formatDate(project.projectDate)}</Col>
+        <Col {...col2}>{formatDate(report.creationDate)}</Col>
+        <Col {...col3}>{formatDate(report.lastModifDate)}</Col>
         <Col {...col4}>
-          <StatusBox>{project.numberOfReports}</StatusBox>
+          <StatusBox />
         </Col>
         <Col {...col5}>
-          <StatusBox>{project.status}</StatusBox>
+          <StatusBox>{report.status}</StatusBox>
         </Col>
       </TableRow>
     );
   }
 }
 
-export default withRouter(ProjectItem);
+export default withRouter(ReportItem);

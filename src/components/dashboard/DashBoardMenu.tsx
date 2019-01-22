@@ -10,6 +10,7 @@ import MenuItem from "../shared/MenuItem";
 import pages, { Ipage } from "./pages";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { DashBoardStore } from "../../stores/dashboard";
+import DashBoardComponents from "./DashBoardComponents";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
@@ -35,13 +36,14 @@ class DashBoardMenu extends React.Component<Props> {
   };
 
   public render() {
+    const activePage = this.props.uiStore!.activePage;
     return (
       <SideMenu>
-        {pages.map((page: Ipage) => (
+        {DashBoardComponents.map((page: Ipage) => (
           <MenuItem
             key={page.link}
             page={page.link}
-            active={this.props.location.pathname === `/dashboard/${page.link}`}
+            active={activePage === page.link}
             onClick={this.selectPage}
             size="large"
           >

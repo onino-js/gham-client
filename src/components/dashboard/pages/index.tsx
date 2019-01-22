@@ -1,15 +1,22 @@
+import * as React from "react";
+
 import UserLists from "./UserLists";
 import ObjectList from "./ObjectLIst";
 import ImageList from "./ImageList";
 import ProjectList from "./ProjectList";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import ContactList from "./ContactList";
+import DashBoardCrudActions from "../actions/DashBoardCrudActions";
+import RemoveProject from "../modals/RemoveProject";
+import NewProject from "../modals/NewProject";
 
 export interface Ipage {
   link: string;
   component: React.ReactNode;
   title: string;
   icon: IconProp;
+  actions?: React.ReactNode;
+  modals?: React.ReactNode;
 }
 
 const pages: Ipage[] = [
@@ -18,13 +25,14 @@ const pages: Ipage[] = [
     component: ProjectList,
     title: "Mes projets",
     icon: "clipboard-list",
+    actions: DashBoardCrudActions,
+    modals: () => (
+      <React.Fragment>
+        <NewProject />
+        <RemoveProject />
+      </React.Fragment>
+    ),
   },
-  // {
-  //   link: "new-project",
-  //   component: NewProject,
-  //   title: "Nouveau projet",
-  //   icon: "plus",
-  // },
   {
     link: "user-list",
     component: UserLists,

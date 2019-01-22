@@ -1,17 +1,17 @@
 import * as React from "react";
 import { Route } from "react-router-dom";
-import projectPages from "./pages";
+import { ProjectComponents } from "./ProjectComponents";
 
 interface Props {
   uiStore?: any;
   match?: any;
 }
 
-class ProjectRoutes extends React.Component<Props> {
+class ProjectContent extends React.Component<Props> {
   public render() {
     return (
       <React.Fragment>
-        {projectPages.map((page: any) => (
+        {ProjectComponents.map((page: any) => (
           <Route
             exact
             key={page.link}
@@ -24,4 +24,4 @@ class ProjectRoutes extends React.Component<Props> {
   }
 }
 
-export default ProjectRoutes;
+export default ProjectContent;

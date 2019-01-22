@@ -1,57 +1,90 @@
 import * as React from "react";
 import { observer, inject } from "mobx-react";
-
-import styled from "../../../styled-components";
-import { MyRow, PrimaryTitle } from "./../../shared/Styled";
+import { PrimaryTitle } from "./../../shared/Styled";
 import { UiStore } from "../../../stores/ui/index";
-import NextButton from "./../../shared/NextButton";
 import { Flex } from "../../layout/Flex";
-import { InputPrefix } from "../../inputs/InputPrefix";
+import { Input, Row, Col } from "antd";
+import { IprojectJSON } from "../../../models/project.model";
+import { ProjectStore } from "../../../stores/projects";
+import { AllStores } from "../../../models/all.stores.model";
+import styled from "../../../styled-components";
+import { _error, _primary_bg, _secondary_bg } from "../../../css/_colors";
+import eiffageImg from "./../../../image/eiffage.png";
+import grdfImg from "./../../../image/grdf.jpg";
 
 interface Props {
   uiStore?: UiStore;
-  // projectStore?: ProjectStore;
+  editedProject?: IprojectJSON;
+  projectStore?: ProjectStore;
 }
 
-const ButtonWrapper: any = styled.div`
-  display: ${(props: any) => (props.isValid ? "flex" : "none")};
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100px;
-`;
-
-const ErrorMessage = styled.div`
+const ErrorMessage: any = styled.div`
   font-size: 0.9em;
-  color: red;
+  color: ${(props: any) => (props.show ? _error : _primary_bg)};
   width: 100%;
   text-align: center;
+  margin-top: 30px;
 `;
 
-@inject((allStores: any) => ({
+const MyRow = styled(Row as any)`
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 10px 0 10px 0;
+`;
+
+const RefInput = styled(Input as any)`
+  letter-spacing: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+`;
+
+const Img = styled.img`
+  height: 80px;
+  width: auto;
+  border: 1px solid ${_secondary_bg};
+`;
+
+@inject((allStores: AllStores) => ({
+  editedProject: allStores.projectStore.editedProject,
   projectStore: allStores.projectStore,
+  uiStore: allStores.uiStore,
 }))
 @observer
 export class ProjectInfo extends React.Component<Props> {
+  componentWillMount() {
+    this.props.uiStore!.setActivePage("project-general");
+  }
   public render() {
-    // const isValid = this.props.projectStore!.isReferenceValid;
-    return (
+    return this.props.projectStore!.editedProject ? (
       <Flex dir="c" alignH="center">
         <PrimaryTitle>Informations générales</PrimaryTitle>
-        <InputPrefix
-          list={["R31", "R32"]}
-          // isValid={isValid}
-          label="Ref. Grdf"
-          mandatory={true}
-        />
         <MyRow>
-          {/* {!isValid && this.props.projectStore!.reference !== "" && (
-            <ErrorMessage>Veuillez rentrer un nombre à 7 chiffres</ErrorMessage>
-          )} */}
+          <Col>Référence Grdf</Col>
+          <Col>
+            <RefInput
+              value={this.props.editedProject!.reference}
+              disabled={true}
+            />
+          </Col>
         </MyRow>
-        {/* <ButtonWrapper isValid={isValid ? 1 : 0}>
-          <NextButton disabled={!isValid} size={"large"} />
-        </ButtonWrapper> */}
+        <MyRow>
+          <Col>Entete gauche</Col>
+          <Col>
+            <Img src={eiffageImg} />
+          </Col>
+        </MyRow>
+        <MyRow>
+          <Col>Entete droite</Col>
+          <Col>
+            <Img src={grdfImg} />
+          </Col>
+        </MyRow>
+      </Flex>
+    ) : (
+      <Flex>
+        <p>Aucun projet sélectionné </p>
       </Flex>
     );
   }

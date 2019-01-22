@@ -1,37 +1,23 @@
 import * as React from "react";
-import { UiStore } from "../../stores/ui";
-import { UserStore } from "../../stores/user";
-import { inject, observer } from "mobx-react";
-import AppLayout from "../layout/AppLayout";
-import ProjectRoutes from "./ProjectRoutes";
+import AppLayout from "../layout/AppLayout2";
+import ProjectContent from "./ProjectContent";
 import ProjectMenu from "./ProjectMenu";
 import ProjectFooter from "./ProjectFooter";
+import MainNavigation from "../shared/MainNavigation";
+import ProjectActions from "./actions/ProjectActions";
 
-interface Props {
-  uiStore?: UiStore;
-  userStore?: UserStore;
-}
+interface Props {}
 
-@inject((allStores: any) => ({
-  uiStore: allStores.uiStore,
-  userStore: allStores.userStore,
-  projectStore: allStores.projectStore,
-}))
-@observer
 class ProjectHome extends React.Component<Props> {
-  componentDidMount() {
-    // getProjectList(console.log);
-  }
   public render() {
     return (
-      <AppLayout>
-        {[
-          <ProjectMenu key="project" />,
-          <ProjectRoutes key="project-routes" />,
-          <div />,
-          <ProjectFooter key="project-footer" />,
-        ]}
-      </AppLayout>
+      <AppLayout
+        header={<MainNavigation key="project-header" />}
+        menu={<ProjectMenu key="project-menu" />}
+        content={<ProjectContent key="project-content" />}
+        actions={<ProjectActions key="project-actions" />}
+        footer={<ProjectFooter key="project-footer" />}
+      />
     );
   }
 }

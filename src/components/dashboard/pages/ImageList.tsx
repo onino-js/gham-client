@@ -16,6 +16,9 @@ interface Props {
 }))
 @observer
 class ImageList extends React.Component<Props> {
+  componentWillMount() {
+    this.props.uiStore!.setActivePage("image-list");
+  }
   public render() {
     return (
       <Flex dir="c">

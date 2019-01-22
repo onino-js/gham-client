@@ -1,49 +1,50 @@
 import * as React from "react";
 import { Flex } from "./../../../layout/Flex";
 import { inject, observer } from "mobx-react";
-import NoProject from "./NoProject";
-import ProjectItems from "./ProjectItems";
+import NoReport from "./NoReport";
+import ReportItems from "./ReportItems";
 import Loading from "../../../shared/Loading";
 import { AllStores } from "../../../../models/all.stores.model";
-import { DashBoardStore } from "../../../../stores/dashboard";
 import { isEmpty } from "../../../../services/app.service";
 import { IprojectJSON } from "../../../../models/project.model";
 import { PrimaryTitle } from "../../../shared/Styled";
+import { ProjectStore } from "../../../../stores/projects";
 import { UiStore } from "../../../../stores/ui";
 
 interface Props {
-  projects?: { [key: string]: IprojectJSON };
+  reports?: { [key: string]: IprojectJSON };
   loaded?: boolean;
-  dashBoardStore?: DashBoardStore;
+  projectStore?: ProjectStore;
   uiStore?: UiStore;
 }
 
 @inject((allStores: AllStores) => ({
-  projects: allStores.dashBoardStore.projects,
+  reports: allStores.projectStore.reports,
+  loaded: allStores.projectStore.loaded,
+  projectStore: allStores.projectStore,
   uiStore: allStores.uiStore,
-  loaded: allStores.dashBoardStore.loaded,
-  dashBoardStore: allStores.dashBoardStore,
 }))
 @observer
-class ProjectList extends React.Component<Props> {
+class ReportList extends React.Component<Props> {
   componentWillMount() {
-    this.props.uiStore!.setActivePage("project-list");
+    this.props.uiStore!.setActivePage("report-list");
+    this.props.projectStore!.loadRequest();
   }
   public render() {
     const loaded: boolean = this.props.loaded!;
     return (
       <Flex dir="c" alignH="center">
-        <PrimaryTitle> Mes Projets </PrimaryTitle>
+        <PrimaryTitle> Liste des rapports </PrimaryTitle>
         {!loaded ? (
           <Loading />
-        ) : isEmpty(this.props.projects!) ? (
-          <NoProject />
+        ) : isEmpty(this.props.reports!) ? (
+          <NoReport />
         ) : (
-          <ProjectItems />
+          <ReportItems />
         )}
       </Flex>
     );
   }
 }
 
-export default ProjectList;
+export default ReportList;

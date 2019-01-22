@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Route } from "react-router-dom";
-import pages from "./pages";
+import DashBoardComponents from "./DashBoardComponents";
 
 interface Props {
   uiStore?: any;
@@ -11,7 +11,7 @@ class DashBoardRoutes extends React.Component<Props> {
   public render() {
     return (
       <React.Fragment>
-        {pages.map((page: any) => (
+        {DashBoardComponents.map((page: any) => (
           <Route
             exact
             key={page.link}

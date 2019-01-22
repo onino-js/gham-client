@@ -2,7 +2,6 @@ import styled from "../../styled-components";
 import { Button } from "antd";
 import { _center } from "../../css/styled-css";
 import {
-  _tertiary_bg,
   _primary_bg,
   _secondary_bg,
   _primary,
@@ -10,7 +9,8 @@ import {
 } from "../../css/_colors";
 
 interface IsquareButton {
-  s: string;
+  s?: number;
+  f?: number;
 }
 
 interface IactionButton extends IsquareButton {
@@ -24,9 +24,10 @@ export const SmallButton = styled(Button as any)`
 `;
 
 export const SquareButton = styled(Button as any)`
-  height: ${(props: IsquareButton) => props.s}px;
-  width: ${(props: IsquareButton) => props.s}px;
+  height: ${(props: IsquareButton) => props.s || 70}px;
+  width: ${(props: IsquareButton) => props.s || 70}px;
   margin: 10px;
+  font-size: ${(props: IsquareButton) => props.f || 2}em;
 `;
 
 export const ActionButton = SquareButton.extend`

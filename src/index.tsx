@@ -55,6 +55,9 @@ import {
   faEdit,
   faSignOutAlt,
   faClone,
+  faQuestion,
+  faQuestionCircle,
+  faChartPie,
 } from "@fortawesome/free-solid-svg-icons";
 
 import registerServiceWorker from "./registerServiceWorker";
@@ -107,6 +110,9 @@ library.add(faArrowRight);
 library.add(faEdit);
 library.add(faSignOutAlt);
 library.add(faClone);
+library.add(faQuestion);
+library.add(faQuestionCircle);
+library.add(faChartPie);
 
 ReactDOM.render(App, document.getElementById("root") as HTMLElement);
 registerServiceWorker();

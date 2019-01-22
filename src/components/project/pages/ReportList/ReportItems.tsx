@@ -4,14 +4,13 @@ import { UiStore } from "../../../../stores/ui";
 import { UserStore } from "../../../../stores/user";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "../../../../models/all.stores.model";
-import ProjectItem from "./ProjectItem";
-import { Row, Col } from "antd";
-import { TableRow } from "../../../shared/Tables";
+import ReportItem from "./ReportItem";
+import { Col } from "antd";
 
 interface Props {
   uiStore?: UiStore;
   userStore?: UserStore;
-  projects?: any;
+  reports?: any;
 }
 
 const wrapperAttrs = {
@@ -55,11 +54,12 @@ const col6 = {
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
-  projects: allStores.dashBoardStore.projects,
+  reports: allStores.projectStore.reports,
 }))
 @observer
-class ProjectItems extends React.Component<Props> {
+class ReportItems extends React.Component<Props> {
   public render() {
+    console.log(this.props.reports);
     return (
       <Flex dir="c" alignH="center" style={{ width: "100%" }}>
         <Col {...wrapperAttrs}>
@@ -71,16 +71,13 @@ class ProjectItems extends React.Component<Props> {
             <Col {...col5} />
             <Col {...col6} />
           </TableRow> */}
-          {Object.keys(this.props.projects!).map((key: string) => (
-            <ProjectItem key={key} projectId={key} />
+          {Object.keys(this.props.reports!).map((key: string) => (
+            <ReportItem key={key} reportId={key} />
           ))}
-          {/* {Object.keys(this.props.projects!).map((projectId: string) => {
-            return <ProjectItem key={projectId} projectId={projectId} />;
-          })} */}
         </Col>
       </Flex>
     );
   }
 }
 
-export default ProjectItems;
+export default ReportItems;

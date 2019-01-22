@@ -82,37 +82,7 @@ class ProjectFooter extends React.Component<Props> {
 
   public render() {
     const path = this.props.location.pathname;
-    return (
-      <Container>
-        <LeftBox />
-        <RightBox>
-          <HeaderButton onClick={() => this.goToPage("/report")} active={false}>
-            <FontAwesomeIcon icon="edit" />
-          </HeaderButton>
-          <HeaderButton
-            onClick={() => this.goToPage("/project/map")}
-            active={path === "/project/map"}
-          >
-            <FontAwesomeIcon icon="map-marker-alt" />
-          </HeaderButton>
-          {/* <HeaderButton>
-          <FontAwesomeIcon icon="plus" />
-        </HeaderButton> */}
-          <HeaderButton
-            onClick={() => this.goToPage("/project/preview")}
-            active={path === "/project/preview"}
-          >
-            <FontAwesomeIcon icon="eye" />
-          </HeaderButton>
-          <HeaderButton
-            onClick={() => this.goToPage("/project/export")}
-            active={path === "/project/export"}
-          >
-            <FontAwesomeIcon icon="file-download" />
-          </HeaderButton>
-        </RightBox>
-      </Container>
-    );
+    return <React.Fragment>PRO-REPORTER V1</React.Fragment>;
   }
 }
 

@@ -26,16 +26,13 @@ interface Props {
 class RemoveProject extends React.Component<Props> {
   componentDidMount() {}
   private removeProject = () => {
-    this.props.projectStore!.delete(
-      this.props.dashBoardStore!.selectedObject.id,
+    this.props.dashBoardStore!.deleteProject(
+      this.props.dashBoardStore!.selectedProjectId,
     );
     this.handleCancel();
   };
   private handleCancel = () => {
-    this.props.dashBoardStore!.setProp({
-      key: "showRemoveProject",
-      value: false,
-    });
+    this.props.dashBoardStore!.closeRemoveProject();
   };
   public render() {
     return (
