@@ -3,6 +3,7 @@ import { observable, action, toJS } from "mobx";
 import { navItems } from "../../data/nav-items.data";
 import { saveReport } from "../../services/firebase.service";
 import domainStore from "../domain";
+import { faLessThanEqual } from "@fortawesome/free-solid-svg-icons";
 
 interface Ipayload {
   key: keyof ReportStore;
@@ -99,9 +100,9 @@ export class ReportStore {
   @observable public photoBeforeWork: string = "";
   @observable public photoAfterWork: string = "";
   @observable public photoObjects: any = {
-    photo: [],
-    photoBeforeWork: [],
-    photoAfterWork: [],
+    photo: false,
+    photoBeforeWork: false,
+    photoAfterWork: false,
   };
   // SIGNATURE
   @observable public signature: string = "";
@@ -116,7 +117,7 @@ export class ReportStore {
       const edited = id ? domainStore.reports![id as any] : null;
       Object.assign(this, edited);
     } else {
-      message.error("Impossible d'initializer l'éditeur de rapport");
+      message.error("Impossible d'initialiser l'éditeur de rapport");
     }
   }
 

@@ -49,6 +49,7 @@ class Report extends React.Component<Props> {
                   page={step.page}
                   active={active}
                   onClick={this.selectPage}
+                  key={step.page}
                 >
                   {[
                     <Bullet

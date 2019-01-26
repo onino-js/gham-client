@@ -16,7 +16,7 @@ interface Props extends RouteComponentProps {
 @observer
 class DashBoardCrudActions extends React.Component<Props> {
   private editReport = () => {
-    this.props.history.push("/report");
+    this.props.history.push("/report/contact");
   };
   private cloneReport = () => {
     this.props.domainStore!.cloneReport();
@@ -28,14 +28,14 @@ class DashBoardCrudActions extends React.Component<Props> {
         <ActionButton
           onClick={this.props.domainStore!.requestAddReport}
           s={70}
-          enabled={true}
+          enabled={1}
         >
           <FontAwesomeIcon icon="plus" />
         </ActionButton>
         <ActionButton
           onClick={this.editReport}
           s={70}
-          enabled={allowAction}
+          enabled={allowAction ? 1 : 0}
           disabled={!allowAction}
         >
           <FontAwesomeIcon icon="edit" />
@@ -43,7 +43,7 @@ class DashBoardCrudActions extends React.Component<Props> {
         <ActionButton
           onClick={this.cloneReport}
           s={70}
-          enabled={allowAction}
+          enabled={allowAction ? 1 : 0}
           disabled={!allowAction}
         >
           <FontAwesomeIcon icon="clone" />
@@ -51,7 +51,7 @@ class DashBoardCrudActions extends React.Component<Props> {
         <ActionButton
           onClick={this.props.domainStore!.requestRemoveReport}
           s={70}
-          enabled={allowAction}
+          enabled={allowAction ? 1 : 0}
           disabled={!allowAction}
         >
           <FontAwesomeIcon icon="trash" />

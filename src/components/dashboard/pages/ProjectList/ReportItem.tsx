@@ -74,8 +74,8 @@ class ReportItem extends React.Component<Props> {
       this.props.domainStore!.selectedReportId! === this.props.reportId;
     return (
       <TableRow
-        hover={true}
-        active={active}
+        hover={1}
+        active={active ? 1 : 0}
         onClick={this.selectObject}
         onDoubleClick={this.goToReport}
       >

@@ -56,7 +56,10 @@ export class CanvasStore {
   public initialize({ canvasId, canvasType }: Iinitialize) {
     this.canvas = new fabric.Canvas(canvasId);
     this.canvasBox = document.getElementById("canvasBox");
-    this.addObjects(reportStore.photoObjects[canvasType]);
+
+    if (reportStore.photoObjects[canvasType]) {
+      this.addObjects(reportStore.photoObjects[canvasType]);
+    }
     canvasType !== "photo" && this.setBackground();
     this.canvas.on("mouse:dblclick", this.requestOpenItemOptions);
     this.canvas.on("selection:updated", this.setActiveObj);
@@ -81,7 +84,11 @@ export class CanvasStore {
 
   @action.bound
   public setBackground() {
-    if (reportStore.photoObjects.photo.length === 0) return;
+    if (
+      !reportStore.photoObjects.photo ||
+      reportStore.photoObjects.photo.length === 0
+    )
+      return;
     fabric.util.enlivenObjects(
       reportStore.photoObjects.photo,
       (objects: any) => {

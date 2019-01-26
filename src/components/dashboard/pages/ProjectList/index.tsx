@@ -79,7 +79,7 @@ class ProjectList extends React.Component<Props> {
         ) : (
           <Flex dir="c" alignH="center" style={{ width: "100%" }}>
             <Col {...wrapperAttrs}>
-              <TableRow header={true}>
+              <TableRow header={1}>
                 <Col {...col1}>Réference</Col>
                 <Col {...col2}>Date création</Col>
                 <Col {...col3}>Ville</Col>

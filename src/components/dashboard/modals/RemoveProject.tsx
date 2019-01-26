@@ -35,8 +35,10 @@ class RemoveReport extends React.Component<Props> {
         visible={this.props.showRemoveReport}
         closable={false}
         footer={[
-          <Button onClick={this.handleCancel}>ANNULER</Button>,
-          <Button type="primary" onClick={this.removeReport}>
+          <Button key="cancel-button" onClick={this.handleCancel}>
+            ANNULER
+          </Button>,
+          <Button key="ok-button" type="primary" onClick={this.removeReport}>
             SUPPRIMER
           </Button>,
         ]}

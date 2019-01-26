@@ -60,8 +60,11 @@ class NewReport extends React.Component<Props> {
         visible={this.props.showNewReport}
         closable={false}
         footer={[
-          <Button onClick={this.handleCancel}>ANNULER</Button>,
+          <Button key="cancel-button" onClick={this.handleCancel}>
+            ANNULER
+          </Button>,
           <Button
+            key="ok-button"
             type="primary"
             onClick={this.createReport}
             disabled={!isReferenceValid}

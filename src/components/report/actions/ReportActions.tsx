@@ -44,13 +44,13 @@ class ReportActions extends React.Component<Props> {
       <React.Fragment>
         <ActionButton
           onClick={() => this.goToPage("/report/preview")}
-          allowAction={true}
+          enabled={1}
         >
           <FontAwesomeIcon icon="eye" />
         </ActionButton>
         <ActionButton
           onClick={() => this.goToPage("/report/export")}
-          active={path === "/report/export"}
+          active={path === "/report/export" ? 1 : 0}
         >
           <FontAwesomeIcon icon="file-download" />
         </ActionButton>
