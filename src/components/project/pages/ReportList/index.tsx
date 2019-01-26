@@ -27,8 +27,8 @@ interface Props {
 @observer
 class ReportList extends React.Component<Props> {
   componentWillMount() {
-    this.props.uiStore!.setActivePage("report-list");
     this.props.domainStore!.loadRequest();
+    this.props.uiStore!.setActivePage("report-list");
   }
   public render() {
     const loaded: boolean = this.props.loaded!;

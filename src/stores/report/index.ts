@@ -26,14 +26,14 @@ export class ReportStore {
   @observable public lastName: string = "";
   @observable public firstName: string = "";
   @observable public address: string = "";
-  @observable public addressNumber: string = "";
+  @observable public streetNumber: string = "";
   @observable public addressZip: string = "";
   @observable public city: string = "";
   @observable public phone: string = "";
   @observable public co_lastName: string = "";
   @observable public co_firstName: string = "";
   @observable public co_address: string = "";
-  @observable public co_addressNumber: string = "";
+  @observable public co_streetNumber: string = "";
   @observable public co_addressZip: string = "";
   @observable public co_city: string = "";
   @observable public co_phone: string = "";
@@ -145,6 +145,27 @@ export class ReportStore {
       doc.id = doc.reference + "_" + doc.address;
       saveReport(doc, () => message.success("operation succedeed"));
     }
+  }
+
+  @action.bound
+  public getFullAddress(): string {
+    const res = `${this.streetNumber} ${this.address}`;
+    return res;
+  }
+  @action.bound
+  public getFullCity(): string {
+    const res = `${this.addressZip} ${this.city}`;
+    return res;
+  }
+  @action.bound
+  public co_getFullAddress(): string {
+    const res = `${this.co_streetNumber} ${this.co_address}`;
+    return res;
+  }
+  @action.bound
+  public co_getFullCity(): string {
+    const res = `${this.co_addressZip} ${this.co_city}`;
+    return res;
   }
 }
 

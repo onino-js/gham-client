@@ -146,6 +146,7 @@ export class ReportStore {
       saveReport(doc, () => message.success("operation succedeed"));
     }
   }
+  
 }
 
 const reportStore = new ReportStore();

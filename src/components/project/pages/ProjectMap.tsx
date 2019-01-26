@@ -16,6 +16,9 @@ interface Props {
 }))
 @observer
 class ProjectMap extends React.Component<Props> {
+  componentWillMount() {
+    this.props.uiStore!.setActivePage("project-map");
+  }
   public render() {
     return (
       <Flex dir="c">

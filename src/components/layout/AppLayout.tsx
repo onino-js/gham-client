@@ -2,16 +2,14 @@ import * as React from "react";
 import { inject, observer } from "mobx-react";
 import { AllStores } from "./../../models/all.stores.model";
 import Footer from "./../layout/Footer";
-import { RouteComponentProps } from "react-router-dom";
 import styled from "../../styled-components";
 import { _fullScreen } from "../../css/styled-css";
 import { Scrollable } from "../layout/Srollable";
 import { Flex } from "../layout/Flex";
 import { UiStore } from "../../stores/ui/index";
-import { StepWrapper } from "../layout/StepWrapper";
 import Header from "./Header";
-import MainNavigation from "../shared/MainNavigation";
 import { ActionBar } from "./ActionBar";
+import Navigation from "../navigation/Navigation";
 
 interface Props {
   uiStore?: UiStore;
@@ -33,7 +31,7 @@ class AppLayout extends React.Component<Props> {
     return (
       <Container>
         <Header>
-          <MainNavigation />
+          <Navigation />
         </Header>
         <Flex>
           {this.props.children[0]}

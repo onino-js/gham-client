@@ -12,16 +12,18 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { _center } from "../../css/styled-css";
 import { UiStore } from "../../stores/ui/index";
-import { withRouter } from "react-router";
+import { withRouter, RouteComponentProps } from "react-router";
 import gham from "./../../image/gham-logo2.png";
 import { Flex } from "../layout/Flex";
 import { Link } from "react-router-dom";
+import { DomainStore } from "../../stores/domain";
+import { IprojectJSON } from "../../models/project.model";
+import QuickNav from "./QuickNav";
 
-interface Props {
+interface Props extends RouteComponentProps {
   uiStore?: UiStore;
-  history: any;
-  match: any;
-  location: any;
+  domainStore?: DomainStore;
+  editedProject?: IprojectJSON;
 }
 
 const Container = styled.div`
@@ -79,17 +81,25 @@ const Logo = styled.img.attrs({
 
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
+  domainStore: allStores.domainStore,
+  editedProject: allStores.domainStore.editedProject,
 }))
 @observer
-class MainNavigation extends React.Component<Props> {
+class Navigation extends React.Component<Props> {
   private goToPage = (path: string) => {
     this.props.history.push(path);
   };
 
   public render() {
     const path = this.props.location.pathname;
-    var myWord = "dashboard";
-    const reg = new RegExp("\\b" + myWord + "\\b");
+    var dashboardWord = "dashboard";
+    const dashboardReg = new RegExp("\\b" + dashboardWord + "\\b");
+    var userAccountWord = "user-account";
+    const userAccountReg = new RegExp("\\b" + userAccountWord + "\\b");
+    const editedReference = this.props.editedProject
+      ? this.props.editedProject.reference
+      : null;
+
     return (
       <Container>
         <LeftBox>
@@ -97,17 +107,19 @@ class MainNavigation extends React.Component<Props> {
             <Logo />
           </Link>
         </LeftBox>
-        <CenterBox>YOUKOULELE</CenterBox>
+        <CenterBox>
+          <QuickNav />
+        </CenterBox>
         <RightBox>
           <HeaderButton
             onClick={() => this.goToPage("/dashboard/project-list")}
-            active={reg.test(path)}
+            active={dashboardReg.test(path)}
           >
             <FontAwesomeIcon icon="home" />
           </HeaderButton>
           <HeaderButton
             onClick={() => this.goToPage("/user-account")}
-            active={path === "/user-account"}
+            active={userAccountReg.test(path)}
           >
             <FontAwesomeIcon icon="user" />
           </HeaderButton>
@@ -117,4 +129,4 @@ class MainNavigation extends React.Component<Props> {
   }
 }
 
-export default withRouter(MainNavigation);
+export default withRouter(Navigation);

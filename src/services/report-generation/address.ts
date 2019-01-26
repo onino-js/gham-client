@@ -29,13 +29,13 @@ export const reportAddress = () => {
     ${titleCase("Adresse :")}
   </td>
   <td colspan="4" width="231">
-     ${resCase(reportStore.address)}
+     ${resCase(reportStore.getFullAddress())}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Adresse :")}
   </td>
   <td colspan="4" width="230">
-     ${resCase(reportStore.co_address)}
+     ${resCase(reportStore.co_getFullAddress())}
   </td>
 </tr>
 <tr>
@@ -43,13 +43,13 @@ export const reportAddress = () => {
     ${titleCase("Ville :")}
    </td>
   <td colspan="4" width="231">
-    ${resCase(reportStore.city)}
+    ${resCase(reportStore.getFullCity())}
   </td>
   <td colspan="2" width="112">
     ${titleCase("Ville :")}
    </td>
   <td colspan="4" width="230">
-     ${resCase(reportStore.co_city)}
+     ${resCase(reportStore.co_getFullCity())}
   </td>
 </tr>
 <tr>

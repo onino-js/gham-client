@@ -57,7 +57,7 @@ export class ProjectInfo extends React.Component<Props> {
     this.props.uiStore!.setActivePage("project-general");
   }
   public render() {
-    return this.props.domainStore!.editedProject ? (
+    return this.props!.editedProject ? (
       <Flex dir="c" alignH="center">
         <PrimaryTitle>Informations générales</PrimaryTitle>
         <MyRow>

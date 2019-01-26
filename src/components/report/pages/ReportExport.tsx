@@ -45,6 +45,7 @@ const Title = styled.div`
 }))
 @observer
 class ReportExport extends React.Component<Props> {
+
   private exportWord = () => {
     const htmlString = htmlReport();
     const byteNumbers = new Uint8Array(htmlString.length);

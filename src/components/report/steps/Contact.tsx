@@ -49,7 +49,7 @@ export class Contact extends React.Component<Props> {
         <StringInput
           type="text"
           mandatory={true}
-          keyStore="addressNumber"
+          keyStore="streetNumber"
           label="Numéro de rue"
         />
         <StringInput
@@ -79,7 +79,7 @@ export class Contact extends React.Component<Props> {
         <StringInput type="text" keyStore="co_addressZip" label="Code postal" />
         <StringInput
           type="text"
-          keyStore="co_addressNumber"
+          keyStore="co_streetNumber"
           label="Numéro de rue"
         />
         <StringInput type="text" keyStore="co_address" label="Adresse" />

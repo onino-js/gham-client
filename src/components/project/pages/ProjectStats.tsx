@@ -16,6 +16,9 @@ interface Props {
 }))
 @observer
 class ProjectStats extends React.Component<Props> {
+  componentWillMount() {
+    this.props.uiStore!.setActivePage("project-stats");
+  }
   public render() {
     return (
       <Flex dir="c">

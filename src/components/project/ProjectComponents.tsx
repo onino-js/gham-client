@@ -28,7 +28,7 @@ export const ProjectComponents: IpageComponent[] = [
     actions: ProjectActions,
   },
   {
-    link: "report-stats",
+    link: "project-stats",
     component: ProjectStats,
     title: "Statistiques",
     icon: "chart-pie",
