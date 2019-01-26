@@ -2,7 +2,7 @@ import * as React from "react";
 import Report from "./report/Report";
 import { Button } from "antd";
 import styled from "styled-components";
-import { _primary_font, _primary } from "../css/_colors";
+import { _primary_font, _primary, _primary_bg } from "../css/_colors";
 import { _fullScreen, _center } from "../css/styled-css";
 import bg from "./../image/bg.png";
 import { Link } from "react-router-dom";
@@ -39,7 +39,7 @@ const Start = styled.div`
   height: 70px;
   border: none;
   border-radius: 0px;
-  background-color: ${_primary};
+  background-color: ${_primary_bg};
   text-align: center;
   line-height: 70px;
   cursor: pointer;
@@ -56,7 +56,7 @@ class Welcome extends React.Component<Props> {
           ville. Les rapports générés répondent aux spécifications de Grdf pour
           la région ile de France, excepté Paris intra-muros.
         </P>
-        <Link to="/dashboard/project-list">
+        <Link to="/dashboard/report-list">
           <Start>Créer un nouveau rapport</Start>
         </Link>
       </Container>

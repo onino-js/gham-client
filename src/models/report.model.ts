@@ -1,21 +1,15 @@
-export interface IprojectJSON {
+export type IreportStatus = "new" | "warning" | "error" | "done";
+
+export interface IreportData {
+  city?: string;
+  address?: string;
+}
+
+export interface IreportJSON extends IreportData {
   reference: string;
   refPrefix: string;
   reporterName: string;
-  projectDate: string;
-  numberOfReports: number;
-  reportsIds: string[];
-  status: Istatus;
+  reportDate: string;
+  status: IreportStatus;
+  creationDate: string;
 }
-
-// export interface InewProjectJSON {
-//   reference?: string;
-//   refPrefix?: string;
-//   reporterName?: string;
-//   projectDate?: Date;
-//   numberOfReports?: number;
-//   reportsIds?: string[];
-//   status?: Istatus;
-// }
-
-type Istatus = "new" | "warning" | "error" | "done";

@@ -14,7 +14,7 @@ interface IsquareButton {
 }
 
 interface IactionButton extends IsquareButton {
-  enabled: boolean;
+  disabled?: boolean;
 }
 
 export const SmallButton = styled(Button as any)`
@@ -32,13 +32,13 @@ export const SquareButton = styled(Button as any)`
 
 export const ActionButton = SquareButton.extend`
   background-color: ${(props: IactionButton) =>
-    props.enabled ? _primary_bg : _secondary_bg};
+    props.disabled ? _secondary_bg : _primary_bg};
   color: ${(props: IactionButton) =>
-    props.enabled ? _primary : _primary_font};
+    props.disabled ? _primary_font : _primary};
   :hover {
     background-color: ${(props: IactionButton) =>
-      props.enabled ? _primary : _secondary_bg};
+      props.disabled ? _secondary_bg : _primary};
     color: ${(props: IactionButton) =>
-      props.enabled ? _primary_bg : _primary_font};
+      props.disabled ? _primary_font : _primary_bg};
   }
 `;

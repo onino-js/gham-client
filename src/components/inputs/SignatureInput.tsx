@@ -8,8 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReportStore } from "../../stores/report";
 import { AllStores } from "../../models/all.stores.model";
 import { _secondary } from "../../css/_colors";
-import { BigButton, PrimaryTitle } from "../shared/Styled";
+import { BigButton } from "../shared/Styled";
 import { Flex } from "../layout/Flex";
+import { PrimaryTitle } from "../shared/Texts";
 
 interface Props {
   uiStore?: UiStore;

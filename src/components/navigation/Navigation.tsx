@@ -17,13 +17,13 @@ import gham from "./../../image/gham-logo2.png";
 import { Flex } from "../layout/Flex";
 import { Link } from "react-router-dom";
 import { DomainStore } from "../../stores/domain";
-import { IprojectJSON } from "../../models/project.model";
+import { IreportJSON } from "../../models/report.model";
 import QuickNav from "./QuickNav";
 
 interface Props extends RouteComponentProps {
   uiStore?: UiStore;
   domainStore?: DomainStore;
-  editedProject?: IprojectJSON;
+  editedReport?: IreportJSON;
 }
 
 const Container = styled.div`
@@ -69,6 +69,10 @@ const CenterBox: any = styled(Flex).attrs({
   flex: 1;
   font-size: 1.5em;
   padding-left: 20px;
+  letter-spacing: 5px;
+  font-weight: 900;
+  font-size: 2em;
+  color: ${_primary_bg};
 `;
 
 const Logo = styled.img.attrs({
@@ -82,7 +86,7 @@ const Logo = styled.img.attrs({
 @inject((allStores: AllStores) => ({
   uiStore: allStores.uiStore,
   domainStore: allStores.domainStore,
-  editedProject: allStores.domainStore.editedProject,
+  editedReport: allStores.domainStore.editedReport,
 }))
 @observer
 class Navigation extends React.Component<Props> {
@@ -96,10 +100,9 @@ class Navigation extends React.Component<Props> {
     const dashboardReg = new RegExp("\\b" + dashboardWord + "\\b");
     var userAccountWord = "user-account";
     const userAccountReg = new RegExp("\\b" + userAccountWord + "\\b");
-    const editedReference = this.props.editedProject
-      ? this.props.editedProject.reference
-      : null;
-
+    const ref = this.props.editedReport
+      ? this.props.editedReport.reference
+      : "";
     return (
       <Container>
         <LeftBox>
@@ -107,12 +110,10 @@ class Navigation extends React.Component<Props> {
             <Logo />
           </Link>
         </LeftBox>
-        <CenterBox>
-          <QuickNav />
-        </CenterBox>
+        <CenterBox>{ref}</CenterBox>
         <RightBox>
           <HeaderButton
-            onClick={() => this.goToPage("/dashboard/project-list")}
+            onClick={() => this.goToPage("/dashboard/report-list")}
             active={dashboardReg.test(path)}
           >
             <FontAwesomeIcon icon="home" />

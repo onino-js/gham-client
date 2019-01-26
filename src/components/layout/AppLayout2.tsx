@@ -6,6 +6,7 @@ import { Scrollable } from "../layout/Srollable";
 import { Flex } from "../layout/Flex";
 import Header from "./Header";
 import { ActionBar } from "./ActionBar";
+import SideMenu from "./SideMenu";
 
 interface Props {
   header?: React.ReactNode;
@@ -28,7 +29,7 @@ class AppLayout extends React.Component<Props> {
       <Container>
         <Header>{this.props.header}</Header>
         <Flex>
-          {this.props.menu}
+          <SideMenu>{this.props.menu}</SideMenu>
           <Flex dir="c" style={{ height: "100%" }}>
             <Flex style={{ height: "100%" }}>
               <Scrollable dir="y" p={20}>

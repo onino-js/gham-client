@@ -15,23 +15,25 @@ interface Props extends RouteComponentProps {
 }))
 @observer
 class DashBoardCrudActions extends React.Component<Props> {
-  private editProject = () => {
-    this.props.history.push("/project");
+  private editReport = () => {
+    this.props.history.push("/report");
   };
-  private cloneProject = () => {};
+  private cloneReport = () => {
+    this.props.domainStore!.cloneReport();
+  };
   public render(): React.ReactNode {
-    const allowAction = this.props.domainStore!.selectedProjectId !== null;
+    const allowAction = this.props.domainStore!.selectedReportId !== null;
     return (
       <React.Fragment>
         <ActionButton
-          onClick={this.props.domainStore!.requestAddProject}
+          onClick={this.props.domainStore!.requestAddReport}
           s={70}
           enabled={true}
         >
           <FontAwesomeIcon icon="plus" />
         </ActionButton>
         <ActionButton
-          onClick={this.editProject}
+          onClick={this.editReport}
           s={70}
           enabled={allowAction}
           disabled={!allowAction}
@@ -39,17 +41,15 @@ class DashBoardCrudActions extends React.Component<Props> {
           <FontAwesomeIcon icon="edit" />
         </ActionButton>
         <ActionButton
-          onClick={this.cloneProject}
+          onClick={this.cloneReport}
           s={70}
-          enabled={false}
-          disabled={true}
-          // enabled={allowAction}
-          // disabled={!allowAction}
+          enabled={allowAction}
+          disabled={!allowAction}
         >
           <FontAwesomeIcon icon="clone" />
         </ActionButton>
         <ActionButton
-          onClick={this.props.domainStore!.requestRemoveProject}
+          onClick={this.props.domainStore!.requestRemoveReport}
           s={70}
           enabled={allowAction}
           disabled={!allowAction}

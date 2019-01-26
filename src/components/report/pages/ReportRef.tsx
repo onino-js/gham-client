@@ -2,11 +2,11 @@ import * as React from "react";
 import { observer, inject } from "mobx-react";
 
 import styled from "../../../styled-components";
-import { MyRow, PrimaryTitle } from "./../../shared/Styled";
+import { MyRow } from "./../../shared/Styled";
 import { UiStore } from "../../../stores/ui/index";
-import NextButton from "./../../shared/NextButton";
 import { Flex } from "../../layout/Flex";
 import { InputPrefix } from "../../inputs/InputPrefix";
+import { PrimaryTitle } from "../../shared/Texts";
 
 interface Props {
   uiStore?: UiStore;

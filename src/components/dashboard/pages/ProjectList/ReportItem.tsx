@@ -5,13 +5,13 @@ import { Col } from "antd";
 import { formatDate } from "../../../../services/app.service";
 import { TableRow } from "../../../shared/Tables";
 import { DomainStore } from "../../../../stores/domain";
-import { IprojectJSON } from "../../../../models/project.model";
+import { IreportJSON } from "../../../../models/report.model";
 import styled from "styled-components";
 import { withRouter, RouteComponentProps } from "react-router";
 
 interface Props extends RouteComponentProps {
-  projectId: any;
-  project?: IprojectJSON;
+  reportId: any;
+  report?: IreportJSON;
   domainStore?: DomainStore;
 }
 
@@ -28,14 +28,14 @@ const col2 = {
   xs: 6,
 };
 const col3 = {
-  xl: 6,
-  md: 6,
-  xs: 6,
-};
-const col4 = {
   xl: 3,
   md: 3,
   xs: 3,
+};
+const col4 = {
+  xl: 6,
+  md: 6,
+  xs: 6,
 };
 const col5 = {
   xl: 3,
@@ -47,7 +47,6 @@ const RefBox = styled.div`
   font-weight: 900;
   letter-spacing: 5px;
   font-size: 1.2em;
-  padding-left: 20px;
 `;
 
 const StatusBox = styled.div`
@@ -56,44 +55,44 @@ const StatusBox = styled.div`
 `;
 
 @inject((allStores: AllStores, props: Props) => ({
-  project: allStores.domainStore.projects[props.projectId],
+  report: allStores.domainStore.reports![props.reportId],
   userStore: allStores.userStore,
   domainStore: allStores.domainStore,
 }))
 @observer
-class ProjectItem extends React.Component<Props> {
+class ReportItem extends React.Component<Props> {
   private selectObject = () => {
-    this.props.domainStore!.setSelectedProjectId(this.props.projectId);
+    this.props.domainStore!.setSelectedReportId(this.props.reportId);
   };
-  private goToProject = () => {
-    this.props.domainStore!.setSelectedProjectId(this.props.projectId);
-    this.props.history.push("/project/project-general");
+  private goToReport = () => {
+    this.props.domainStore!.setSelectedReportId(this.props.reportId);
+    this.props.history.push("/report/contact");
   };
   public render() {
-    const project = this.props.project!;
+    const report = this.props.report!;
     const active =
-      this.props.domainStore!.selectedProjectId! === this.props.projectId;
+      this.props.domainStore!.selectedReportId! === this.props.reportId;
     return (
       <TableRow
         hover={true}
         active={active}
         onClick={this.selectObject}
-        onDoubleClick={this.goToProject}
+        onDoubleClick={this.goToReport}
       >
         <Col {...col1}>
-          <RefBox>{project.reference}</RefBox>
+          <RefBox>{report.reference}</RefBox>
         </Col>
-        <Col {...col2}>{formatDate(project.projectDate)}</Col>
-        <Col {...col3}>{formatDate(project.projectDate)}</Col>
+        <Col {...col2}>{formatDate(report.creationDate)}</Col>
+        <Col {...col3}>{report.city || "X"}</Col>
         <Col {...col4}>
-          <StatusBox>{project.numberOfReports}</StatusBox>
+          <StatusBox>{report.address || "X"}</StatusBox>
         </Col>
         <Col {...col5}>
-          <StatusBox>{project.status}</StatusBox>
+          <StatusBox>{report.status}</StatusBox>
         </Col>
       </TableRow>
     );
   }
 }
 
-export default withRouter(ProjectItem);
+export default withRouter(ReportItem);

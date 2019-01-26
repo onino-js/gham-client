@@ -9,7 +9,7 @@ import { DomainStore } from "../../../stores/domain";
 interface Props {
   uiStore?: UiStore;
   userStore?: UserStore;
-  showRemoveProject?: boolean;
+  showRemoveReport?: boolean;
   domainStore?: DomainStore;
 }
 
@@ -17,28 +17,26 @@ interface Props {
   uiStore: allStores.uiStore,
   userStore: allStores.userStore,
   domainStore: allStores.domainStore,
-  showRemoveProject: allStores.domainStore.showRemoveProject,
+  showRemoveReport: allStores.domainStore.showRemoveReport,
 }))
 @observer
-class RemoveProject extends React.Component<Props> {
+class RemoveReport extends React.Component<Props> {
   componentDidMount() {}
-  private removeProject = () => {
-    this.props.domainStore!.deleteProject(
-      this.props.domainStore!.selectedProjectId,
-    );
+  private removeReport = () => {
+    this.props.domainStore!.deleteReport();
     this.handleCancel();
   };
   private handleCancel = () => {
-    this.props.domainStore!.closeRemoveProject();
+    this.props.domainStore!.closeRemoveReport();
   };
   public render() {
     return (
       <Modal
-        visible={this.props.showRemoveProject}
+        visible={this.props.showRemoveReport}
         closable={false}
         footer={[
           <Button onClick={this.handleCancel}>ANNULER</Button>,
-          <Button type="primary" onClick={this.removeProject}>
+          <Button type="primary" onClick={this.removeReport}>
             SUPPRIMER
           </Button>,
         ]}
@@ -49,4 +47,4 @@ class RemoveProject extends React.Component<Props> {
   }
 }
 
-export default RemoveProject;
+export default RemoveReport;

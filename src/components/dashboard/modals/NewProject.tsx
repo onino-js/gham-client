@@ -11,7 +11,7 @@ import { _primary_bg, _error } from "../../../css/_colors";
 interface Props {
   uiStore?: UiStore;
   userStore?: UserStore;
-  showNewProject?: boolean;
+  showNewReport?: boolean;
   domainStore?: DomainStore;
 }
 
@@ -34,17 +34,17 @@ const RefInput = styled(Input as any)`
   uiStore: allStores.uiStore,
   userStore: allStores.userStore,
   domainStore: allStores.domainStore,
-  showNewProject: allStores.domainStore.showNewProject,
+  showNewReport: allStores.domainStore.showNewReport,
 }))
 @observer
-class NewProject extends React.Component<Props> {
+class NewReport extends React.Component<Props> {
   componentDidMount() {}
   private setNewReference = (e: any) => {
     this.props.domainStore!.setNewReference(e.currentTarget.value);
   };
-  private createProject = () => {
-    this.props.domainStore!.createProject();
-    this.props.domainStore!.setSelectedProjectId(null);
+  private createReport = () => {
+    this.props.domainStore!.createReport();
+    this.props.domainStore!.setSelectedReportId(null);
     this.handleCancel();
   };
   private handleCancel = () => {
@@ -57,13 +57,13 @@ class NewProject extends React.Component<Props> {
       !isReferenceValid && this.props.domainStore!.newReference !== "";
     return (
       <Modal
-        visible={this.props.showNewProject}
+        visible={this.props.showNewReport}
         closable={false}
         footer={[
           <Button onClick={this.handleCancel}>ANNULER</Button>,
           <Button
             type="primary"
-            onClick={this.createProject}
+            onClick={this.createReport}
             disabled={!isReferenceValid}
           >
             OK
@@ -87,4 +87,4 @@ class NewProject extends React.Component<Props> {
   }
 }
 
-export default NewProject;
+export default NewReport;

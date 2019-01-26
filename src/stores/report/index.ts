@@ -2,23 +2,33 @@ import { message } from "antd";
 import { observable, action, toJS } from "mobx";
 import { navItems } from "../../data/nav-items.data";
 import { saveReport } from "../../services/firebase.service";
+import domainStore from "../domain";
 
 interface Ipayload {
   key: keyof ReportStore;
   value: any;
 }
 
+type IsetProps = { [key in keyof ReportStore]: any };
+
 type Istatus = "new" | "warnings" | "done";
+
+interface Icoords {
+  lat: number;
+  lng: number;
+}
 
 export class ReportStore {
   // MAIN INFORMATIONS
   @observable public reference: string = "";
+  @observable public refPrefix: string = "";
   @observable public creationDate: string = "";
   @observable public lastModifDate: string = "";
   @observable public status: Istatus = "new";
-
   @observable public reportDate: Date = new Date();
+  @observable public coords: Icoords | null = null;
 
+  // DATA
   @observable public genre: string = "";
   @observable public _genre: string = "";
   @observable public occupation: string = "";
@@ -97,10 +107,18 @@ export class ReportStore {
   @observable public signature: string = "";
 
   // COMPLETION
-  @observable public completion: any[] = navItems.slice().map((item: any) => {
-    item.errors = [];
-    return item;
-  });
+  @observable public completion: any[] = [];
+
+  @action.bound
+  public initialize(): void {
+    if (domainStore.reports) {
+      const id = domainStore.selectedReportId || null;
+      const edited = id ? domainStore.reports![id as any] : null;
+      Object.assign(this, edited);
+    } else {
+      message.error("Impossible d'initializer l'éditeur de rapport");
+    }
+  }
 
   @action.bound
   public setCompletion(payload: any): void {
@@ -124,6 +142,12 @@ export class ReportStore {
       throw err;
     }
   }
+
+  @action.bound
+  public setProps(payload: IsetProps): void {
+    Object.assign(this, payload);
+  }
+
   @action.bound
   public getCompletName(): string {
     return `${this.genre} ${this.firstName} ${this.lastName.toUpperCase()}`;

@@ -28,11 +28,3 @@ export const BigButton = styled(Button as any)`
   margin: 10px;
   font-size: 3em;
 `;
-
-export const PrimaryTitle = styled.div`
-  font-size: 2em;
-  font-weight: 900;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: ${_secondary};
-`;

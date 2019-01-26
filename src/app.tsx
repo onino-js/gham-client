@@ -13,7 +13,6 @@ import Report from "./components/report/Report";
 import userStore from "./stores/user";
 import DashBoard from "./components/dashboard/DashBoard";
 import Welcome from "./components/Welcome";
-import ProjectHome from "./components/project/ProjectHome";
 import UserAccount from "./components/user-account/UserAccount";
 import domainStore from "./stores/domain";
 
@@ -31,13 +30,11 @@ interface Props {
 class AppTemplate extends React.Component<Props> {
   public render() {
     return (
-      // <FullScreen>{!this.props.isLogged ? <Home /> : <Login />}</FullScreen>
       <Router>
         <FullScreen>
           <Route path="/login" component={Login} />
           <Route path="/report" component={Report} />
           <Route path="/dashboard" component={DashBoard} />
-          <Route path="/project" component={ProjectHome} />
           <Route path="/user-account" component={UserAccount} />
           <Route exact path="/" component={Welcome} />
         </FullScreen>

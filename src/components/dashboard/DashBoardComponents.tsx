@@ -11,7 +11,7 @@ import { IpageComponent } from "../../models/layout.models";
 
 const DashBoardComponents: IpageComponent[] = [
   {
-    link: "project-list",
+    link: "report-list",
     component: ProjectList,
     title: "Mes projets",
     icon: "clipboard-list",
@@ -48,5 +48,7 @@ const DashBoardComponents: IpageComponent[] = [
     icon: "users",
   },
 ];
+
+
 
 export default DashBoardComponents;
