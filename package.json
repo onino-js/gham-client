@@ -44,6 +44,7 @@
     "@types/react-router-dom": "^4.3.0",
     "react-app-rewire-less": "^2.1.2",
     "react-app-rewired": "^1.5.2",
+    "react-image-webp": "^0.2.2",
     "ts-import-plugin": "^1.5.4"
   },
   "eslintConfig": {

@@ -1,11 +1,10 @@
 import * as React from "react";
-import Report from "./report/Report";
-import { Button } from "antd";
 import styled from "styled-components";
-import { _primary_font, _primary, _primary_bg } from "../css/_colors";
+import { _primary_bg } from "../css/_colors";
 import { _fullScreen, _center } from "../css/styled-css";
-import bg from "./../image/bg.png";
+// import bg from "./../image/bg2.webp";
 import { Link } from "react-router-dom";
+import Image from "react-image-webp";
 
 interface Props {}
 
@@ -13,7 +12,7 @@ const Container = styled.div`
   ${_fullScreen};
   ${_center};
   flex-direction: column;
-  background-image: url(${bg});
+  position: relative;
 `;
 
 const Title = styled.h1`
@@ -22,6 +21,7 @@ const Title = styled.h1`
   text-align: center;
   font-weight: bolder;
   color: #fff;
+  position: relative;
 `;
 
 const P = styled.p`
@@ -32,6 +32,7 @@ const P = styled.p`
   line-height: 2em;
   font-size: 1.2em;
   font-weight: bolder;
+  position: relative;
 `;
 
 const Start = styled.div`
@@ -43,12 +44,23 @@ const Start = styled.div`
   text-align: center;
   line-height: 70px;
   cursor: pointer;
+  position: relative;
+`;
+
+const BgImg = styled(Image)`
+  position: absolute;
+  top: 0;
+  z-index: 0;
 `;
 
 class Welcome extends React.Component<Props> {
   public render() {
     return (
       <Container>
+        <BgImg
+          src={require("./../image/bg2.webp")}
+          webp={require("./../image/bg2.webp")}
+        />
         <Title>Bienvenue dans votre outil de génération de rapport</Title>
         <P>
           Cet outil permet de générer de manière rapide et ergonomique des

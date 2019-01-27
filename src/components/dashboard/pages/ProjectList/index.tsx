@@ -24,7 +24,7 @@ export const wrapperAttrs = {
   xs: 24,
   sm: 24,
   md: 24,
-  lg: 18,
+  lg: 24,
   xl: 16,
 };
 

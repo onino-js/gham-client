@@ -70,18 +70,6 @@ export const InfoCol: any = styled(Col as any).attrs({
   border-left: none;
 `;
 
-export const CanvasBox: any = styled(Col as any).attrs({
-  xs: 24,
-  sm: 24,
-  md: 24,
-  lg: 20,
-  xl: 14,
-})`
-  flex: 1;
-  border: 1px solid ${_secondary};
-  border-style: dashed;
-`;
-
 export const SmallBullet: any = styled.div`
   width: 12px;
   height: 12px;

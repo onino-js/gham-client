@@ -8,4 +8,7 @@ export const ActionBar = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${_secondary_bg};
+  @media (max-width: 800px) {
+    width: 70px;
+  }
 `;

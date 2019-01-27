@@ -20,11 +20,19 @@ const TitleBox = styled.div`
   line-height: 50px;
   flex: 1;
   font-weight: 900;
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const IconBox = styled.div`
   padding-left: 20px;
   padding-right: 20px;
+  @media (max-width: 800px) {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto;
+  }
 `;
 
 const ItemBox: any = styled.div`

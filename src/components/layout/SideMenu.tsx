@@ -13,8 +13,9 @@ const Container = styled.div`
   height: 100%;
   overflow-y: auto;
   background-color: ${_secondary_bg};
-  @media (max-width: 600px) {
-    display: none;
+  @media (max-width: 800px) {
+    transition: all 0.5s;
+    width: 70px;
   }
 `;
 

@@ -7,10 +7,12 @@ import ObjOptions from "./ItemOptions";
 import AddItem from "./AddItem";
 import { CanvasStore } from "../../../stores/canvas.store";
 import { Flex } from "../../layout/Flex";
-import { CanvasBox } from "../StyledInput";
 import { ReportStore } from "../../../stores/report";
 import AddPhoto from "./AddPhoto";
 import EditBg from "./EditBg";
+import styled from "styled-components";
+import { Col } from "antd";
+import { _secondary } from "../../../css/_colors";
 
 interface Props {
   uiStore?: UiStore;
@@ -25,6 +27,22 @@ interface Props {
 interface State {
   fileList?: any;
 }
+
+export const CanvasBox: any = styled(Col as any).attrs({
+  xs: 24,
+  sm: 24,
+  md: 24,
+  lg: 20,
+  xl: 18,
+  id: (props: any) => props.id,
+})`
+  flex: 1;
+`;
+
+const CanvasElement = styled.canvas`
+  border: 1px solid ${_secondary};
+  border-style: dashed;
+`;
 
 @inject((allStores: AllStores) => ({
   canvasStore: allStores.canvasStore,
@@ -46,7 +64,7 @@ class PhotoInput extends React.Component<Props, State> {
 
   public render(): React.ReactNode {
     return (
-      <Flex dir="c" alignH="center" style={{ height: "100%" }}>
+      <Flex dir="c" alignH="center" style={{ height: "100%", width: "100%" }}>
         {this.props.addItems && (
           <React.Fragment>
             <EditCanvas />
@@ -57,8 +75,8 @@ class PhotoInput extends React.Component<Props, State> {
         {this.props.addPhoto && <AddPhoto />}
         {this.props.editPhoto && <EditBg />}
 
-        <CanvasBox id="canvasBox">
-          <canvas id={this.props.canvasId} />
+        <CanvasBox id="canvas-box">
+          <CanvasElement id={this.props.canvasId} />
         </CanvasBox>
       </Flex>
     );

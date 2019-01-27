@@ -41,4 +41,9 @@ export const ActionButton = SquareButton.extend`
     color: ${(props: IactionButton) =>
       props.disabled ? _primary_font : _primary_bg};
   }
+  @media (max-width: 800px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+  }
 `;

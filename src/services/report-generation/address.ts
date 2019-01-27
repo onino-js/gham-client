@@ -4,10 +4,10 @@ import { resCase, titleCase, crossCase } from "./styles";
 export const reportAddress = () => {
   return `<tr>
   <td colspan="6" bgcolor="#ffff99" width="350" height="11">
-    <p align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Information contact</strong></span></span></span></p>
+    <p align="center"><span style="color: #007826;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Information contact</strong></span></span></span></p>
   </td>
   <td colspan="6" bgcolor="#ffff99" width="350">
-    <p style="color: #007826; font-family: Cabin, serif; font-size: xx-small" align="center"><strong>Information copropri&eacute;taire</strong></p>
+    <p style="color: #007826; font-family: Cabin, Arial; font-size: xx-small" align="center"><strong>Information copropri&eacute;taire</strong></p>
   </td>
 </tr>
 <tr>

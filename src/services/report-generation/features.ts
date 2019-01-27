@@ -16,13 +16,13 @@ export const reportFeatures = () => {
 </tr>
 <tr>
   <td colspan="8" bgcolor="#ffff99" width="470" height="11">
-    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Branchements</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Branchements</strong></span></span></span></p>
   </td>
   <td colspan="2" bgcolor="#ffff99" width="112">
-    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Compteur</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Compteur</strong></span></span></span></p>
   </td>
   <td colspan="2" bgcolor="#ffff99" width="111">
-    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Arriv&eacute;e</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Arriv&eacute;e</strong></span></span></span></p>
   </td>
 </tr>
 <tr>
@@ -79,7 +79,7 @@ export const reportFeatures = () => {
 </tr>
 <tr>
   <td colspan="8" bgcolor="#ffff99" width="470" height="11">
-    <p class="western" align="center"><span style="color: #006600;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Coffret</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #006600;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Coffret</strong></span></span></span></p>
   </td>
   <td width="52">
     ${titleCaseC("D&eacute;bit:")}
@@ -88,15 +88,15 @@ export const reportFeatures = () => {
     ${resCaseC(reportStore.compteurFlow.toString())}  
   </td>
   <td colspan="2" bgcolor="#ffff99" width="111">
-    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>P&eacute;n&eacute;tration</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>P&eacute;n&eacute;tration</strong></span></span></span></p>
   </td>
 </tr>
 <tr>
   <td colspan="4" width="230" height="11">
-    <p class="western" align="center"><span style="color: #000099;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Etat actuel</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #000099;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Etat actuel</strong></span></span></span></p>
   </td>
   <td colspan="4" width="231">
-    <p class="western" align="center"><span style="color: #000099;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>Projet</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #000099;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>Projet</strong></span></span></span></p>
   </td>
   <td width="52">
     ${titleCase("Conserv&eacute;:")}
@@ -237,7 +237,7 @@ export const reportFeatures = () => {
     )}
   </td>
   <td colspan="2" bgcolor="#ffff99" width="112">
-    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;"><strong>D&eacute;tente</strong></span></span></span></p>
+    <p class="western" align="center"><span style="color: #007826;"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;"><strong>D&eacute;tente</strong></span></span></span></p>
   </td>
   <td colspan="2" width="111">
     ${resCaseC(reportStore.penetrationConserved === "OUI" ? "X" : "")}
@@ -278,7 +278,7 @@ export const reportFeatures = () => {
     ${resCaseC(reportStore.detenteType)}
   </td>
   <td colspan="2" bgcolor="#dddddd" width="111">
-    <p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Projet&eacute;e</span></span></p>
+    <p class="western" align="center"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;">Projet&eacute;e</span></span></p>
   </td>
 </tr>
 <tr>
@@ -320,10 +320,10 @@ export const reportFeatures = () => {
     ${resCaseC(reportStore.detentePose === "EXISTANTE" ? "X" : "")}
   </td>
   <td bgcolor="#dddddd" width="52">
-    <p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Nature</span></span></p>
+    <p class="western" align="center"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;">Nature</span></span></p>
   </td>
   <td bgcolor="#dddddd" width="51">
-    <p class="western" align="center"><span style="font-family: Cabin, serif;"><span style="font-size: xx-small;">Diam&egrave;tre</span></span></p>
+    <p class="western" align="center"><span style="font-family: Cabin, Arial;"><span style="font-size: xx-small;">Diam&egrave;tre</span></span></p>
   </td>
 </tr>
 <tr>

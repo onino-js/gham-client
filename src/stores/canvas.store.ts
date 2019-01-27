@@ -55,7 +55,7 @@ export class CanvasStore {
   @action.bound
   public initialize({ canvasId, canvasType }: Iinitialize) {
     this.canvas = new fabric.Canvas(canvasId);
-    this.canvasBox = document.getElementById("canvasBox");
+    this.canvasBox = document.getElementById("canvas-box");
 
     if (reportStore.photoObjects[canvasType]) {
       this.addObjects(reportStore.photoObjects[canvasType]);
@@ -64,7 +64,7 @@ export class CanvasStore {
     this.canvas.on("mouse:dblclick", this.requestOpenItemOptions);
     this.canvas.on("selection:updated", this.setActiveObj);
     this.resizeCanvas();
-    this.startResizeLoop();
+    // this.startResizeLoop();
   }
 
   @action.bound
@@ -177,8 +177,12 @@ export class CanvasStore {
     this.canvasHeight = this.canvasBox!.offsetHeight;
     this.canvas.setDimensions({
       width: this.canvasWidth,
-      height: this.canvasHeight,
+      height: (this.canvasWidth * 200) / 260,
     });
+    // this.canvas.setDimensions({
+    //   width: this.canvasWidth,
+    //   height: this.canvasHeight,
+    // });
   }
 
   @action.bound
