@@ -88,10 +88,12 @@ export class DomainStore {
   }
 
   public updateReport() {
-    const report = toJS(reportStore);
-    updateReport(this.selectedReportId!, report, () => {
-      message.info("Rapport mis à jours");
-    });
+    if (this.selectedReportId && this.editedReport) {
+      const report = toJS(reportStore);
+      updateReport(this.selectedReportId!, report, () => {
+        message.info("Rapport mis à jours");
+      });
+    }
   }
 
   @action.bound
